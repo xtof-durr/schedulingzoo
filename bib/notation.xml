@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<notation>
+    <aliases>
+        <replace from="MONOTONE" to="( C_{\max} or L_{\max} or \sum U_j or \sum T_j or \sum w_jC_j or \sum w_jU_j or \sum w_jT_j or \sum w_jC_j )" />
+        <replace from="TIMELAG" to="In a machine problem with time-lags for every job pair $i\prec j$ in the precedence relation, job $j$ can start only at least $l_{ij}$ units after the completion of job $i$.  Default timelag is zero.  Also denoted as $c$ for communication time." />
+        <replace from="SETUP" to="A single server is loading the job $J_j$ or operation $O_{ij}$ on the machine which requires a setup time. These setup periods cannot overlap." />
+    </aliases>
+    <form>
+        <section name="">
+            <field name="interface" hide="True" >
+                <choice value="simple" explanation="This webpage will show only a few search options"  />
+                <choice value="advanced" explanation="This webpage will show more search options" />
+            </field>
+        </section>
+
+        <section name="Machine environment $\alpha$">
+            <field name="type" >
+                <choice value="1" explanation="Single machine." field="number of machines" />
+                <choice value="P" explanation="Parallel identical machines. We are given $m$ machines. Processing time of job $j$ is $p_j$, independent of the machine."/>
+                <choice value="Q" explanation="Related machines. We are given $m$ machines, each with given speed $s_1,\ldots,s_m$. Processing time of job $j$ on machine $i$ is $p_j/s_j$."/>
+                <choice value="R" explanation="We are given $m$ unrelated machines. Processing time of job $j$ on machine $i$ is some given length $p_{ij}$."/>
+                <choice value="O" explanation="Open shop. Every job $j$ consists of $m$ operations $O_{ij}$ for $i=1,\ldots,m$.  The operations can be scheduled in any order. Operation $O_{ij}$ must be processed for $p_{ij}$ units on machine $i$."/>
+                <choice value="F" explanation="Flow shop. Every job $j$ consists of $n_j$ operations $O_{ij}$ for $k=1,\ldots,m$, to be scheduled in that order.  Operation $O_{ij}$ must be processed for $p_{ij}$ units on machine $i$."/>
+                <choice value="J" explanation="Job shop. Every job $j$ consists of $n_j$ operations $O_{kj}$ for $k=1,\ldots,n_j$, to be scheduled in that order.  Operation $O_{kj}$ must be processed for $p_{kj}$ units on a dedicated machine $\mu_{kj}$ with $\mu_{kj}\neq \mu_{k'j}$ for $k\neq k'$."/>
+            </field>
+
+            <field name="number of machines" requires="not 1"  separation="False">
+                <choice value="" explanation="Arbitrary number of machines $m$." />
+                <choice value="2" explanation="m=2 machines."/>
+                <choice value="3" explanation="m=3 machines."/>
+                <choice value="4" explanation="m=4 machines."/>
+                <choice value="5" explanation="m=5 machines."/>
+                <choice value="m" explanation="Fixed number of machines $m$.  Used for complexity results which are polynomial in the number of jobs, but not in the number of machines."/>
+				</field>
+
+
+            <field name="robot" requires="advanced and F">
+				<choice value="" explanation="No robot" />
+                <choice value="R1" requires="F" explanation="We are given a single robot that can transport the operations of a job from one machine to another. The robot can make at most one transportation per time."/>
+            </field>
+
+            <field name="server" requires="advanced and ( P or F )">
+				<choice value="" explanation="No server" />
+                <choice value="S1" requires="P or F" explanation="Single server." />
+            </field>
+        </section>
+
+        <section name="Constraints $\beta$" add_separator="True" >
+
+            <field name="number of jobs" requires="advanced">
+                <choice value="" explanation="" />
+                <choice value="n=2" explanation="The input consists of only 2 jobs."/>
+                <choice value="n=3" explanation="The input consists of only 3 jobs."/>
+                <choice value="n=k" explanation="The input consists of only k jobs."/>
+            </field>
+
+            <field name="precedence relation" >
+                <choice value=""                         explanation="No precedence relation." />
+                <choice value="prec"                         explanation="Given general precedence relation.  If $i\prec j$ then starting time of $j$ should be not earlier than completion time of $i$." />
+                <choice value="chains"   requires="advanced" explanation="Given precedence relation in form of chains (indegrees and outdegrees are at most 1)." />
+                <choice value="tree"     requires="advanced" explanation="Given general precedence relation in form of a tree, either intree or outtree." />
+                <choice value="intree"   requires="advanced" explanation="Given general precedence relation in form of an intree (outdegrees are at most 1)." />
+                <choice value="outtree"  requires="advanced" explanation="Given general precedence relation in form of an outtree (indegrees are at most 1)." />
+				<choice value="opposing forest"  requires="advanced" explanation="Given general precedence relation in form of a collection of intrees and outtrees." />
+                <choice value="sp-graph" requires="advanced" explanation="Given precedence relation in form of a series parallel graph." />
+                <choice value="bounded height" requires="advanced" explanation="Given precedence relation where the longest directed path is bounded by a constant." />
+                <choice value="level order" requires="advanced" explanation="Given precedence relation where each vertex of a given level l (i.e. the length of the longest directed path starting from this vertex is l) is a predecessor of all the vertices of level l-1." />
+                <choice value="interval order" requires="advanced" explanation="Given precedence relation for which one can associate to each vertex an interval in the real line,
+                    and there is a precedence between x and y if and only if the half open intervals x=[s_x,e_x) and y=[s_y,e_y) are such that e_x is smaller than or equal to s_y." />
+                <choice value="quasi-interval order" requires="advanced" explanation="Quasi-interval orders are a superclass of interval orders defined in Moukrim: Optimal scheduling on parallel machines for a new order class, Operations Research Letters, 24(1):91-95, 1999." />
+                <choice value="over-interval order" requires="advanced" explanation="Over-interval orders are a superclass of quasi-interval orders defined in Chardon and Moukrim: The Coffman-Graham algorithm optimally solves UET task systems with overinterval orders, SIAM Journal on Discrete Mathematics, 19(1):109-121, 2005." />
+                <choice value="Am-order" requires="advanced" explanation="Am orders are a superclass of over-interval orders defined in Moukrim and Quilliot: A relation between multiprocessor scheduling and linear programming. Order, 14(3):269-278, 1997." />
+                <choice value="DC-graph" requires="advanced" explanation="A divide-and-conquer graph is a subclass of series-parallel graphs defined in Kubiak et al.: Optimality of HLF for scheduling divide-and-conquer UET task graphs on identical parallel processors. Discrete Optimization, 6:79-91, 2009." />
+                <choice value="2-dim partial order" requires="advanced" explanation="A 2-dimensional partial order is a k-dimensional partial order for k=2." />
+                <choice value="k-dim partial order" requires="advanced" explanation="A poset is a k-dimensional partial order iff it can be embedded into the k-dimensional Euclidian space in such a way that
+                    each node is represented by a k-dimensional point and there is a precedence between two nodes i and j iff for any dimension the coordinate of i is smaller than or equal to the one of j." />
+            </field>
+            <field name="time lags" requires="advanced and precedence relation">
+                <choice value=""         explanation="no time lags"  />
+                <choice value="l=1"         explanation="unit time lags. TIMELAG" />
+                <choice value="l"           explanation="job independent time lags. TIMELAG" />
+                <choice value="l\leq0"      explanation="job independent negative time lags. TIMELAG" />
+                <choice value="l>0"         explanation="job independent positive time lags. TIMELAG" />
+                <choice value="l_{ij}"      explanation="arbitrary time lags. TIMELAG" />
+                <choice value="l_{ij}\leq0" explanation="arbitrary negative time lags. TIMELAG" />
+                <choice value="l_{ij}>0"    explanation="arbitrary positive time lags. TIMELAG" />
+            </field>
+
+            <field name="transportation delays" requires="O or F" >
+                <choice value=""         explanation="no transportation delays"  />
+                <choice value="t_{jk}"  requires="F"  explanation="Between the completion of operation $O_{kj}$ of job $j$ on machine $k$ and the start of operation $O_{k+1,j}$ of job $j$ on machine $k+1$, there is a transportation delay of at least $t_{jk}$ units." />
+                <choice value="t_{jkl}"  requires="O"  explanation="Between the completion of operation $O_{kj}$ of job $j$ on machine $k$ and the start of operation $O_{l,j}$ of job $j$ on machine $l$, there is a transportation delay of at least $t_{jkl}$ units." />
+                <choice value="t_k"  requires="F"  explanation="Machine dependent transportation delay. Between the completion of operation $O_{kj}$ of job $j$ on machine $k$ and the start of operation $O_{k+1,j}$ of job $j$ on machine $k+1$, there is a transportation delay of at least $t_{k}$ units." />
+                <choice value="t_{kl}"  requires="O"  explanation="Machine pair dependent transportation delay. Between the completion of operation $O_{kj}$ of job $j$ on machine $k$ and the start of operation $O_{l,j}$ of job $j$ on machine $l$, there is a transportation delay of at least $t_{kl}$ units." />
+                <choice value="t_j"  requires="O or F"  explanation="Job dependent transportation delay. Between the completion of operation $O_{kj}$ of job $j$ on machine $k$ and the start of operation $O_{l,j}$ of job $j$ on machine $l$, there is a transportation delay of at least $t_{j}$ units." />
+                <choice value="t_j\in\{T_1,T_2\}"  requires="O or F"  explanation="Job dependent transportation delay out of two values. Between the completion of operation $O_{kj}$ of job $j$ on machine $k$ and the start of operation $O_{l,j}$ of job $j$ on machine $l$, there is a transportation delay of at least $t_{j}\in\{T_1,T_2\}$ units." />
+                <choice value="t_{jkl}=T"  requires="O"  explanation="Uniform transportation delay. Between the completion of operation $O_{kj}$ of job $j$ on machine $k$ and the start of operation $O_{l,j}$ of job $j$ on machine $l$, there is a transportation delay of at least $T$ units." />
+                <choice value="t_{jk}=T"   requires="F"  explanation="Uniform transportation delay. Between the completion of operation $O_{kj}$ of job $j$ on machine $k$ and the start of operation $O_{k+1,j}$ of job $j$ on machine $k+1$, there is a transportation delay of at least $T$ units." />
+                <choice value="t_{jkl}=t_{jlk}"   requires="O"  explanation="Job dependent Symmetric transportation delay. Between the completion of operation $O_{kj}$ of job $j$ on machine $l$ and the start of operation $O_{l,j}$ of job $j$ on machine $l$, there is a transportation delay of at least $t_{jkl}$ units, which equals $t_{jlk}$." />
+                <choice value="t_{kl}=t_{lk}"   requires="O"  explanation="Symmetric transportation delay. Between the completion of operation $O_{kj}$ of job $j$ on machine $k$ and the start of operation $O_{l,j}$ of job $j$ on machine $l$, there is a transportation delay of at least $t_{kl}$ units, which equals $t_{lk}$." />
+            </field>
+
+            <field name="release time">
+                <choice value=""         explanation="no release dates"  />
+                <choice value="r_j"        explanation="Job $j$ cannot be scheduled before given release time $r_j$." />
+                <choice value="online-r_j" explanation="This is an online problem. Jobs are revealed at their release times." />
+            </field>
+
+            <field name="preemption">
+                <choice value=""         explanation="no preemption"  />
+                <choice value="pmtn" explanation="Jobs can be preempted and resumed possibly on another machine. Sometimes also denoted by 'prmp'" />
+                <choice value="restarts" requires="online-r_j" explanation="Jobs can be preempted and restarted from the beginning. Sometimes called preemption with restarts as opposed to preemption with resume." />
+            </field>
+
+            <field name="due date">
+                <choice value=""         explanation="no due dates"  />
+                <choice value="d_j=d"      explanation="Common due date $d$ to every job. Can be a deadline depending on the objective function." />
+                <choice value="d_j\leq r_j+2" requires="advanced and release time" explanation="The span between deadline and release time of every job is at most 2.  These are called 2-bounded instances." />
+                <choice value="d_j\leq r_j+3" requires="advanced and release time" explanation="The span between deadline and release time of every job is at most 3.  These are called 3-bounded instances." />
+                <choice value="d_j\leq r_j+4" requires="advanced and release time" explanation="The span between deadline and release time of every job is at most 4.  These are called 4-bounded instances." />
+            </field>
+
+            <field name="recirculation" requires="advanced and J">
+                <choice value=""         explanation="no recirculation"  />
+                <choice value="rcrc" explanation="Recirculation, also called Flexible job shop. The promise on $\mu$ is lifted and for some pairs $k\neq k'$  we might have $\mu_{kj}= \mu_{k'j}$." />
+            </field>
+
+            <field name="no-wait" requires="advanced and (O or F or J)" >
+                <choice value=""         explanation="no no-wait"  />
+                <choice value="no-wait" explanation="The operation $O_{k+1,i}$ must start exactly when operation $O_{k,i}$ completes.  Sometimes also denoted as 'nwt'." />
+            </field>
+
+            <field name="no-idle" requires="advanced and (O or F or J)" >
+                <choice value=""         explanation="no no-idle"  />
+                <choice value="no-idle" explanation="No machine is ever idle between two executions." />
+            </field>
+
+            <field name="processing times">
+                <choice value=""         explanation="arbitrary processing times"  />
+                <choice value="p_j=1" requires="P or Q or 1" explanation="Unit processing times." />
+                <choice value="p_j\in\{1,2\}" requires="advanced and (P or Q or 1)" explanation="Every job has processing time either 1 or 2." />
+                <choice value="p_j=p" requires="P or Q or 1" explanation="Equal processing times. All processing times are equal to some given $p$." />
+                <choice value="p_{ij}=p" requires="R or J or O" explanation="Equal processing times. All processing times are equal to some given $p$." />
+                <choice value="p_{ij}=1" requires="R or J or O" explanation="Unit processing times." />
+                <choice value="p_{ij}\in\{p_j,\infty\}" requires="R" explanation="Restricted machine model. Every job j comes with a set of machines on which it is allowed to be scheduled.  Sometimes also denoted as machine environment B." />
+                <choice value="p_{kj}=p_j" requires="F" explanation="All operations of a same job $j$ have the same processing time." />
+            </field>
+
+            <field name="job size" requires="advanced and P">
+                <choice value=""         explanation=""  />
+                <choice value="size_j" explanation="Multiprocessor tasks on identical parallel machines. The execution of job $j$ is done simultaneously on $size_j$ parallel machines." />
+                <choice value="size_j\in\{1,m\}" explanation="Multiprocessor tasks on identical parallel machines. Some jobs need all machines in parallel for their execution, some need only a single machine." />
+            </field>
+
+			<field name="machine sets" requires="advanced and not 1">
+				<choice value="" explanation=""  />
+                <choice value="fix_j" explanation="Multiprocessor tasks. Every job $j$ is given with a set of machines $fix_j\subseteq\{1,\ldots,m\}$, and needs simultaneously all these machines for execution. Sometimes also denoted by 'MPT'."/>
+                <choice value="M_j" explanation="Multipurpose machines. Every job $j$ needs to be scheduled on one machine out of a given set $M_j\subseteq\{1,\ldots,m\}$.  Sometimes also denoted by 'M_j'."/>
+            </field>
+
+            <field name="batching" requires="advanced and 1">
+                <choice value=""         explanation="no batching"  />
+                <choice value="s-batch" explanation="Serial batching. The jobs have to be processed in batches. The processing time of a batch is the total processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
+                <choice value="batch(\infty)" explanation="Parallel batching. The jobs have to be processed in batches. There is no limit on the number of jobs in a batch. The processing time of a batch is the maximal processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
+                <choice value="batch(b)" explanation="Parallel batching. The jobs have to be processed in batches. A batch consists of maximal b jobs. The processing time of a batch is the maximal processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
+            </field>
+
+            <field name="setup times" requires="advanced and S1">
+                <choice value=""         explanation="no setup"  />
+                <choice value="s_j=1"    requires="advanced and P and S1" explanation="unit setup times.SETUP"  />
+                <choice value="s_{ij}=1" requires="advanced and F and S1" explanation="unit setup times.SETUP"  />
+                <choice value="s_j=s"    requires="advanced and P and S1" explanation="equal setup times. SETUP" />
+                <choice value="s_{ij}=s" requires="advanced and F and S1" explanation="equal setup times. SETUP" />
+            </field>
+        </section>
+
+        <section name="Objective function $\gamma$" add_separator="True" >
+            <field name="Objective function" >
+                <choice value="C_{\max}"     explanation="Makespan. Minimize the maximum completion time over all jobs."  />
+                <choice value="C_{\min}" requires="advanced" explanation="Santha Claus. Maximizes the minimum machine load." />
+                <choice value="\sum C_j"     explanation="Sum of completion times. $C_j$ denotes the completion time of job $j$ in some schedule. The goal is to minimize the total completion time." />
+                <choice value="\sum w_jC_j" explanation="Weighted sum of completition times. Every job $j$ is given a priority weight $w_j$. $C_j$ denotes the completion time of job $j$ in some schedule."  />
+                <choice value="F_{\max}"     requires="advanced and release time" explanation="Maximum flow time. The flow time of a job is difference between its completion time and its release time, i.e. $F_j=C_j-r_j$. The goal is to minimize the maximum flow time over all jobs."/>
+                <choice value="\sum F_j"     requires="advanced and release time" explanation="Total flow time. The flow time of a job is difference between its completion time and its release time, i.e. $F_j=C_j-r_j$. The goal is to minimize the total flow time over all jobs."/>
+                <choice value="\sum w_jF_j"     requires="advanced and release time" explanation="Weighted flow time. Every job $j$ is given a priority weight $w_j$.  The flow time of a job is difference between its completion time and its release time, i.e. $F_j=C_j-r_j$."/>
+                <choice value="\max w_jF_j"     requires="advanced and release time" explanation="Maximum weighted flow time. Every job $j$ is given a priority weight $w_j$.  The flow time of a job is difference between its completion time and its release time, i.e. $F_j=C_j-r_j$."/>
+                <choice value="L_{\max}"     explanation="Maximum lateness. Every job $j$ is given a due date $d_j$. The goal is to minimize $\max_j C_j-d_j$ where $C_j$ is the completion time of job $j$. By the use of binary search, this objective is essentially equivalent with testing feasibility when $d_j$ represent strict deadlines."/>
+                <choice value="\sum U_j"     requires="advanced" explanation="Throughput. Every job is given a due date $d_j$.  The goal is to maximize the number of jobs that complete on time."/>
+                <choice value="\sum w_jU_j"     requires="advanced" explanation="Weighted throughput. Every job is given a due date $d_j$.  The goal is to maximize the total weight of jobs that complete on time."/>
+                <choice value="\sum T_j"     requires="advanced" explanation="Maximum tardiness. Every job $j$ is given a due date $d_j$. The goal is to minimize $\sum_j \max\{0, C_j-d_j\}$ where $C_j$ is the completion time of job $j$."/>
+                <choice value="\sum w_jT_j" requires="advanced" explanation="Weighted maximum tardiness. Every job $j$ is given a due date $d_j$. The goal is to minimize $\sum_j w_j \max\{0, C_j-d_j\}$ where $C_j$ is the completion time of job $j$ and $w_j$ its priority weight." />
+            </field>
+        </section>
+    </form>
+    <reductions>
+        <reduction from="C_{\max}" to="L_{\max}" />
+        <reduction from="C_{\max}" to="\sum U_j" />
+        <reduction from="L_{\max}" to="\sum T_j" />
+        <reduction from="\sum C_j" to="\sum T_j" />
+        <reduction from="\sum C_j" to="\sum w_jC_j" />
+        <reduction from="\sum w_jC_j" to="\sum w_jT_j" />
+        <reduction from="\sum T_j" to="\sum w_jT_j" />
+        <reduction from="\sum U_j" to="\sum w_jU_j" />
+        <reduction from="\sum F_j" to="\sum w_jF_j" />
+        <reduction from="\sum C_j" to="\sum F_j" />
+        <reduction from="\sum w_jC_j" to="\sum w_jF_j" />
+        <reduction from="C_{\max}" to="F_{\max}" />
+        <reduction from="F_{\max}" to="\max w_jF_j" />
+
+        <reduction from="" to="chains" />
+        <reduction from="chains" to="intree" />
+        <reduction from="chains" to="outtree" />
+        <reduction from="outtree" to="tree" />
+        <reduction from="intree" to="tree" />
+        <reduction from="tree" to="opposing forest" />
+		<reduction from="opposing forest" to="sp-graph" />
+        <reduction from="chains" to="DC-graph" />
+		<reduction from="DC-graph" to="sp-graph" />
+        <reduction from="sp-graph" to="2-dim partial order" />
+        <reduction from="2-dim partial order" to="k-dim partial order" />
+        <reduction from="k-dim partial order" to="prec" />
+        <reduction from="" to="interval order" />
+		<reduction from="interval order" to="quasi-interval order" />
+		<reduction from="quasi-interval order" to="over-interval order" />
+		<reduction from="over-interval order" to="Am-order" />
+        <reduction from="Am-order" to="prec" />
+        <reduction from="" to="bounded height" />
+        <reduction from="bounded height" to="prec" />
+        <reduction from="chains" to="level order" />
+		<reduction from="level order" to="prec" />
+
+        <reduction from="" to="r_j" />
+        <reduction from="p_j=1" to="p_j=p" />
+        <reduction from="p_j=1" to="p_j\in\{1,2\}" />
+        <reduction from="p_j\in\{1,2\}" to="" />
+        <reduction from="p_{ij}=1" to="p_{ij}=p" />
+        <reduction from="p_j=p" to="" />
+        <reduction from="p_{ij}=p" to="" />
+        <reduction from="p_{kj}=p_j" to="" />
+        <reduction from="p_{ij}\in\{p_j,\infty\}" to="" />
+
+        <reduction from="P" to="Q" />
+        <reduction from="Q" to="R" />
+        <reduction from="F" to="J" />
+
+        <reduction from="1" to="2" requires="not processing times and not pmtn" />
+        <reduction from="1" to="3" requires="not processing times and not pmtn" />
+        <reduction from="1" to="4" requires="not processing times and not pmtn" />
+        <reduction from="1" to="5" requires="not processing times and not pmtn" />
+        <reduction from="2" to="3" requires="not processing times and not pmtn" />
+        <reduction from="2" to="4" requires="not processing times and not pmtn" />
+        <reduction from="2" to="5" requires="not processing times and not pmtn" />
+        <reduction from="3" to="4" requires="not processing times and not pmtn" />
+        <reduction from="3" to="5" requires="not processing times and not pmtn" />
+        <reduction from="4" to="5" requires="not processing times and not pmtn" />
+        <reduction from="2" to="m" />
+        <reduction from="3" to="m" />
+        <reduction from="4" to="m" />
+        <reduction from="5" to="m" />
+        <reduction from="m" to=""  />
+
+
+        <reduction from="" to="M_j" />
+        <reduction from="M_j" to="" requires="R" explanation="processing times $p_{ij}=\infty$ can be used to encode $M_j$ for every machine $i\not\in M_j$." />
+        <reduction from="" to="fix_j" />
+
+        <reduction from="n=2" to="n=3" />
+        <reduction from="n=3" to="n=k" />
+        <reduction from="n=k" to="" />
+
+        <reduction from="" to="size_j\in\{1,m\}" />
+        <reduction from="size_j\in\{1,m\}" to="size_j" />
+
+        <reduction from="" to="l=1" />
+        <reduction from="" to="l\leq0" />
+        <reduction from="l=1" to="l>0" />
+        <reduction from="l\leq0" to="l" />
+        <reduction from="l>0" to="l" />
+        <reduction from="l\leq0" to="l_{ij}\leq0" />
+        <reduction from="l>0" to="l_{ij}>0" />
+        <reduction from="l_{ij}\leq0" to="l_{ij}" />
+        <reduction from="l_{ij}>0" to="l_{ij}" />
+        <reduction from="l" to="l_{ij}" />
+
+        <reduction from="" to="t_{jk}=T" />
+        <reduction from="t_j\in\{T_1,T_2\}" to="t_j" />
+        <reduction from="t_{jk}=T" to="t_j\in\{T_1,T_2\}" />
+        <reduction from="t_{jk}=T" to="t_k" />
+        <reduction from="t_j" to="t_{jk}" />
+        <reduction from="t_k" to="t_{jk}" />
+
+        <reduction from="" to="t_{jkl}=T" />
+        <reduction from="t_{jkl}=T" to="t_j\in\{T_1,T_2\}" />
+        <reduction from="t_{jkl}=T" to="t_{kl}=t_{lk}" />
+        <reduction from="t_{kl}=t_{lk}" to="t_{kl}" />
+        <reduction from="t_j" to="t_{jkl}=t_{jlk}" />
+        <reduction from="t_{kl}=t_{lk}" to="t_{jkl}=t_{jlk}" />
+        <reduction from="t_{jkl}=t_{jlk}" to="t_{jkl}" />
+        <reduction from="t_{kl}" to="t_{jkl}" />
+
+        <reduction from="batch(\infty)" to="batch(b)" />
+
+        <reduction from="d_j=d" to="" />
+        <reduction from="d_j\leq r_j+2" to="d_j\leq r_j+3" />
+        <reduction from="d_j\leq r_j+3" to="d_j\leq r_j+4" />
+        <reduction from="d_j\leq r_j+4" to="" />
+
+        <reduction from="" to="s_{ij}=1" />
+        <reduction from="s_{ij}=1" to="s_{ij}=s" />
+
+        <reduction from="" to="s_j=1" />
+        <reduction from="s_j=1" to="s_j=s" />
+    </reductions>
+</notation>

@@ -1,0 +1,9 @@
+
+        <reduction from="p_j=p" to="p_j=1" requires="not r_j and not setup times and not due dates and not transportation delays and not time lags" explanation="problems with unit processing times and with equal processing times are equivalent by scaling, conditioned there are no release times and other constraints involving times." />
+
+        <reduction from="p_{ij}=p" to="p_{ij}=1" requires="not r_j and not setup times and not due dates and not transportation delays and not time lags" explanation="problems with unit processing times and with equal processing times are equivalent by scaling, conditioned there are no release times and other constraints involving times." />
+
+        <reduction from="pmtn" to="" requires="p_j=1 and 1" explanation="On a single machine with a monotone objective function no preemption is needed when jobs have unit processing times" />
+
+        <reduction from="" to="pmtn" requires="p_j=1 and 1" explanation="On a single machine with a monotone objective function no preemption is needed when jobs have unit processing times" />
+

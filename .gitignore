@@ -1,0 +1,14 @@
+
+*.pyc
+*/.DS_Store
+*.aux
+*.bbl
+*.blg
+*.fls
+*.log
+*.gz
+doi2bib-0.4.0
+bibtexparser
+dot
+*.fdb_latexmk
+doi2bib-0.4.0.tar

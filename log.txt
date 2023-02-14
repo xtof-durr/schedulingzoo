@@ -1,0 +1,15 @@
+log.txt
+
+12jan2016
+
+pour permettre des réductions de 1|.. à P2|.. on effectue la transformation suivante à la lecture:
+
+l'interface ne change pas.
+
+à la lecture d'un problème:
+    1.. devient P;1
+
+à l'affichage d'un problème:
+    on combine "type" avec "number of machines" sans le ";".
+    et dans le cas particulier de "P1" on laisse seulement 1.
+
