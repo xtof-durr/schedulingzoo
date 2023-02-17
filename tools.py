@@ -148,7 +148,7 @@ def eval_bool_expr(expr, vals):
 
 def error(msg):
     print("Error: "+ msg, file=sys.stderr)
-    # sys.exit(1)
+    sys.exit(1)
 
 def getattr(bib, attr):
     a = attr.upper()
