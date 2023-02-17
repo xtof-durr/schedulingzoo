@@ -9,4 +9,9 @@ jobs:
         with:
           node-version: '14'
       - run: python -m pip install bibtexparser
-      - run: python extract.py form 
+      - run: python extract.py form  > /dev/null
+      - run: python extract.py reductions  > /dev/null
+      - run: python extract.py references  > /dev/null
+      - run: python extract.py results  > /dev/null
+      - run: python extract.py stat  > /dev/null
+      - run: python extract.py dot  > /dev/null
