@@ -8,4 +8,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
+      - run: python pip install bibtexparser
       - run: python extract.py form 
