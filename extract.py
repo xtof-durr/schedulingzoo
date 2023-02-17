@@ -223,7 +223,7 @@ def read_bibtex():
                                 error("in %s annote for bibtex entry '%s' problem name does not end with $" % (file, key))
                                 continue
                             problem_name = result[1:p]
-                            problem_vec = str2pb(problem_name, field2val, val2field)
+                            problem_vec = str2pb(problem_name, field2val, val2field, file, key)
                             if not problem_vec:
                                 continue
                             bound = result[p+1:].strip("\\ ,.")

@@ -159,6 +159,7 @@ reduction = \
  ('n=3', ''): True,
  ('n=3', 'n=k'): True,
  ('n=k', ''): True,
+ ('n\\geq m-1', ''): True,
  ('opposing forest', '2-dim partial order'): True,
  ('opposing forest', 'k-dim partial order'): True,
  ('opposing forest', 'prec'): True,
@@ -380,6 +381,8 @@ explanation = \
  'n=2': 'The input consists of only 2 jobs.',
  'n=3': 'The input consists of only 3 jobs.',
  'n=k': 'The input consists of only k jobs.',
+ 'n\\geq m-1': 'The number of jobs is at least the number of machines minus '
+               'one.',
  'no-idle': 'No machine is ever idle between two executions.',
  'no-wait': 'The operation $O_{k+1,i}$ must start exactly when operation '
             "$O_{k,i}$ completes.  Sometimes also denoted as 'nwt'.",

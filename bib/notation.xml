@@ -52,6 +52,7 @@
                 <choice value="n=2" explanation="The input consists of only 2 jobs."/>
                 <choice value="n=3" explanation="The input consists of only 3 jobs."/>
                 <choice value="n=k" explanation="The input consists of only k jobs."/>
+                <choice value="n\geq m-1" explanation="The number of jobs is at least the number of machines minus one."/>
             </field>
 
             <field name="precedence relation" >
@@ -267,6 +268,7 @@
         <reduction from="n=2" to="n=3" />
         <reduction from="n=3" to="n=k" />
         <reduction from="n=k" to="" />
+        <reduction from="n\geq m-1" to="" />
 
         <reduction from="" to="size_j\in\{1,m\}" />
         <reduction from="size_j\in\{1,m\}" to="size_j" />

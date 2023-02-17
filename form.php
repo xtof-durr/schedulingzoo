@@ -69,6 +69,8 @@
         <label id="label:number of jobs:n=3" title="The input consists of only 3 jobs." for="number of jobs:n=3">$n=3$</label>
     <input onchange="update_pb()" type="radio" name="number of jobs" id="number of jobs:n=k" value="n=k" explanation="The input consists of only k jobs.">
         <label id="label:number of jobs:n=k" title="The input consists of only k jobs." for="number of jobs:n=k">$n=k$</label>
+    <input onchange="update_pb()" type="radio" name="number of jobs" id="number of jobs:n\geq m-1" value="n\geq m-1" explanation="The number of jobs is at least the number of machines minus one.">
+        <label id="label:number of jobs:n\geq m-1" title="The number of jobs is at least the number of machines minus one." for="number of jobs:n\geq m-1">$n\geq m-1$</label>
 </td></tr>
 <tr min-height=40 width=100% id="tr:precedence relation"  name="precedence relation"> <td width=200 align=right>precedence relation :</td>
 <td>

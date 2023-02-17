@@ -437,7 +437,7 @@ references = \
                                        'NUMBER': '2000-314',
                                        'TITLE': 'Preemptive scheduling of '
                                                 'identical machines',
-                                       'TYPE': 'Technical Report',
+                                       'TYPE': '{Technical Report}',
                                        'YEAR': '2000'},
  'Baptiste:00:Scheduling-equal-length': {'ANNOTE': '$1|p_j=p;r_j|\\sum w_jC_j$ '
                                                    'is in $P$,\\\\\n'
@@ -473,7 +473,7 @@ references = \
                                                          'Research Center, New '
                                                          'York',
                                           'TITLE': 'On preemption redundancy',
-                                          'TYPE': 'Technical Report',
+                                          'TYPE': '{Technical Report}',
                                           'YEAR': '2002'},
  'Baptiste:03:A-note-on-scheduling': {'ANNOTE': '$Pm|r_j;p_j=p;size_j|C_{\\max}$ '
                                                 'is in $P$,\\\\\n'
@@ -947,7 +947,7 @@ references = \
                                         'EPRINTTYPE': 'arXiv',
                                         'ID': 'BazziNorouzi-Fard:15:Towards+Tight',
                                         'ISBN': '978-3-662-48350-3',
-                                        'MONTH': 'sep',
+                                        'MONTH': 'September',
                                         'PAGES': '118--129',
                                         'PUBLISHER': 'Springer',
                                         'TITLE': 'Towards Tight Lower Bounds '
@@ -2274,13 +2274,13 @@ references = \
                                'ENTRYTYPE': 'article',
                                'ID': 'DBLP:journals/jal/SteeP05',
                                'JOURNAL': 'J. Algorithms',
-                               'LINK': 'https://doi.org/10.1016/j.jalgor.2004.10.001',
                                'NUMBER': '2',
                                'PAGES': '95--129',
                                'TIMESTAMP': 'Sun, 28 May 2017 01:00:00 +0200',
                                'TITLE': 'Minimizing the total completion time '
-                                        'on-line on a single machine, using '
-                                        'restarts',
+                                        'on-line on a single machine,\n'
+                                        'using restarts',
+                               'URL': 'https://doi.org/10.1016/j.jalgor.2004.10.001',
                                'VOLUME': '57',
                                'YEAR': '2005'},
  'DBLP:journals/tcs/EpsteinS03': {'ANNOTE': '$1|online-r_j;restarts|\\sum C_j$ '
@@ -2318,7 +2318,7 @@ references = \
                                             '$\\ge2$, \\\\\n'
                                             '$1|online-r_j;pmtn|\\sum w_jF_j$ '
                                             'randomized competitive ratio '
-                                            '$\\ge4/3$.',
+                                            '$\\ge4/3$. ',
                                   'AUTHOR': 'Leah Epstein and\nRob van Stee',
                                   'BIBSOURCE': 'dblp computer science '
                                                'bibliography, https://dblp.org',
@@ -2327,13 +2327,13 @@ references = \
                                   'ENTRYTYPE': 'article',
                                   'ID': 'DBLP:journals/tcs/EpsteinS03',
                                   'JOURNAL': 'Theor. Comput. Sci.',
-                                  'LINK': 'https://doi.org/10.1016/S0304-3975(02)00488-7',
                                   'NUMBER': '1-3',
                                   'PAGES': '439--450',
                                   'TIMESTAMP': 'Sun, 28 May 2017 01:00:00 '
                                                '+0200',
                                   'TITLE': 'Lower bounds for on-line '
                                            'single-machine scheduling',
+                                  'URL': 'https://doi.org/10.1016/S0304-3975(02)00488-7',
                                   'VOLUME': '299',
                                   'YEAR': '2003'},
  'DW84': {'ANNOTE': '$Pm|bounded height;p_j=p|C_{\\max}$ is in $P$',
@@ -2776,7 +2776,7 @@ references = \
                                       'ENTRYTYPE': 'inproceedings',
                                       'EVENTTITLE': '{SODA} 2019',
                                       'ID': 'GargKulkarni:19:Lift-and-project',
-                                      'MONTH': 'jan',
+                                      'MONTH': 'January',
                                       'PAGES': '1570--1584',
                                       'PUBLISHER': 'Society for Industrial and '
                                                    'Applied Mathematics',
@@ -2995,10 +2995,10 @@ references = \
                                           'ID': 'HallSchulz:97:Scheduling-to-minimize',
                                           'JOURNAL': 'Mathematics of '
                                                      'Operations Research',
-                                          'MONTH': 'aug',
+                                          'MONTH': 'August',
                                           'NUMBER': '3',
                                           'PAGES': '513---544',
-                                          'PUBLISHER': 'INFORMS',
+                                          'PUBLISHER': '{INFORMS}',
                                           'TITLE': 'Scheduling to Minimize '
                                                    'Average Completion Time: '
                                                    'Off-Line and On-Line '
@@ -3262,7 +3262,7 @@ references = \
                                                  'is in $P$,\\\\\n'
                                                  '$F2;R1|p_{ij}=p;t_j\\in\\{T_1,T_2\\}|C_{\\max}$ '
                                                  'is in $P$,\\\\\n'
-                                                 '$F;R1|n \\ge '
+                                                 '$F;R1|n\\geq '
                                                  'm-1;p_{ij}=p;t_k|C_{\\max}$ '
                                                  'is in $P$,\\\\\n'
                                                  '$F2;R1|p_{ij}=p;t_j|C_{\\max}$ '
@@ -3335,7 +3335,7 @@ references = \
                                       'EPRINTTYPE': 'arXiv',
                                       'EVENTTITLE': '{SODA} 2020',
                                       'ID': 'ImShadloo:20:Weighted+Completion',
-                                      'MONTH': 'jan',
+                                      'MONTH': 'January',
                                       'PAGES': '2790--2809',
                                       'PUBLISHER': 'Society for Industrial and '
                                                    'Applied Mathematics',
@@ -3355,7 +3355,7 @@ references = \
                                             'ISSN': '0167-6377',
                                             'JOURNAL': 'Operations Research '
                                                        'Letters',
-                                            'MONTH': 'sep',
+                                            'MONTH': 'September',
                                             'NUMBER': '5',
                                             'PAGES': '505--509',
                                             'PUBLISHER': 'Elsevier {BV}',
@@ -3486,8 +3486,8 @@ references = \
            'ISSUE': '1',
            'JOURNAL': 'Discrete Optimization',
            'PAGES': '79-91',
-           'TITLE': 'Optimality of HLF for scheduling divide-and-conquer UET '
-                    'task graphs on identical parallel processors',
+           'TITLE': '{Optimality of HLF for scheduling divide-and-conquer UET '
+                    'task graphs on identical parallel processors}',
            'VOLUME': '6',
            'YEAR': '2009'},
  'Karp:72:Reducibility-among': {'ADDRESS': 'New York',
@@ -4066,7 +4066,7 @@ references = \
                                               'uniform parallel machines to '
                                               'minimize the weighted number of '
                                               'late jobs',
-                                     'TYPE': 'Report BW',
+                                     'TYPE': '{Report BW}',
                                      'YEAR': '1979'},
  'Lawler:82:Preemptive-scheduling': {'ADDRESS': 'Dordrecht',
                                      'ANNOTE': '$P|outtree;pmtn;r_j|C_{\\max}$ '
@@ -5085,7 +5085,7 @@ references = \
                                              'ID': 'QueyranneSchulz:06:Approximation-Bounds',
                                              'JOURNAL': 'SIAM Journal on '
                                                         'Computing',
-                                             'MONTH': 'jan',
+                                             'MONTH': 'January',
                                              'NUMBER': '5',
                                              'PAGES': '1241--1253',
                                              'TITLE': 'Approximation Bounds '
@@ -5422,7 +5422,7 @@ references = \
                                               'ISSN': '0167-6377',
                                               'JOURNAL': 'Operations Research '
                                                          'Letters',
-                                              'KEYWORD': 'cs.DS, math.OC',
+                                              'KEYWORDS': 'cs.DS, math.OC',
                                               'MONTH': 'jul',
                                               'NUMBER': '4',
                                               'PAGES': '438--442',
@@ -5447,10 +5447,10 @@ references = \
                                   'ID': 'Skutella:01:Convex+Quadratic',
                                   'ISSN': '0004-5411',
                                   'JOURNAL': 'Journal of the ACM',
-                                  'MONTH': 'mar',
+                                  'MONTH': 'March',
                                   'NUMBER': '2',
                                   'PAGES': '206--242',
-                                  'PUBLISHER': 'ACM',
+                                  'PUBLISHER': '{ACM}',
                                   'TITLE': 'Convex Quadratic and Semidefinite '
                                            'Programming Relaxations in '
                                            'Scheduling',
@@ -6054,7 +6054,7 @@ references = \
                                               'n \\log m)$ where $c_\\epsilon$ '
                                               'is a constant depending on the '
                                               'desired approximation ratio '
-                                              '$1+\\epsilon$',
+                                              '$1+\\epsilon$ ',
                                     'AUTHOR': 'Gerhard J. Woeginger',
                                     'BDSK-URL-1': 'http://www.sciencedirect.com/science/article/pii/S0167637796000557',
                                     'BDSK-URL-2': 'https://doi.org/10.1016/S0167-6377(96)00055-7',
@@ -6066,15 +6066,16 @@ references = \
                                     'ID': 'Woeginger:97:A-polynomial-time',
                                     'ISSN': '0167-6377',
                                     'JOURNAL': 'Operations Research Letters',
-                                    'KEYWORD': 'Scheduling, Approximation '
-                                               'algorithm, Worst-case '
-                                               'analysis, Approximation scheme',
-                                    'LINK': 'http://www.sciencedirect.com/science/article/pii/S0167637796000557',
+                                    'KEYWORDS': 'Scheduling, Approximation '
+                                                'algorithm, Worst-case '
+                                                'analysis, Approximation '
+                                                'scheme',
                                     'NUMBER': '4',
                                     'PAGES': '149 - 154',
                                     'TITLE': 'A polynomial-time approximation '
                                              'scheme for maximizing the '
                                              'minimum machine completion time',
+                                    'URL': 'http://www.sciencedirect.com/science/article/pii/S0167637796000557',
                                     'VOLUME': '20',
                                     'YEAR': '1997'},
  'Yu:96:The-two-machine-flow': {'ADDRESS': 'Eindhoven',
