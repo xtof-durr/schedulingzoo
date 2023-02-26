@@ -10,3 +10,9 @@ doi2bib-0.4.0
 dot
 *.fdb_latexmk
 doi2bib-0.4.0.tar
+form.php
+reductions.py
+references.py
+results.py
+stat.txt
+dot.html

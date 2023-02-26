@@ -193,6 +193,6 @@ function update_pb() {
 </form>
 
 <p align="right">
- <a href="https://en.wikipedia.org/wiki/Notation_for_theoretic_scheduling_problems">notation</a> | <a href="about.php">about</a> | please do not feed the animals
+ <a href="https://en.wikipedia.org/wiki/Notation_for_theoretic_scheduling_problems">notation</a> | <a href="https://github.com/xtof-durr/schedulingzoo/wiki/The-Scheduling-Zoo-project">about</a> | please do not feed the animals
 </body>
 </html>
