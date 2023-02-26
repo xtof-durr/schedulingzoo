@@ -3,8 +3,11 @@
 
 import sys
 import re
-from reductions import *
-
+try:
+    from reductions import *
+except ModuleNotFoundError:
+    # ok, this will happen before we actually produced the reductions.py file
+    pass
 
 def correctxml(s):
     return s.replace("&lt;", "<")

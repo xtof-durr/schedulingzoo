@@ -1,4 +1,6 @@
-all:
+all:: verify install
+
+verify:
 	./extract.py form       > form.php
 	./extract.py reductions > reductions.py
 	./extract.py references > references.py
@@ -8,4 +10,4 @@ all:
 	./dot2png.sh
 
 install:
-	rsync -rv --delete . lip6:WWW/query/
+	rsync -rv --delete . gate.lip6.fr:WWW/query/
