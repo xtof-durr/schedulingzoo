@@ -8,4 +8,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
+      - run: pip3 install bibtexparser
       - run: make verify
