@@ -24,7 +24,7 @@ def pb2latex(s):
 
 
 # ---- extract problem vector from string
-def str2pb(s, field2val, val2field, file, key):
+def str2pb(s, field2val, val2field, file=None, key=None):
     orig = s
     s = correctxml(s)
     vec = {field:'' for field in field2val}
@@ -41,7 +41,10 @@ def str2pb(s, field2val, val2field, file, key):
         # val = val.replace("\\", "\\\\")
         if val != '':
             if val not in val2field:
-                error(f"BibTeX entry '{key}' in file {file} contains a problem {orig} with unknown value '{val}'")
+                if file:
+                    error(f"BibTeX entry '{key}' in file {file} contains a problem {orig} with unknown value '{val}'")
+                else:           
+                    error(f"Problem {orig} with unknown value '{val}'")
                 return {}
             field = val2field[val]
             if vec[field] != '':
