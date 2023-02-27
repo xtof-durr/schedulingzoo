@@ -9,4 +9,5 @@ jobs:
         with:
           node-version: '14'
       - run: pip3 install bibtexparser
+      - run: sudo apt-get install graphviz
       - run: make verify
