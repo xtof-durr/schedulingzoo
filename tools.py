@@ -25,10 +25,13 @@ def pb2latex(s):
 
 # ---- extract problem vector from string
 def str2pb(s, field2val, val2field, file=None, key=None):
+    """ s is a string of the form "P3|prec;p_j=1|C_{\\max}"
+    """
     orig = s
     s = correctxml(s)
     vec = {field:'' for field in field2val}
-    if len(s)>=2 and s[1] in "123456789m":     # special rule for number of machines
+    # this could be made more elegant by making it dependent on the "number of machines" field
+    if len(s)>=2 and (s[1] in "123456789m" or s[1:7] == "\\infty"):     # special rule for number of machines
         s = s[0] + ';' + s[1:]
     if s[0]=='1':                              # special rule for single machine environment
         s = "P;" + s

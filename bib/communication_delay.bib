@@ -1,0 +1,137 @@
+
+@article{hoogeveen1994three,
+  title={Three, four, five, six, or the complexity of scheduling with communication delays},
+  author={Hoogeveen, JA and Lenstra, Jan Karel and Veltman, Bart},
+  journal={Operations Research Letters},
+  volume={16},
+  number={3},
+  pages={129--137},
+  year={1994},
+  publisher={Elsevier},
+  ANNOTE = {$P\infty|p_j=1;prec;c=1|C_{\max}$ cannot be approximated below ratio 7/6 unless P=NP\\
+            $P|p_j=1;prec;c=1|C_{\max}$ cannot be approximated below ratio 5/4 unless P=NP}
+}
+
+@article{giroudeau2008complexity,
+  title={Complexity and approximation for precedence constrained scheduling problems with large communication delays},
+  author={Giroudeau, Rodolphe and Konig, Jean-Claude and Moulai, Farida Kamila and Palaysi, J{\'e}r{\^o}me},
+  journal={Theoretical Computer Science},
+  volume={401},
+  number={1-3},
+  pages={107--119},
+  year={2008},
+  publisher={Elsevier},
+  ANNOTE = {$P\infty|p_j=1;prec;c|C_{\max}$ cannot be approximated below ratio $(1+1/(c+4))$ unless P=NP}
+}
+
+@article{bampis1996complexity,
+  title={On the complexity of scheduling with large communication delays},
+  author={Bampis, Evripidis and Giannakos, Aristotelis and K{\"o}nig, Jean-Claude},
+  journal={European Journal of Operational Research},
+  volume={94},
+  number={2},
+  pages={252--260},
+  year={1996},
+  publisher={Elsevier},
+  ANNOTE = {$P|p_j=1;prec;c|C_{\max}$ cannot be approximated below ratio 5/4 unless P=NP}
+}
+
+@inproceedings{davies_scheduling_2020,
+	address = {Durham, NC, USA},
+	title = {Scheduling with {Communication} {Delays} via {LP} {Hierarchies} and {Clustering}},
+	isbn = {978-1-72819-621-3},
+	url = {https://ieeexplore.ieee.org/document/9317899/},
+	doi = {10.1109/FOCS46700.2020.00081},
+	urldate = {2023-02-27},
+	booktitle = {2020 {IEEE} 61st {Annual} {Symposium} on {Foundations} of {Computer} {Science} ({FOCS})},
+	publisher = {IEEE},
+	author = {Davies, Sami and Kulkarni, Janardhan and Rothvoss, Thomas and Tarnawski, Jakub and Zhang, Yihao},
+	month = nov,
+	year = {2020},
+	pages = {822--833},
+	ANNOTE={$P|prec;c|C_{\max}$ has a randomized, expected polynomial time $O(\log c\cdot \log m)$-approximation\\
+                $P\infty|prec;c|C_{\max}$ has a randomized, expected polynomial time $O(\log c\cdot \log n)$-approximation}
+}
+
+@article{munier_heuristic_1997,
+	title = {A {Heuristic} for a {Scheduling} {Problem} with {Communication} {Delays}},
+	volume = {45},
+	issn = {0030-364X, 1526-5463},
+	url = {http://pubsonline.informs.org/doi/10.1287/opre.45.1.145},
+	doi = {10.1287/opre.45.1.145},
+	abstract = {This paper addresses a scheduling problem with interprocessor communication delays: the jobs and the communication delays are of unit length. The number of processors is unbounded. The aim is to minimize the makespan.
+            We develop a new list scheduling heuristic and we prove that its worst-case relative performance is 4/3.},
+	language = {en},
+	number = {1},
+	urldate = {2023-02-27},
+	journal = {Operations Research},
+	author = {Munier, Alix and König, Jean-Claude},
+	month = feb,
+	year = {1997},
+	pages = {145--147},
+      ANNOTE = {$P|p_j=1;prec;c=1|C_{\max}$ has a polynomial time 4/3-approximation}
+}
+
+@article{rayward1987uet,
+  title={UET scheduling with unit interprocessor communication delays},
+  author={Rayward-Smith, Victor J},
+  journal={Discrete Applied Mathematics},
+  volume={18},
+  number={1},
+  pages={55--71},
+  year={1987},
+  publisher={Elsevier},
+      ANNOTE = {$Pm|p_j=1;prec;c=1|C_{\max}$ can be approximated within ratio $3-2/m$}
+}
+
+@inproceedings{davies_scheduling_2021,
+	address = {USA},
+	series = {{SODA} '21},
+	title = {Scheduling with {Communication} {Delays} via {LP} {Hierarchies} and {Clustering} {II}: {Weighted} {Completion} {Times} on {Related} {Machines}},
+	isbn = {978-1-61197-646-5},
+	abstract = {We consider the problem of scheduling jobs with precedence constraints on related machines to minimize the weighted sum of completion times, in the presence of communication delays. In this setting, denoted by Q {\textbar} prec, c {\textbar} ΣwjCj, if two dependent jobs are scheduled on different machines, then at least c units of communication delay time must pass between their executions. Our main result is an O(log4 n)-approximation algorithm for the problem. As a byproduct of our result, we also obtain an O(log3 n)-approximation algorithm for the problem of minimizing makespan Q {\textbar} prec, c {\textbar} Cmax, which improves upon the O(log5 n/ log log n)-approximation algorithm due to a recent work of Maiti et al. [MRS+20].},
+	booktitle = {Proceedings of the {Thirty}-{Second} {Annual} {ACM}-{SIAM} {Symposium} on {Discrete} {Algorithms}},
+	publisher = {Society for Industrial and Applied Mathematics},
+	author = {Davies, Sami and Kulkarni, Janardhan and Rothvoss, Thomas and Tarnawski, Jakub and Zhang, Yihao},
+	year = {2021},
+	note = {event-place: Virtual Event, Virginia},
+	pages = {2958--2976},
+	ANNOTE={$Q|prec;c|\sum w_jC_j$ has a randomized expected polynomial time $O(M^2 \log^2 n)$-approxation, where $M = log(s_\max/s_\min)$ is the logarithm of the ratios between the fastest and slowest machine.\\
+            $Q|prec;c;p_j=1|\sum w_jC_j$ has a randomized expected polynomial time $O(M \log^2 n)$-approxation, where $M = log(s_\max/s_\min)$ is the logarithm of the ratios between the fastest and slowest machine.}
+}
+
+@inproceedings{maiti_scheduling_2020,
+	address = {Durham, NC, USA},
+	title = {Scheduling {Precedence}-{Constrained} {Jobs} on {Related} {Machines} with {Communication} {Delay}},
+	isbn = {978-1-72819-621-3},
+	url = {https://ieeexplore.ieee.org/document/9317889/},
+	doi = {10.1109/FOCS46700.2020.00082},
+	urldate = {2023-02-27},
+	booktitle = {2020 {IEEE} 61st {Annual} {Symposium} on {Foundations} of {Computer} {Science} ({FOCS})},
+	publisher = {IEEE},
+	author = {Maiti, Biswaroop and Rajaraman, Rajmohan and Stalfa, David and Svitkina, Zoya and Vijayaraghavan, Aravindan},
+	month = nov,
+	year = {2020},
+	pages = {834--845},
+	Annote={$Q|prec;c|\sum w_jC_j$ has a polynomial time $O(\log^2 n \log^2 m \log c/\log\log c)$-approximation}
+}
+
+@article_commented{mastrolilli_hardness_2011,
+ 	title = {Hardness of {Approximating} {Flow} and {Job} {Shop} {Scheduling} {Problems}},
+ 	volume = {58},
+ 	issn = {0004-5411, 1557-735X},
+ 	url = {https://dl.acm.org/doi/10.1145/2027216.2027218},
+ 	doi = {10.1145/2027216.2027218},
+ 	abstract = {We consider several variants of the job shop problem that is a fundamental and classical problem in scheduling. The currently best approximation algorithms have worse than logarithmic performance guarantee, but the only previously known inapproximability result says that it is NP-hard to approximate job shops within a factor less than 5/4. Closing this big approximability gap is a well-known and long-standing open problem.
+             This article closes many gaps in our understanding of the hardness of this problem and answers several open questions in the literature. It is shown the first nonconstant inapproximability result that almost matches the best-known approximation algorithm for acyclic job shops. The same bounds hold for the general version of flow shops, where jobs are not required to be processed on each machine. Similar inapproximability results are obtained when the objective is to minimize the sum of completion times. It is also shown that the problem with two machines and the preemptive variant with three machines have no PTAS.},
+ 	language = {en},
+ 	number = {5},
+ 	urldate = {2023-02-27},
+ 	journal = {Journal of the ACM},
+ 	author = {Mastrolilli, Monaldo and Svensson, Ola},
+ 	month = oct,
+ 	year = {2011},
+ 	pages = {1--32},
+	Annote = {$1||C_{\max}$ is in PP}
+ }
+ 

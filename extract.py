@@ -11,6 +11,7 @@ pp = PrettyPrinter()
 
 BIBDIR = "bib"
 NOTATION_FILE = "bib/notation.xml"
+NEGATIVE_TAGS = ['NP', 'hard', ">=", "\\geq", " no ", "cannot"]
 
 aliases = {}      # ABBREVIATION -> full text (in explanation and expressions)
 explanation = {}  # field -> plain text explanation
@@ -230,7 +231,7 @@ def read_bibtex():
                             if '|' in bound:
                                 error("in %s bibtex entry '%s' has results not separated by newline" % (file, key))
                                 continue
-                            if 'NP' in bound or 'hard' in bound or ">=" in bound or "\\geq" in bound:
+                            if any(tag in bound for tag in NEGATIVE_TAGS):
                                 css_class = "lower"
                             else:
                                 css_class = "upper"
@@ -241,7 +242,11 @@ def read_bibtex():
 
 def print_form():
 
-    tree = ET.parse(NOTATION_FILE).getroot()
+    try:
+        tree = ET.parse(NOTATION_FILE).getroot()
+    except ET.ParseError as err:
+        print(f"Error in file bib/notation.xml: {err}", file=sys.stderr)
+        sys.exit(1)
 
     # ---------- read the aliases
     read_alias(tree[0])
