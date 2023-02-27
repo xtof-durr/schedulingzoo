@@ -5,7 +5,6 @@ from results import *
 from tools import *
 from references import *
 
-
 html_head = """
 <html>
 <head>

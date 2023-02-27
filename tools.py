@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-
+import urllib.parse
 import sys
 import re
 try:
@@ -182,7 +182,7 @@ def bib2str(bib):
     # --- title ---
     if not(chapter):
         s += '<span class="title">'
-        s += '<a href="https://scholar.google.fr/scholar?q=%s">%s</a>' % (getattr(bib, 'title'), getattr(bib, 'title'))
+        s += '<a href="https://scholar.google.fr/scholar?q=%s">%s</a>' % (urllib.parse.quote(getattr(bib, 'title')), getattr(bib, 'title'))
         s += '</span>'
         s += ', '
 
@@ -274,7 +274,7 @@ def bib2str(bib):
                 s += 'http://dx.doi.org/' + bib['DOI']
             s += '">doi</a>&nbsp;'
         s += ']\n'
-    s += ' <a href="ref2bibtex.php?ID=%s">[bibtex]</a>' % bib['ID']
+    s += ' <a href="ref2bibtex.php?ID=%s">[bibtex]</a>' % urllib.parse.quote(bib['ID'])
 
     return s
 
