@@ -3,7 +3,6 @@
 import urllib.parse
 import sys
 import re
-from reductions import *
 
 def correctxml(s):
     return s.replace("&lt;", "<")
@@ -81,28 +80,6 @@ def pb2vals(prob):
             vals.add(prob[key])
     return vals
 
-# ---- test reduction between problems
-
-def reduces(src, dst):
-    """ is src problem a particular case of dst problem?
-    """
-    # first try simple reductions
-    failed = [] # is list of fields where simple reductions failed
-    for key in src:
-        arc = (src[key], dst[key])
-        if arc[0] != arc[1] and arc not in simple_reductions[key]:
-            failed.append(key)
-    if not failed:
-        return True
-    # now try to find a complex reduction, whose support contains F
-    failed_set = set(failed)
-    for support in complex_reductions:
-        if failed_set.issubset(set(support)):
-            S = tuple(src[f] for f in support)
-            D = tuple(dst[f] for f in support)
-            if (S, D) in complex_reductions[support]:
-                return True
-    return False
 
 # ---------- boolean expressions
 
