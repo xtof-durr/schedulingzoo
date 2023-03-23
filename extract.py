@@ -4,8 +4,10 @@ import sys
 import bibtexparser
 import os
 from pprint import PrettyPrinter
+from collections import defaultdict
 from tools import *
 import xml.etree.ElementTree as ET
+from typing import *
 
 pp = PrettyPrinter()
 
@@ -15,40 +17,49 @@ NEGATIVE_TAGS = ['NP', 'hard', ">=", "\\geq", " no ", "cannot"]
 
 aliases = {}      # ABBREVIATION -> full text (in explanation and expressions)
 explanation = {}  # field -> plain text explanation
-val2field = {}    # the value of a field, '' excluded
+val2field = {}    # the value of a field, '' excluded, but "not fieldname" included
 field2val = {}    # all values in a field, '' included
 fields = []       # all fields in order of appearance
-reduction = {}    # (value_particular, value_general) -> True or boolean expr.
+simple_reductions = {}  # field -> set of (particular, general) values
+complex_reductions = {} # support -> set of (particular, general) vectors
+# support is a vector of fields
 
 lower = []
 upper = []
 
 # ---------- utilities
 
-# from tryalgo
-def topological_order(graph):
-    """Topological sorting by maintaining indegree
-
-    :param graph: adjacency list
-    :returns: list of vertices in order
-    :complexity: `O(|V|+|E|)`
+def transitive_closure(arcs):
+    """Make transitive closure of the arcs of a directed graph.
+    Adds the transitive arcs to the given arc set (set of tuples of length 2)
     """
-    V = range(len(graph))
-    indeg = [0 for _ in V]
-    for node in V:    # determiner degree entrant
-        for neighbor in graph[node]:
-            indeg[neighbor] += 1
-    Q = [node for node in V if indeg[node] == 0]
-    order = []
+    # first we construct the graph
+    in_arcs = defaultdict(set)
+    out_arcs = defaultdict(set)
+    vertices = set()
+    for u, v in arcs:
+        in_arcs[v].add(u)
+        out_arcs[u].add(v)
+        vertices.add(u)
+        vertices.add(v) 
+    # process vertices in topological order
+    in_degree = {v: len(in_arcs[v]) for v in vertices}
+    Q = [v for v in in_degree if in_degree[v] == 0]
     while Q:
-        node = Q.pop()                # sommet sans arc entrant
-        order.append(node)
-        for neighbor in graph[node]:
-            indeg[neighbor] -= 1
-            if indeg[neighbor] == 0:
-                Q.append(neighbor)
-    return order
-
+        # the usual topological sort stuff
+        v = Q.pop()
+        for u in out_arcs[v]:
+            in_degree[u] -= 1
+            if in_degree[u] == 0:
+                Q.append(u)
+        # add transitive arcs
+        A = []
+        for u in in_arcs[v]:
+            for w in in_arcs[u]:    # we already added the transitive arcs entering u
+                arcs.add((w, v))
+                A.append(w)
+        for w in A:
+            in_arcs[v].add(w)
 
 def uppercase_dict(dict):
     return { key.upper(): dict[key] for key in dict }
@@ -72,14 +83,30 @@ def read_alias(node):
 
 # ---------- read the parameters file and produce: field2val, val2field, reduction
 
+def extend_complex_reduction(support, particular, general, k=0):
+    if k == len(support):
+        yield complex 
+    else:
+        f = support[k] 
+        for p, g in simple_reductions[f]:
+            if particular[k] == g:
+                part1 = particular[:k] + (p,) + particular[k + 1:]
+                extend_complex_reduction(support, part1, general, k + 1)
+            elif general[k] == p:
+                gen1 = general[:k] + (g,) + general[k + 1:] 
+                extend_complex_reduction(support, particular, gen1, k + 1)
 
-def valid_val(val):
+
+def valid_val(val: str):
     return val == '' or val in val2field
 
-
 def read_xml():
-    global field2val, val2field, reduction, explanation
-    arcs = {}
+    """ Extracts from the XML tree (which was read from notation.xml)
+    different informations and stores them in global variables.
+    """
+    global field2val, val2field, simple_reductions, complex_reductions, explanation
+    # arcs[field] contains individual reductions per field.
+    # it is viewed as a directed graph, and transitive arcs are added later
     tree = ET.parse(NOTATION_FILE).getroot()
 
     read_alias(tree[0])
@@ -91,12 +118,13 @@ def read_xml():
                 continue
             field = correctxml(xml_field.attrib['name'])
             fields.append(field)
-            arcs[field] = []
+            simple_reductions[field] = set()
             if field not in field2val:
                 field2val[field] = []
             for option in xml_field:
                 val = correctxml(option.attrib['value'])
                 expl_val = correctxml(option.attrib['explanation'])
+                # we could trim the value val, to avoid following cases
                 if val.startswith(" ") or val.endswith(" ") or "  " in val:
                     error("'%s' contains illegal spaces" % val)
                 if val in val2field:
@@ -107,7 +135,9 @@ def read_xml():
                     field2val[field_of_val] = []
                 else:
                     field_of_val = field
-                if val != '':
+                if val == '':
+                    val2field["not " + field_of_val] = field_of_val
+                else:
                     val2field[val] = field_of_val
                 explanation[val] = unalias(expl_val)
                 field2val[field_of_val].append(val)
@@ -118,78 +148,61 @@ def read_xml():
     for xml_reductions in tree[2]:
         src = xml_reductions.attrib['from']
         dst = xml_reductions.attrib['to']
-        if 'requires' in xml_reductions.attrib:
-            requires_str = xml_reductions.attrib['requires']
-            requires = parse_bool_expr(unalias(requires_str))
-        else:
-            requires_str = None
-            requires = None
-        if not valid_val(src) or not valid_val(dst):
-            error("reduction tag has unknown values '%s'" % xml_reductions.attrib)
-            continue
-        if src != '' and dst != '' and val2field[src] != val2field[dst]:
-            error("reduction '%s' has values from different fields" % xml_reductions.attrib)
-            continue
+        if src.count(";") != dst.count(";"):
+            error("inconsistent number of fields in complex reduction '%s'" % xml_reductions.attrib)
         if src == dst:
-            error("reduction has indentical values '%s'" % src)
+            error("reduction has identical values '%s'" % src)
             continue
-        if src != '':
-            field = val2field[src]
-        elif dst != '':
-            field = val2field[dst]
-        else:
-            error("reduction tag has empty values")
-            continue
-        arcs[field].append((src, dst, requires, requires_str))
+        # at this stage: same processing for complex and simple reductions
+        S = src.split(";")
+        D = dst.split(";")
+        for val in S + D:
+            if not valid_val(val):
+                error("reduction tag has unknown values '%s'" % xml_reductions.attrib)
+                continue
+        support = []                              # = list of field names
+        for i, Si in enumerate(S):
+            if Si != '' and D[i] != '' and val2field[Si] != val2field[D[i]]:
+                error("reduction '%s' has values from different fields" % xml_reductions.attrib)
+                continue
+            if Si != '':
+                field = val2field[Si]
+            elif D[i] != '':
+                field = val2field[D[i]]
+            else:
+                error("reduction tag has empty values. Please use 'not field_name' instead")
+                continue
+            # internally work with empty strings
+            for T in [S, D]:
+                if T[i][:4] == "not ":
+                    T[i] = ""
+            support.append(field)
+        if len(support) == 1:             # simple reduction
+            simple_reductions[support[0]].add((src, dst))
+        else:                       # complex reduction
+            s = tuple(support)
+            if s not in complex_reductions:
+                complex_reductions[s] = set()
+            complex_reductions[s].add((tuple(S), tuple(D)))
 
-    # ---------- build the reduction dictionary
+
+def make_reductions_transitive():
+    """Generate the transitive arcs in the reduction graph
+    """
 
     for field in fields:
-        n = len(field2val[field])
-        # ------ first consider the unconditioned arcs and build graph
-        graph = [set() for p in range(n)]
-        grinv = [set() for p in range(n)]
-        for (src, dst, requires, requires_str) in arcs[field]:
-            p = field2val[field].index(src)
-            g = field2val[field].index(dst)
-            if requires is None:
-                graph[p].add(g)
-                grinv[g].add(p)
-        # ------ add transitive arcs for unconditioned arcs
-        order = topological_order(graph)
-        assert len(order) == len(graph)
-        for r in range(n):
-            p = order[r]
-            for g in graph[p]:
-                for u in grinv[p]:
-                    graph[u].add(g)
-                    grinv[g].add(u)
-        # ------ mark reductions in dictionary
-        for p in range(n):
-            for g in graph[p]:
-                src = field2val[field][p]
-                dst = field2val[field][g]
-                reduction[src, dst] = True
-        if field == "number of machines":
-            a = field2val["number of machines"].index("2")
-            b = field2val["number of machines"].index("")
-        # ------ then consider the conditioned arcs
-        for (src, dst, requires, requires_str) in arcs[field]:
-            p = field2val[field].index(src)
-            g = field2val[field].index(dst)
-            if requires is not None:
-                for u in grinv[p] | set([p]):
-                    for v in graph[g] | set([g]):
-                        val_u = field2val[field][u]
-                        val_v = field2val[field][v]
-                        arc = (val_u, val_v)
-                        if arc not in reduction:
-                            reduction[arc] = requires
-                        elif reduction[arc] is not True:
-                            reduction[arc] = ('or', reduction[arc], requires)
-                        else:
-                            pass  #  nothing to do since (True or expression) == True
-    return arcs
+        transitive_closure(simple_reductions[field])
+    
+    for support in complex_reductions:
+        transitive_closure(complex_reductions[support])
+        E = []
+        for particular, general in complex_reductions[support]:
+            for ext in extend_complex_reduction(support, particular, general):
+                E.append(ext)
+        # need to add them after the loop
+        # because set should not increase while looping 
+        for ext in E:
+            complex_reductions[support].add(ext)
 
 
 # ---------- read bibtex files into ref, lower, upper
@@ -313,48 +326,65 @@ def print_wikipedia():
 
 # ---------- produce the reduction graph
 
+def print_dot_file(filename, arcs):
+    f = open(filename, 'w')
+    print("digraph G{", file=f)
+    print("rankdir=BT;", file=f)
+    vertex_id = {}
+    for arc in arcs:
+        for v in arc:
+            if v not in vertex_id:
+                vertex_id[v] = len(vertex_id)
+    for v in vertex_id:
+        i = vertex_id[v]
+        print(f'{i} [label="{v}"]', file=f)
+    for u, v in arcs:
+        i = vertex_id[u]
+        j = vertex_id[v]
+        print(f"{i} -> {j}", file=f)
+    print("}", file=f)
+    f.close()
+
 def print_dot():
-    arcs = read_xml()
-    arc_labels = []        # create the graph files
+    read_xml()
+
+    print("<h1>Reduction rules</h1>")
+    print("These graphs are automatically generated from the notation.xml file.")
+
+    print("<h2>Simple reductions</h2>")
     for field in fields:
-        f = open("dot/%s.dot" % field, 'w')
-        print("digraph G{", file=f)
-        print("rankdir=BT;", file=f)
-        for i in range(len(field2val[field])):
-            val = field2val[field][i].replace("\\", "\\\\")
-            print('%i [label="%s"]' % (i, val), file=f)
-        for (src, dst, requires, requires_str) in arcs[field]:
-            u = field2val[field].index(src)
-            v = field2val[field].index(dst)
-            if requires_str is None:
-                print("%i -> %i" % (u,v), file=f)
-            else:
-                if requires_str not in arc_labels:
-                    lab = len(arc_labels)
-                    arc_labels.append(requires_str)
-                else:
-                    lab = arc_labels.index(requires_str)
-                print('%i -> %i [label="%i."]' % (u, v, lab + 1), file=f)
-        print("}", file=f)
-        f.close()
+        print_dot_file(f"dot/{field}.dot", simple_reductions[field])
+        print(f"<h3>{field}</h3>")
+        print(f'<img src="dot/{field}.dot.png">')
 
-    print("<h3>Conditions on dominance arcs</h3>")
-    print("<ol>")
-    for label in arc_labels:
-        print("<li>%s</li>" % str(label))
-    print("</ol>")
+    print("<h2>Complex reductions</h2>")
 
-    for field in fields:
-        print("<h3>%s</h3>" % field)
-        print('<img src="dot/%s.dot.png">' % field)
+    c = 0
+    for support in complex_reductions:
+        c += 1
+        print_dot_file(f"dot/{c}.dot", complex_reductions[support])
+        print(f"<h3>{support}</h3>")
+        print(f'<img src="dot/{c}.dot.png">')
+        
 
-
+def print_problems_reduction_graph():
+    print("digraph G {")
+    problems = {}
+    for problem_vec, css_class, problem_name, bound, key in results:
+        normalize = pb2latex(problem_name)
+        problems[problem_name] = problem_vec
+    for A in problems:
+        for B in problems:
+            if A != B and reduces(problems[A], problems[B]):
+                print(f'"{A}" -> "{B}"')
+    print("}")
 # ---------- main program
 
 if __name__=="__main__":
     if len(sys.argv) == 1:
         print("Usage: ./extract.py option")
         print("       form:       prints the html form")
+        print("       problems:   prints the problems reduction graph")
         print("       reductions: prints the reduction dictionary")
         print("       references: prints the references")
         print("       results:    prints the results")
@@ -362,10 +392,18 @@ if __name__=="__main__":
         print("       wikipedia:  prints the notation in wikipedia source format")
         print("       dot:        creates the reduction graphs")
 
+    elif sys.argv[1] == "problems":
+        # the output is quite unreadable, graph is too big
+        read_bibtex()
+        print_problems_reduction_graph()
+
     elif sys.argv[1] == "reductions":
         read_xml()
-        print("reduction = \\")
-        pp.pprint(reduction)
+        make_reductions_transitive()
+        print("simple_reductions = \\")
+        pp.pprint(simple_reductions)
+        print("complex_reductions = \\")
+        pp.pprint(complex_reductions)
         print("explanation = \\")
         pp.pprint(explanation)
 

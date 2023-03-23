@@ -99,7 +99,6 @@ if len(sys.argv) == 2:
     else:
         print("<h2>No matching entries found</h2>")
 
-
     if list_upper:
         print("<h2>This problem is a particular case of...</h2>")
         print_list(list_upper)
@@ -119,8 +118,14 @@ elif len(sys.argv) == 3:
     gen_name = sys.argv[2]
     if '|' in gen_name:
         gen_vec = str2pb(gen_name, field2val, val2field)
+        print(part_vec)
+        print(gen_vec)
         print(reduces(part_vec, gen_vec))
     else:
         print(eval_bool_expr(parse_bool_expr(gen_name), pb2vals(part_vec)))
 else:
-    print("<h1>Erreur</h1>Aucun argument n'est passé à ce programme")
+    print("<h1>Error</h1>No argument given to search.py<p>")
+    print("Usage possibilities:")
+    print("search.py problemname                    # prints an HTML document with search results")
+    print("search.py problemname1 problemname2      # checks reduction")
+    print("search.py problemname booleanexpression  # evaluates the boolean expression")

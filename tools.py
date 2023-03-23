@@ -3,11 +3,7 @@
 import urllib.parse
 import sys
 import re
-try:
-    from reductions import *
-except ModuleNotFoundError:
-    # ok, this will happen before we actually produced the reductions.py file
-    pass
+from reductions import *
 
 def correctxml(s):
     return s.replace("&lt;", "<")
@@ -15,17 +11,20 @@ def correctxml(s):
 
 def pb2latex(s):
     s = re.sub('([^\\\\a-zA-Z_]|^)([a-zA-Z -]{3,99})', '\\1\\\\textrm{\\2}', s)
-    if len(s)>=3 and s[:3] == "P;1":
+    if len(s)>=3 and s[:3] == "P;1":    # remove the implicit P for single machine
         s = s[2:]
     elif len(s)>=3 and s[1] == ';' and s[2].isdigit():
-        s = s[0] + s[2:]
-    return '$' + s + '$'
+        s = s[0] + s[2:]                # write P2 instead of P;2
+    return '$' + s + '$'                # write problem name in LaTeX Math
 
 
 
 # ---- extract problem vector from string
 def str2pb(s, field2val, val2field, file=None, key=None):
     """ s is a string of the form "P3|prec;p_j=1|C_{\\max}"
+    returns the internal representation of a problem, which is a
+    dictionnary (keys are field names, and the same for all problems)
+    mapping field names to field value. Example "number of machines": "2".
     """
     orig = s
     s = correctxml(s)
@@ -38,7 +37,7 @@ def str2pb(s, field2val, val2field, file=None, key=None):
     # if '(' in s:                             # special rule for time lags
     #     i = s.index('(')
     #     s = s[:i] + ';' + s[i:]
-    s = s.replace("|", ";")
+    s = s.replace("|", ";")                    # smash all fields
     for val in s.split(";"):
         val = val.strip()
         # val = val.replace("\\", "\\\\")
@@ -63,6 +62,8 @@ def str2pb(s, field2val, val2field, file=None, key=None):
 
 # ---- hamming distance
 def hamming(u, v):
+    """returns the Hamming distance between two problems u and v
+    """
     dist = 0
     for key in u:
         if u[key] != v[key]:
@@ -71,6 +72,8 @@ def hamming(u, v):
 
 
 def pb2vals(prob):
+    """Returns a set of values extracted from the problem
+    """
     vals = set()
     for key in prob:
         if prob[key] != '':
@@ -79,16 +82,27 @@ def pb2vals(prob):
     return vals
 
 # ---- test reduction between problems
+
 def reduces(src, dst):
+    """ is src problem a particular case of dst problem?
+    """
+    # first try simple reductions
+    failed = [] # is list of fields where simple reductions failed
     for key in src:
         arc = (src[key], dst[key])
-        if arc[0] != arc[1] and \
-           (arc not in reduction or not eval_bool_expr(reduction[arc], pb2vals(dst))):
-            return False
-    return True
-
-
-
+        if arc[0] != arc[1] and arc not in simple_reductions[key]:
+            failed.append(key)
+    if not failed:
+        return True
+    # now try to find a complex reduction, whose support contains F
+    failed_set = set(failed)
+    for support in complex_reductions:
+        if failed_set.issubset(set(support)):
+            S = tuple(src[f] for f in support)
+            D = tuple(dst[f] for f in support)
+            if (S, D) in complex_reductions[support]:
+                return True
+    return False
 
 # ---------- boolean expressions
 
@@ -265,7 +279,7 @@ def bib2str(bib):
         s += '\n['
         if pdf:
             s += '<a href="'
-            s += pdfpath + bib['PDF']
+            s += bib['PDF']
             s += '">pdf</a>'
             if url:
                 s += '|'
@@ -284,4 +298,4 @@ def bib2str(bib):
 
 if __name__=="__main__":
     d = {'ANNOTE': '$1|prec;p_j=p;s-batch|\\sum C_j$ is in $P$,\\\\\n$1|p_j=p;s-batch|\\sum w_jC_j$ is in $P$,\\\\\n$1|chains;s-batch|\\sum C_j$ is NP-hard,\\\\\n$1|chains;p_j=1;s-batch|\\sum w_jC_j$ is strongly NP-hard,\\\\\n$1|s-batch|\\sum w_jC_j$ is strongly NP-hard.', 'TITLE': 'The complexity of one-machine batching problems', 'ID': 'AlbersBrucker:93:The-complexity-of-one-machine', 'FJOURNAL': 'Discrete Applied Mathematics. Combinatorial Algorithms, Optimization and Computer Science', 'NUMBER': '2', 'DATE-MODIFIED': '2015-12-11 22:11:19 +0000', 'PAGES': '87-107', 'JOURNAL': 'Discrete Appl. Math.', 'ENTRYTYPE': 'article', 'VOLUME': '47', 'YEAR': '1993', 'AUTHOR': 'Albers, S. and Brucker, P.'}
-    print(bibdict2str(d))
+    print(bib2str(d))

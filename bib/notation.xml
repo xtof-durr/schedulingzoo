@@ -31,10 +31,8 @@
                 <choice value="3" explanation="m=3 machines."/>
                 <choice value="4" explanation="m=4 machines."/>
                 <choice value="5" explanation="m=5 machines."/>
-                <choice value="m" explanation="Fixed number of machines $m$.  Used for complexity results which are polynomial in the number of jobs, but not in the number of machines."/>
                 <choice value="\infty" requires="advanced and P" explanation="Unlimited number of machines available." />
 			</field>
-
 
             <field name="robot" requires="advanced and F">
 				<choice value="" explanation="No robot" />
@@ -199,6 +197,12 @@
                 <choice value="\sum w_jT_j" requires="advanced" explanation="Weighted maximum tardiness. Every job $j$ is given a due date $d_j$. The goal is to minimize $\sum_j w_j \max\{0, C_j-d_j\}$ where $C_j$ is the completion time of job $j$ and $w_j$ its priority weight." />
             </field>
         </section>
+        <section name="Fixed parameter" add_separator="True" requires="advanced">
+            <field name="Number of machines"  requires="advanced and not 1">
+                <choice value="" explanation="Arbitrary given number of machines" />
+                <choice value="m" explanation="Fixed number of machines" />
+            </field>
+        </section>
     </form>
     <reductions>
         <reduction from="C_{\max}" to="L_{\max}" />
@@ -251,26 +255,20 @@
         <reduction from="Q" to="R" />
         <reduction from="F" to="J" />
 
-        <reduction from="1" to="2" requires="not processing times and not pmtn" />
-        <reduction from="1" to="3" requires="not processing times and not pmtn" />
-        <reduction from="1" to="4" requires="not processing times and not pmtn" />
-        <reduction from="1" to="5" requires="not processing times and not pmtn" />
-        <reduction from="2" to="3" requires="not processing times and not pmtn" />
-        <reduction from="2" to="4" requires="not processing times and not pmtn" />
-        <reduction from="2" to="5" requires="not processing times and not pmtn" />
-        <reduction from="3" to="4" requires="not processing times and not pmtn" />
-        <reduction from="3" to="5" requires="not processing times and not pmtn" />
-        <reduction from="4" to="5" requires="not processing times and not pmtn" />
-        <reduction from="2" to="m" />
-        <reduction from="3" to="m" />
-        <reduction from="4" to="m" />
-        <reduction from="5" to="m" />
+        <reduction from="1;not processing times;not preemption" to="2;not processing times;not preemption" />
+        <reduction from="2;not processing times;not preemption" to="3;not processing times;not preemption" />
+        <reduction from="3;not processing times;not preemption" to="4;not processing times;not preemption" />
+        <reduction from="4;not processing times;not preemption" to="5;not processing times;not preemption" />
+        <reduction from="2;" to=";m" />
+        <reduction from="3;" to=";m" />
+        <reduction from="4;" to=";m" />
+        <reduction from="5;" to=";m" />
         <reduction from="m" to=""  />
         <reduction from="" to="\infty" />
 
 
         <reduction from="" to="M_j" />
-        <reduction from="M_j" to="" requires="R" explanation="processing times $p_{ij}=\infty$ can be used to encode $M_j$ for every machine $i\not\in M_j$." />
+        <reduction from="M_j;R" to=";R" explanation="processing times $p_{ij}=\infty$ can be used to encode $M_j$ for every machine $i\not\in M_j$." />
         <reduction from="" to="fix_j" />
 
         <reduction from="n=2" to="n=3" />
