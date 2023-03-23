@@ -4,6 +4,7 @@ import sys
 from results import *
 from tools import *
 from references import *
+from reductions import *
 
 html_head = """
 <html>
