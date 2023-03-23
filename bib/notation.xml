@@ -198,7 +198,7 @@
             </field>
         </section>
         <section name="Fixed parameter" add_separator="True" requires="advanced">
-            <field name="Number of machines"  requires="advanced and not 1">
+            <field name="Fixed number of machines"  requires="advanced and not 1">
                 <choice value="" explanation="Arbitrary given number of machines" />
                 <choice value="m" explanation="Fixed number of machines" />
             </field>

@@ -348,6 +348,7 @@ def print_dot_file(filename, arcs):
 def print_dot():
     read_xml()
 
+    print('<html><head><link href="style.css" type="text/css" rel="stylesheet"></head><body>')
     print("<h1>Reduction rules</h1>")
     print("These graphs are automatically generated from the notation.xml file.")
 
@@ -365,37 +366,82 @@ def print_dot():
         print_dot_file(f"dot/{c}.dot", complex_reductions[support])
         print(f"<h3>{support}</h3>")
         print(f'<img src="dot/{c}.dot.png">')
+    print("</body></html>")
         
+def print_chart(id, field, numbers):
+    labels = [x[1] for x in numbers]
+    qty = [x[0] for x in numbers]
+    print(f""" 
+        <div>
+    <canvas id="{id}"></canvas>
+    </div>
 
-def print_problems_reduction_graph():
-    print("digraph G {")
-    problems = {}
-    for problem_vec, css_class, problem_name, bound, key in results:
-        normalize = pb2latex(problem_name)
-        problems[problem_name] = problem_vec
-    for A in problems:
-        for B in problems:
-            if A != B and reduces(problems[A], problems[B]):
-                print(f'"{A}" -> "{B}"')
-    print("}")
+    <script>
+    const {id} = document.getElementById('{id}');
+
+    new Chart({id}, {{
+        type: 'bar',
+        data: {{
+        labels: {labels},
+        datasets: [{{
+            label: '{field}',
+            data: {qty},
+            borderWidth: 1
+        }}]
+        }},
+        options: {{
+        scales: {{
+            y: {{
+            beginAtZero: true
+            }}
+        }}
+        }}
+    }});
+    </script>
+    """)
+
+def print_stat():
+    print('<html><head><link href="style.css" type="text/css" rel="stylesheet"></head><body>')
+    print('<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>')
+
+    print("<h1>Statistics</h1>")
+
+    print("Number of referenced problems containing a given value")
+    print("among", len(results), "results, described in", len(ref),"bibtex entries.")
+
+    stat = {field:{val:0 for val in field2val[field]} for field in fields}
+    for res in results:
+        pb = res[0]
+        for field in pb:
+            stat[field][pb[field]] += 1
+
+    f = 0
+    for field in fields:
+        numbers = [(stat[field][val], val) for val in field2val[field] if val]
+        numbers.sort(reverse=True)
+        f += 1
+        print_chart(f"C{f}", field, numbers)
+
+    # print("<table>")
+    # for field in fields:
+    #     print(f'<tr><th colspan="2">{field}</th></tr>')
+    #     for val in field2val[field]:
+    #         print(f'<tr><td style="text-align:right">{val}</td><td>{stat[field][val]}</td></tr>')
+    # print("</table>")
+    # print("</body></html>")
+
 # ---------- main program
 
 if __name__=="__main__":
     if len(sys.argv) == 1:
         print("Usage: ./extract.py option")
         print("       form:       prints the html form")
-        print("       problems:   prints the problems reduction graph")
         print("       reductions: prints the reduction dictionary")
         print("       references: prints the references")
         print("       results:    prints the results")
-        print("       stat:       prints the number of results")
+        print("       stat:       prints an HTML document with results")
         print("       wikipedia:  prints the notation in wikipedia source format")
-        print("       dot:        creates the reduction graphs")
-
-    elif sys.argv[1] == "problems":
-        # the output is quite unreadable, graph is too big
-        read_bibtex()
-        print_problems_reduction_graph()
+        print("       dot:        creates the reduction graphs and prints an HTML document containing them")
 
     elif sys.argv[1] == "reductions":
         read_xml()
@@ -425,7 +471,7 @@ if __name__=="__main__":
 
     elif sys.argv[1] == "stat":
         read_bibtex()
-        print(len(results))
+        print_stat()
 
     elif sys.argv[1] == "dot":
         print_dot()
