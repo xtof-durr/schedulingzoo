@@ -153,23 +153,23 @@
                 <choice value="p_{kj}=p_j" requires="F" explanation="All operations of a same job $j$ have the same processing time." />
             </field>
 
+            <field name="batching" requires="advanced and 1">
+                <choice value=""         explanation="no batching"  />
+                <choice value="s-batch" explanation="Serial batching. The jobs have to be processed in batches. The processing time of a batch is the total processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
+                <choice value="p-batch" explanation="Parallel batching. The jobs have to be processed in batches. A batch consists of maximal b jobs. If jobs have sizes, then instead the total size of a batch is at most b. The processing time of a batch is the maximal processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
+                <choice value="p-batch(\infty)" explanation="Parallel batching. The jobs have to be processed in batches. There is no limit on the number of jobs in a batch. The processing time of a batch is the maximal processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
+            </field>
+
             <field name="job size" requires="advanced and ( P or p-batch )">
-                <choice value=""         explanation=""  />
+                <choice value=""         explanation="Jobs have default size 1."  />
                 <choice value="size_j" explanation="Multiprocessor tasks on identical parallel machines. The execution of job $j$ is done simultaneously on $size_j$ parallel machines. In the context of parallel batches the sizes affect the batch capacity." />
-                <choice value="size_j\in\{1,m\}" explanation="Multiprocessor tasks on identical parallel machines. Some jobs need all machines in parallel for their execution, some need only a single machine." />
+                <choice value="size_j\in\{1,m\}" requires="advanced and P" explanation="Multiprocessor tasks on identical parallel machines. Some jobs need all machines in parallel for their execution, some need only a single machine." />
             </field>
 
 			<field name="machine sets" requires="advanced and not 1">
 				<choice value="" explanation=""  />
                 <choice value="fix_j" explanation="Multiprocessor tasks. Every job $j$ is given with a set of machines $fix_j\subseteq\{1,\ldots,m\}$, and needs simultaneously all these machines for execution. Sometimes also denoted by 'MPT'."/>
                 <choice value="M_j" explanation="Multipurpose machines. Every job $j$ needs to be scheduled on one machine out of a given set $M_j\subseteq\{1,\ldots,m\}$.  Sometimes also denoted by 'M_j'."/>
-            </field>
-
-            <field name="batching" requires="advanced and 1">
-                <choice value=""         explanation="no batching"  />
-                <choice value="s-batch" explanation="Serial batching. The jobs have to be processed in batches. The processing time of a batch is the total processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
-                <choice value="p-batch" explanation="Parallel batching. The jobs have to be processed in batches. A batch consists of maximal b jobs. If jobs have sizes, then instead the total size of a batch is at most b. The processing time of a batch is the maximal processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
-                <choice value="p-batch(\infty)" explanation="Parallel batching. The jobs have to be processed in batches. There is no limit on the number of jobs in a batch. The processing time of a batch is the maximal processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
             </field>
 
             <field name="setup times" requires="advanced and S1">
