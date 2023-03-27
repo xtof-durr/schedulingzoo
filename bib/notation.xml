@@ -132,12 +132,12 @@
                 <choice value="rcrc" explanation="Recirculation, also called Flexible job shop. The promise on $\mu$ is lifted and for some pairs $k\neq k'$  we might have $\mu_{kj}= \mu_{k'j}$." />
             </field>
 
-            <field name="no-wait" requires="advanced and (O or F or J)" >
+            <field name="no-wait" requires="advanced and ( O or F or J )" >
                 <choice value=""         explanation="no no-wait"  />
                 <choice value="no-wait" explanation="The operation $O_{k+1,i}$ must start exactly when operation $O_{k,i}$ completes.  Sometimes also denoted as 'nwt'." />
             </field>
 
-            <field name="no-idle" requires="advanced and (O or F or J)" >
+            <field name="no-idle" requires="advanced and ( O or F or J )" >
                 <choice value=""         explanation="no no-idle"  />
                 <choice value="no-idle" explanation="No machine is ever idle between two executions." />
             </field>
@@ -153,9 +153,9 @@
                 <choice value="p_{kj}=p_j" requires="F" explanation="All operations of a same job $j$ have the same processing time." />
             </field>
 
-            <field name="job size" requires="advanced and P">
+            <field name="job size" requires="advanced and ( P or p-batch )">
                 <choice value=""         explanation=""  />
-                <choice value="size_j" explanation="Multiprocessor tasks on identical parallel machines. The execution of job $j$ is done simultaneously on $size_j$ parallel machines." />
+                <choice value="size_j" explanation="Multiprocessor tasks on identical parallel machines. The execution of job $j$ is done simultaneously on $size_j$ parallel machines. In the context of parallel batches the sizes affect the batch capacity." />
                 <choice value="size_j\in\{1,m\}" explanation="Multiprocessor tasks on identical parallel machines. Some jobs need all machines in parallel for their execution, some need only a single machine." />
             </field>
 
@@ -168,8 +168,8 @@
             <field name="batching" requires="advanced and 1">
                 <choice value=""         explanation="no batching"  />
                 <choice value="s-batch" explanation="Serial batching. The jobs have to be processed in batches. The processing time of a batch is the total processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
-                <choice value="batch(\infty)" explanation="Parallel batching. The jobs have to be processed in batches. There is no limit on the number of jobs in a batch. The processing time of a batch is the maximal processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
-                <choice value="batch(b)" explanation="Parallel batching. The jobs have to be processed in batches. A batch consists of maximal b jobs. The processing time of a batch is the maximal processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
+                <choice value="p-batch" explanation="Parallel batching. The jobs have to be processed in batches. A batch consists of maximal b jobs. If jobs have sizes, then instead the total size of a batch is at most b. The processing time of a batch is the maximal processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
+                <choice value="p-batch(\infty)" explanation="Parallel batching. The jobs have to be processed in batches. There is no limit on the number of jobs in a batch. The processing time of a batch is the maximal processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
             </field>
 
             <field name="setup times" requires="advanced and S1">
@@ -301,7 +301,7 @@
         <reduction from="t_{jkl}=t_{jlk}" to="t_{jkl}" />
         <reduction from="t_{kl}" to="t_{jkl}" />
 
-        <reduction from="batch(\infty)" to="batch(b)" />
+        <reduction from="p-batch(\infty)" to="p-batch" />
 
         <reduction from="d_j=d" to="" />
         <reduction from="d_j\leq r_j+2" to="d_j\leq r_j+3" />

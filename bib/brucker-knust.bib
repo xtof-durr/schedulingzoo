@@ -88,9 +88,9 @@
 	Annote = {$1|p_j=p;s-batch;r_j|\sum w_jC_j$ is in $P$,\\
              $1|p_j=p;s-batch;r_j|\sum w_jU_j$ is in $P$,\\
              $1|p_j=p;s-batch;r_j|\sum T_j$ is in $P$,\\
-             $1|p_j=p;batch(b);r_j|\sum w_jC_j$ is in $P$,\\
-             $1|p_j=p;batch(b);r_j|\sum w_jU_j$ is in $P$,\\
-             $1|p_j=p;batch(b);r_j|\sum T_j$ is in $P$.}}
+             $1|p_j=p;p-batch;r_j|\sum w_jC_j$ is in $P$,\\
+             $1|p_j=p;p-batch;r_j|\sum w_jU_j$ is in $P$,\\
+             $1|p_j=p;p-batch;r_j|\sum T_j$ is in $P$.}}
 
 @techreport{Baptiste:00:Preemptive-scheduling,
 	Author = {Baptiste, P.},
@@ -185,9 +185,9 @@
 	Annote = {$J|prec;r_j;n=k;no-wait|\sum w_jU_j$ is in $P$,\\
             $J|prec;r_j;n=k;no-wait|\sum w_jT_j$ is in $P$,\\
             $1|prec;r_j;p_j=p;pmtn|\sum C_j$ is in $P$,\\
-            $1|p_j=p;batch(\infty);r_j|\sum w_jT_j$ is in $P$,\\
-            $1|batch(\infty);r_j|\sum w_jT_j$ is in $P_{pseudo}$,\\
-            $1|batch(\infty);r_j|\sum w_jU_j$ is in $P_{pseudo}$,\\
+            $1|p_j=p;p-batch(\infty);r_j|\sum w_jT_j$ is in $P$,\\
+            $1|p-batch(\infty);r_j|\sum w_jT_j$ is in $P_{pseudo}$,\\
+            $1|p-batch(\infty);r_j|\sum w_jU_j$ is in $P_{pseudo}$,\\
             $Pm|p_j=p;intree|\sum C_j$ is in $P$,\\
             $Pm|p_j=p;tree|\sum C_j$ is in $P$,\\
             $Pm|p_j=p;r_j|\sum w_jU_j$ is in $P$,\\
@@ -322,15 +322,15 @@
 	Title = {Scheduling a batching machine},
 	Volume = 1,
 	Year = 1998,
-	Annote = {$1|batch(b)|C_{\max}$ is in $P$,\\
-             $1|batch(\infty)|\sum w_jC_j$ is in $P$,\\
-             $1|batch(\infty)|\sum U_j$ is in $P$,\\
-             $1|batch(\infty)|\sum w_jU_j$ is in $P_{pseudo}$,\\
-             $1|batch(\infty)|\sum w_jT_j$ is in $P_{pseudo}$,\\
-             $1|batch(b);r_j|C_{\max}$ is strongly NP-hard,\\
-             $1|batch(b)|L_{\max}$ is strongly NP-hard,\\
-             $1|batch(\infty)|\sum w_jU_j$ is NP-hard,\\
-             $1|batch(\infty)|\sum w_jT_j$ is NP-hard.}}
+	Annote = {$1|p-batch|C_{\max}$ is in $P$,\\
+             $1|p-batch(\infty)|\sum w_jC_j$ is in $P$,\\
+             $1|p-batch(\infty)|\sum U_j$ is in $P$,\\
+             $1|p-batch(\infty)|\sum w_jU_j$ is in $P_{pseudo}$,\\
+             $1|p-batch(\infty)|\sum w_jT_j$ is in $P_{pseudo}$,\\
+             $1|p-batch;r_j|C_{\max}$ is strongly NP-hard,\\
+             $1|p-batch|L_{\max}$ is strongly NP-hard,\\
+             $1|p-batch(\infty)|\sum w_jU_j$ is NP-hard,\\
+             $1|p-batch(\infty)|\sum w_jT_j$ is NP-hard.}}
 
 @article{BruckerGarey:77:Scheduling-equal-length,
 	Author = {Brucker, P. and Garey, M.R. and Johnson, D.S.},
@@ -2359,8 +2359,8 @@
 	Date-Modified = {2015-12-11 22:11:19 +0000},
 	Key = {see earliest-start},
 	Title = {see: Earliest Start Schedule},
-	Annote = {$1|prec;p_j=p;batch(\infty)|\sum w_jU_j$ is in $P$,\\
-            $1|prec;p_j=p;batch(\infty)|\sum w_jT_j$ is in $P$.}}
+	Annote = {$1|prec;p_j=p;p-batch(\infty)|\sum w_jU_j$ is in $P$,\\
+            $1|prec;p_j=p;p-batch(\infty)|\sum w_jT_j$ is in $P$.}}
 
 @misc{::see:-Network,
 	Date-Modified = {2015-12-11 22:11:19 +0000},
@@ -2374,20 +2374,20 @@
 	Date-Modified = {2015-12-11 22:11:19 +0000},
 	Key = {see parallel},
 	Title = {see: Parallel Machine Problem},
-	Annote = {$1|tree;p_j=p;batch(b)|C_{\max}$ is in $P$,\\
-            $1|outtree;p_j=p;batch(b);r_j|C_{\max}$ is in $P$,\\
-            $1|intree;p_j=p;batch(b)|L_{\max}$ is in $P$,\\
-            $1|p_j=1;batch(b);chains;r_j|L_{\max}$ is in $P$,\\
-            $1|p_j=1;batch(b);outtree;r_j|\sum C_j$ is in $P$,\\
-            $1|p_j=p;batch(b);tree|\sum C_j$ is in $P$,\\
-            $1|p_j=p;batch(b)|\sum w_jT_j$ is in $P$,\\
-            $1|p_j=1;batch(b);r_j|\sum w_jT_j$ is in $P$,\\
-            $1|intree;p_j=1;batch(b);r_j|C_{\max}$ is strongly NP-hard,\\
-            $1|prec;p_j=1;batch(b)|C_{\max}$ is strongly NP-hard,\\
-            $1|outtree;p_j=1;batch(b)|L_{\max}$ is strongly NP-hard,\\
-            $1|prec;p_j=1;batch(b)|\sum C_j$ is strongly NP-hard,\\
-            $1|intree;p_j=1;batch(b);r_j|\sum C_j$ is strongly NP-hard,\\
-            $1|chains;p_j=1;batch(b)|\sum w_jC_j$ is strongly NP-hard.}}
+	Annote = {$1|tree;p_j=p;p-batch|C_{\max}$ is in $P$,\\
+            $1|outtree;p_j=p;p-batch;r_j|C_{\max}$ is in $P$,\\
+            $1|intree;p_j=p;p-batch|L_{\max}$ is in $P$,\\
+            $1|p_j=1;p-batch;chains;r_j|L_{\max}$ is in $P$,\\
+            $1|p_j=1;p-batch;outtree;r_j|\sum C_j$ is in $P$,\\
+            $1|p_j=p;p-batch;tree|\sum C_j$ is in $P$,\\
+            $1|p_j=p;p-batch|\sum w_jT_j$ is in $P$,\\
+            $1|p_j=1;p-batch;r_j|\sum w_jT_j$ is in $P$,\\
+            $1|intree;p_j=1;p-batch;r_j|C_{\max}$ is strongly NP-hard,\\
+            $1|prec;p_j=1;p-batch|C_{\max}$ is strongly NP-hard,\\
+            $1|outtree;p_j=1;p-batch|L_{\max}$ is strongly NP-hard,\\
+            $1|prec;p_j=1;p-batch|\sum C_j$ is strongly NP-hard,\\
+            $1|intree;p_j=1;p-batch;r_j|\sum C_j$ is strongly NP-hard,\\
+            $1|chains;p_j=1;p-batch|\sum w_jC_j$ is strongly NP-hard.}}
 
 @misc{::see:-Single,
 	Date-Modified = {2015-12-11 22:11:19 +0000},
@@ -2417,9 +2417,9 @@
             $P2;S1|p_j=1|\sum w_jU_j$ is NP-hard,\\
             $P2;S1|p_j=1|\sum T_j$ is NP-hard,\\
             $P2;S1|p_j=1|\sum w_jT_j$ is strongly NP-hard,\\
-            $1|batch(b);r_j|\sum C_j$ is strongly NP-hard,\\
-            $1|chains;p_j=1;batch(b)|\sum U_j$ is strongly NP-hard,\\
-            $1|chains;p_j=1;batch(b)|\sum T_j$ is strongly NP-hard,\\
+            $1|p-batch;r_j|\sum C_j$ is strongly NP-hard,\\
+            $1|chains;p_j=1;p-batch|\sum U_j$ is strongly NP-hard,\\
+            $1|chains;p_j=1;p-batch|\sum T_j$ is strongly NP-hard,\\
             $F2;S1|p_{ij}=p;s_{ij}=1;r_j|\sum w_jC_j$ is in $P$,\\
             $F2;S1|p_{ij}=p;s_{ij}=1;r_j|\sum w_jU_j$ is in $P$,\\
             $F2;S1|p_{ij}=p;s_{ij}=1;r_j|\sum T_j$ is in $P$.}}
