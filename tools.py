@@ -9,6 +9,9 @@ def correctxml(s):
 
 
 def pb2latex(s):
+    """s is string representing a problem, and it needs to be cleaned up.
+    replacing P;2 by P2 for example.
+    """
     s = re.sub('([^\\\\a-zA-Z_]|^)([a-zA-Z -]{3,99})', '\\1\\\\textrm{\\2}', s)
     if len(s)>=3 and s[:3] == "P;1":    # remove the implicit P for single machine
         s = s[2:]

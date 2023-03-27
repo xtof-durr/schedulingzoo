@@ -31,6 +31,7 @@
                 <choice value="3" explanation="m=3 machines."/>
                 <choice value="4" explanation="m=4 machines."/>
                 <choice value="5" explanation="m=5 machines."/>
+                <choice value="m" explanation="Fixed number of machines" />
                 <choice value="\infty" requires="advanced and P" explanation="Unlimited number of machines available." />
 			</field>
 
@@ -197,12 +198,6 @@
                 <choice value="\sum w_jT_j" requires="advanced" explanation="Weighted maximum tardiness. Every job $j$ is given a due date $d_j$. The goal is to minimize $\sum_j w_j \max\{0, C_j-d_j\}$ where $C_j$ is the completion time of job $j$ and $w_j$ its priority weight." />
             </field>
         </section>
-        <section name="Fixed parameter" add_separator="True" requires="advanced">
-            <field name="Fixed number of machines"  requires="advanced and not 1">
-                <choice value="" explanation="Arbitrary given number of machines" />
-                <choice value="m" explanation="Fixed number of machines" />
-            </field>
-        </section>
     </form>
     <reductions>
         <reduction from="C_{\max}" to="L_{\max}" />
@@ -259,12 +254,9 @@
         <reduction from="2;not processing times;not preemption" to="3;not processing times;not preemption" />
         <reduction from="3;not processing times;not preemption" to="4;not processing times;not preemption" />
         <reduction from="4;not processing times;not preemption" to="5;not processing times;not preemption" />
-        <reduction from="2;" to=";m" />
-        <reduction from="3;" to=";m" />
-        <reduction from="4;" to=";m" />
-        <reduction from="5;" to=";m" />
-        <reduction from="m" to=""  />
-        <reduction from="" to="\infty" />
+        <reduction from="5;not processing times;not preemption" to="m;not processing times;not preemption" />
+        <reduction from="m;not processing times;not preemption" to=";not processing times;not preemption" />
+        <reduction from=";not processing times;not preemption" to="\infty;not processing times;not preemption" />
 
 
         <reduction from="" to="M_j" />
