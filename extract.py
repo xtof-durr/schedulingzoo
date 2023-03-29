@@ -13,7 +13,7 @@ pp = PrettyPrinter()
 
 BIBDIR = "bib"
 NOTATION_FILE = "bib/notation.xml"
-NEGATIVE_TAGS = ['NP', 'hard', ">=", "\\geq", " no ", "cannot"]
+NEGATIVE_TAGS = ['NP', 'hard', ">=", "\\geq", " no ", "cannot", "ETH"]
 
 aliases = {}      # ABBREVIATION -> full text (in explanation and expressions)
 explanation = {}  # field -> plain text explanation

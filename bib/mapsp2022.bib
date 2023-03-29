@@ -7,7 +7,7 @@
   pages={1709--1728},
   year={2007},
   publisher={SIAM},
-  Annote = {$1|p_j=p;online-r_j|\sum U_j$ algorithm RandLock has randomized competitive ratio 5/3}
+  Annote = {$1|p_j=p;online-r_j|\sum (1-U_j)$ algorithm RandLock has randomized competitive ratio 5/3}
 }
 
 @inproceedings{baruah1994line,
@@ -17,8 +17,8 @@
   volume={15},
   pages={228--236},
   year={1994},
-  Annote = {$1|p_j=p;online-r_j|\sum U_j$ Greedy algorithm has deterministc competitive ratio exactly 2\\
-  $1|p_j=p;online-r_j|\sum U_j$ every deterministic algorithm has deterministc competitive ratio $\geq 2$}  
+  Annote = {$1|p_j=p;online-r_j|\sum (1-U_j)$ Greedy algorithm has deterministc competitive ratio exactly 2\\
+  $1|p_j=p;online-r_j|\sum (1-U_j)$ every deterministic algorithm has deterministc competitive ratio $\geq 2$}  
 }
 
 @article{GOLDMAN2000370,
@@ -32,7 +32,7 @@ issn = {0196-6774},
 doi = {https://doi.org/10.1006/jagm.1999.1060},
 url = {https://www.sciencedirect.com/science/article/pii/S019667749991060X},
 author = {Sally A Goldman and Jyoti Parwatikar and Subhash Suri},
-  Annote = {$1|p_j=p;online-r_j|\sum U_j$ randomized competitive ratio is $\geq 4/3$}
+  Annote = {$1|p_j=p;online-r_j|\sum (1-U_j)$ randomized competitive ratio is $\geq 4/3$}
 }
 
 @inproceedings{Shahkooh_Bohm_Jez_Bareley_2022,
@@ -40,7 +40,7 @@ author = {Sally A Goldman and Jyoti Parwatikar and Subhash Suri},
   author = {Shahkooh, Neda Abbasi  and Böhm, Martin  and Jeż, Łukasz},
   booktitle = {Proc. of the 15th Workshop on Models and Algorithms for Planning and Scheduling (MAPSP)},
   year = {2022},
-  Annote = {$1|p_j=p;online-r_j|\sum U_j$ algorithm Procrastinator has randomized competitive ratio 5/3}
+  Annote = {$1|p_j=p;online-r_j|\sum (1-U_j)$ algorithm Procrastinator has randomized competitive ratio 5/3}
 }
 
 @article{uzsoy1994scheduling,
@@ -112,3 +112,83 @@ author = {Sally A Goldman and Jyoti Parwatikar and Subhash Suri},
   Annote={$1|p-batch;size_j|C_{\max}$ can be solved with the arc-flow optimization approach}
 }
 
+@inproceedings{kalyanasundaram1998maximizing,
+  title={Maximizing job completions online},
+  author={Kalyanasundaram, Bala and Pruhs, Kirk},
+  booktitle={Algorithms—ESA’98: 6th Annual European Symposium Venice, Italy, August 24--26, 1998 Proceedings 6},
+  pages={235--246},
+  year={1998},
+  organization={Springer},
+  Annote = {$1|online-r_j;pmtn|\sum (1-U_j)$ there is a randomized algorithm which is $O(1)$ competitive against an oblivious adversary}
+}
+
+@article{kalyanasundaram2000speed,
+  title={Speed is as powerful as clairvoyance},
+  author={Kalyanasundaram, Bala and Pruhs, Kirk},
+  journal={Journal of the ACM (JACM)},
+  volume={47},
+  number={4},
+  pages={617--643},
+  year={2000},
+  publisher={ACM New York, NY, USA},
+  Annote = {$1|online-r_j;pmtn|\sum (1-U_j)$ there is a scalable $O(1+\epsilon)$-speed $O(1/\epsilon)$-competitive determinstic algorithm}  
+}
+
+@inproceedings{lucier2013efficient,
+  title={Efficient online scheduling for deadline-sensitive jobs},
+  author={Lucier, Brendan and Menache, Ishai and Naor, Joseph and Yaniv, Jonathan},
+  booktitle={Proceedings of the twenty-fifth annual ACM symposium on Parallelism in algorithms and architectures},
+  pages={305--314},
+  year={2013},
+  Annote = {$P|online-r_j;pmtn|\sum (1-U_j)$ there is a scalable $O(1+\epsilon)$-speed $O(1/\epsilon)$-competitive determinstic algorithm}  
+}
+
+@inproceedings{moseley2022competitive,
+  title={A Competitive Algorithm for Throughput Maximization on Identical Machines},
+  author={Moseley, Benjamin and Pruhs, Kirk and Stein, Clifford and Zhou, Rudy},
+  booktitle={Integer Programming and Combinatorial Optimization: 23rd International Conference, IPCO 2022, Eindhoven, The Netherlands, June 27--29, 2022, Proceedings},
+  pages={402--414},
+  year={2022},
+  organization={Springer},
+  Annote = {$P|online-r_j;pmtn|\sum (1-U_j)$ there is a $O(1)$-competitive determinstic algorithm}    
+}
+
+@article{jansen2022integer,
+  title={On integer programming, discrepancy, and convolution},
+  author={Jansen, Klaus and Rohwedder, Lars},
+  journal={Mathematics of Operations Research},
+  year={2022},
+  publisher={INFORMS},
+  Annote = {$P||C_{\max}$ has a deterministic $O(2^{O(1/\epsilon \log^2 (1/\epsilon))})$ time algorithm}
+}
+
+@article{chen2018optimality,
+  title={On the optimality of exact and approximation algorithms for scheduling problems},
+  author={Chen, Lin and Jansen, Klaus and Zhang, Guochuan},
+  journal={Journal of Computer and System Sciences},
+  volume={96},
+  pages={1--32},
+  year={2018},
+  publisher={Elsevier},
+  Annote = {$P||C_{\max}$ for any $\delta>0$ there is no PTAS in time $2^{O((1/\epsilon)^{1-\delta})}$ under the exponential time hypothesis (ETH)}
+}
+
+@inproceedings{berndt2022load,
+  title={Load balancing: The long road from theory to practice},
+  author={Berndt, Sebastian and Deppert, Max A and Jansen, Klaus and Rohwedder, Lars},
+  booktitle={2022 Proceedings of the Symposium on Algorithm Engineering and Experiments (ALENEX)},
+  pages={104--116},
+  year={2022},
+  organization={SIAM},
+  Annote = {$P||C_{\max}$ has a deterministic $O(2^{O(1/\epsilon \log(1/\epsilon)\log\log(1/\epsilon))})$ time algorithm}
+}
+
+@inproceedings{buchem2021additive,
+  title={Additive Approximation Schemes for Load Balancing Problems},
+  author={Buchem, Moritz and Rohwedder, Lars and Vredeveld, Tjark and Wiese, Andreas},
+  booktitle={48th International Colloquium on Automata, Languages, and Programming (ICALP 2021)},
+  pages={1--17},
+  year={2021},
+  organization={Schloss Dagstuhl-Leibniz-Zentrum f{\"u}r Informatik},
+  Annote = {$P||C_{\max}$ has an additive approximation scheme with additive error $\epsilon p_{\max}$ in time $O(m^{O(2^{1/\epsilon}\cdot n^{O(1/\epsilon\cdot 2^{1/\epsilon})})})$}
+}

@@ -86,10 +86,10 @@
 	Volume = 52,
 	Year = 2000,
 	Annote = {$1|p_j=p;s-batch;r_j|\sum w_jC_j$ is in $P$,\\
-             $1|p_j=p;s-batch;r_j|\sum w_jU_j$ is in $P$,\\
+             $1|p_j=p;s-batch;r_j|\sum w_j(1-U_j)$ is in $P$,\\
              $1|p_j=p;s-batch;r_j|\sum T_j$ is in $P$,\\
              $1|p_j=p;p-batch;r_j|\sum w_jC_j$ is in $P$,\\
-             $1|p_j=p;p-batch;r_j|\sum w_jU_j$ is in $P$,\\
+             $1|p_j=p;p-batch;r_j|\sum w_j(1-U_j)$ is in $P$,\\
              $1|p_j=p;p-batch;r_j|\sum T_j$ is in $P$.}}
 
 @techreport{Baptiste:00:Preemptive-scheduling,
@@ -100,7 +100,7 @@
 	Title = {Preemptive scheduling of identical machines},
 	Type = {{Technical Report}},
 	Year = 2000,
-	Annote = {$Pm|pmtn;p_j=p|\sum w_jU_j$ is in $P$.}}
+	Annote = {$Pm|pmtn;p_j=p|\sum w_j(1-U_j)$ is in $P$.}}
 
 @article{Baptiste:03:A-note-on-scheduling,
 	Author = {Baptiste, P.},
@@ -133,7 +133,7 @@
 	Title = {On minimizing the weighted number of late jobs in unit execution time open-shops},
 	Volume = 149,
 	Year = 2003,
-	Annote = {$Om|p_{ij}=1;r_j|\sum w_jU_j$ is in $P$.}}
+	Annote = {$Om|p_{ij}=1;r_j|\sum w_j(1-U_j)$ is in $P$.}}
 
 @book{Baker:74:Introduction-to-Sequencing,
 	Address = {New York},
@@ -152,11 +152,11 @@
 	Publisher = {Springer-Verlag},
 	Title = {Scheduling algorithms},
 	Year = 1995,
-	Annote = {$J|fix_j;n=2|\sum w_jU_j$ is in $P$,\\
+	Annote = {$J|fix_j;n=2|\sum w_j(1-U_j)$ is in $P$,\\
              $J|fix_j;n=2|\sum w_jT_j$ is in $P$,\\
-             $Fm|M_j;prec;r_j;n=k|\sum w_jU_j$ is in $P$,\\
+             $Fm|M_j;prec;r_j;n=k|\sum w_j(1-U_j)$ is in $P$,\\
              $Fm|M_j;prec;r_j;n=k|\sum w_jT_j$ is in $P$,\\
-             $Om|M_j;prec;r_j;n=k|\sum w_jU_j$ is in $P$,\\
+             $Om|M_j;prec;r_j;n=k|\sum w_j(1-U_j)$ is in $P$,\\
              $Om|M_j;prec;r_j;n=k|\sum w_jT_j$ is in $P$,\\
              $O|p_{ij}=1;intree|L_{\max}$ is in $P$,\\
              $O2|p_{ij}=1;prec;r_j|L_{\max}$ is in $P$.}}
@@ -170,8 +170,8 @@
 	Title = {Polynomial time algorithms for minimizing the weighted number of late jobs on a single machine with equal processing times},
 	Volume = 2,
 	Year = 1999,
-	Annote = {$1|p_j=p;r_j|\sum w_jU_j$ is in $P$,\\
-             $1|pmtn;p_j=p;r_j|\sum w_jU_j$ is in $P$.}}
+	Annote = {$1|p_j=p;r_j|\sum w_j(1-U_j)$ is in $P$,\\
+             $1|pmtn;p_j=p;r_j|\sum w_j(1-U_j)$ is in $P$.}}
 
 @article{BaptisteBrucker:04:Ten-notes-on-equal-execution-time,
 	Author = {Baptiste, P. and Brucker, P. and Knust, S. and Timkovsky, V.},
@@ -182,22 +182,22 @@
 	Title = {Ten notes on equal-execution-time scheduling},
 	Volume = 2,
 	Year = 2004,
-	Annote = {$J|prec;r_j;n=k;no-wait|\sum w_jU_j$ is in $P$,\\
+	Annote = {$J|prec;r_j;n=k;no-wait|\sum w_j(1-U_j)$ is in $P$,\\
             $J|prec;r_j;n=k;no-wait|\sum w_jT_j$ is in $P$,\\
             $1|prec;r_j;p_j=p;pmtn|\sum C_j$ is in $P$,\\
             $1|p_j=p;p-batch(\infty);r_j|\sum w_jT_j$ is in $P$,\\
             $1|p-batch(\infty);r_j|\sum w_jT_j$ is in $P_{pseudo}$,\\
-            $1|p-batch(\infty);r_j|\sum w_jU_j$ is in $P_{pseudo}$,\\
+            $1|p-batch(\infty);r_j|\sum w_j(1-U_j)$ is in $P_{pseudo}$,\\
             $Pm|p_j=p;intree|\sum C_j$ is in $P$,\\
             $Pm|p_j=p;tree|\sum C_j$ is in $P$,\\
-            $Pm|p_j=p;r_j|\sum w_jU_j$ is in $P$,\\
+            $Pm|p_j=p;r_j|\sum w_j(1-U_j)$ is in $P$,\\
             $P|p_j=1;chains;r_j|L_{\max}$ is in $P$,\\
             $P|p_j=p;pmtn|\sum C_j$ is in $P$,\\
-            $Q|p_j=p;pmtn|\sum U_j$ is in $P$,\\
-            $P2|p_j=1;chains;pmtn|\sum U_j$ is strongly NP-hard,\\
+            $Q|p_j=p;pmtn|\sum (1-U_j)$ is in $P$,\\
+            $P2|p_j=1;chains;pmtn|\sum (1-U_j)$ is strongly NP-hard,\\
             $O|p_{ij}=1;chains;r_j|L_{\max}$ is in $P$,\\
             $Om|p_{ij}=1;intree;no-wait|\sum C_j$ is in $P$,\\
-            $Om|p_{ij}=1;r_j;no-wait|\sum w_jU_j$ is in $P$,\\
+            $Om|p_{ij}=1;r_j;no-wait|\sum w_j(1-U_j)$ is in $P$,\\
             $F3;R1|p_{ij}=1;t_k;r_j|C_{\max}$ is in $P$,\\
             $F3;R1|p_{ij}=1;t_k|L_{\max}$ is in $P$.}}
 
@@ -226,7 +226,7 @@
             $O2|p_{ij}=1;t_{jkl}=T;r_j|C_{\max}$ is in $P$,\\
             $O2|p_{ij}=1;t_{kl}|C_{\max}$ is in $P$,\\
             $O2|p_{ij}=1;t_{kl}|\sum w_jC_j$ is in $P$,\\
-            $O2|p_{ij}=1;t_{jkl}=T|\sum U_j$ is in $P$,\\
+            $O2|p_{ij}=1;t_{jkl}=T|\sum (1-U_j)$ is in $P$,\\
             $O2|p_{ij}=1;t_j;r_j|\sum C_j$ is strongly NP-hard,\\
             $O2|p_{ij}=1;t_j|\sum w_jC_j$ is strongly NP-hard.}}
 
@@ -257,7 +257,7 @@
 	Annote = {$P;S1|s_j=s;p_j=p;r_j|C_{\max}$ is in $P$,\\
              $P;S1|s_j=s;p_j=p;r_j|\sum C_j$ is in $P$.\\
              $P;S1|s_j=s;p_j=1;r_j|\sum w_jC_j$ is in $P$,\\
-             $P;S1|s_j=s;p_j=1;r_j|\sum w_jU_j$ is in $P$,\\
+             $P;S1|s_j=s;p_j=1;r_j|\sum w_j(1-U_j)$ is in $P$,\\
              $P;S1|s_j=s;p_j=1;r_j|\sum T_j$ is in $P$,\\
              $P2;S1|p_j=p|C_{\max}$ is NP-hard,\\
              $P2;S1|p_j=p|\sum C_j$ is NP-hard,\\
@@ -324,12 +324,12 @@
 	Year = 1998,
 	Annote = {$1|p-batch|C_{\max}$ is in $P$,\\
              $1|p-batch(\infty)|\sum w_jC_j$ is in $P$,\\
-             $1|p-batch(\infty)|\sum U_j$ is in $P$,\\
-             $1|p-batch(\infty)|\sum w_jU_j$ is in $P_{pseudo}$,\\
+             $1|p-batch(\infty)|\sum (1-U_j)$ is in $P$,\\
+             $1|p-batch(\infty)|\sum w_j(1-U_j)$ is in $P_{pseudo}$,\\
              $1|p-batch(\infty)|\sum w_jT_j$ is in $P_{pseudo}$,\\
              $1|p-batch;r_j|C_{\max}$ is strongly NP-hard,\\
              $1|p-batch|L_{\max}$ is strongly NP-hard,\\
-             $1|p-batch(\infty)|\sum w_jU_j$ is NP-hard,\\
+             $1|p-batch(\infty)|\sum w_j(1-U_j)$ is NP-hard,\\
              $1|p-batch(\infty)|\sum w_jT_j$ is NP-hard.}}
 
 @article{BruckerGarey:77:Scheduling-equal-length,
@@ -362,7 +362,7 @@
 	Title = {How useful are preemptive schedules?},
 	Volume = 31,
 	Year = 2003,
-	Annote = {$P|p_j=1;pmtn;r_j|\sum w_jU_j$ is in $P$,\\
+	Annote = {$P|p_j=1;pmtn;r_j|\sum w_j(1-U_j)$ is in $P$,\\
              $P2|p_j=1;pmtn;r_j|\sum w_jT_j$ is in $P$.}}
 
 @article{BruckerHurink:02:A-polynomial-algorithm,
@@ -416,7 +416,7 @@
              $O|p_{ij}=1;r_j|L_{\max}$ is in $P$,\\
              $O2|p_{ij}=1;prec;r_j|L_{\max}$ is in $P$,\\
              $O|p_{ij}=1|\sum w_jC_j$ is in $P$,\\
-             $O2|p_{ij}=1;prec|\sum U_j$ is strongly NP-hard,\\
+             $O2|p_{ij}=1;prec|\sum (1-U_j)$ is strongly NP-hard,\\
              $O|p_{ij}=1;tree;no-wait|C_{\max}$ is in $P$,\\
              $O2|p_{ij}=1;prec;no-wait|C_{\max}$ is in $P$,\\
              $O|p_{ij}=1;intree;no-wait|L_{\max}$ is in $P$,\\
@@ -433,8 +433,8 @@
 	Title = {Complexity of scheduling problems with multi-purpose machines},
 	Volume = 70,
 	Year = 1997,
-	Annote = {$P|M_j;p_j=1;r_j|\sum w_jU_j$ is in $P$,\\
-             $Q|M_j;p_j=1|\sum w_jU_j$ is in $P$,\\
+	Annote = {$P|M_j;p_j=1;r_j|\sum w_j(1-U_j)$ is in $P$,\\
+             $Q|M_j;p_j=1|\sum w_j(1-U_j)$ is in $P$,\\
              $P|M_j;p_j=1;r_j|\sum w_jT_j$ is in $P$,\\
              $Q|M_j;p_j=1|\sum w_jT_j$ is in $P$,\\
              $P2|M_j;chains;p_j=1|C_{\max}$ is NP-hard,\\
@@ -442,14 +442,14 @@
              $Fm|M_j;r_j;p_{ij}=1|C_{\max}$ is in $P$,\\
              $Fm|M_j;r_j;p_{ij}=1|\sum C_j$ is in $P$,\\
              $Fm|M_j;p_{ij}=1|\sum w_jC_j$ is in $P$,\\
-             $Fm|M_j;p_{ij}=1|\sum w_jU_j$ is in $P$,\\
+             $Fm|M_j;p_{ij}=1|\sum w_j(1-U_j)$ is in $P$,\\
              $Fm|M_j;p_{ij}=1|\sum T_j$ is in $P$,\\
-             $J|M_j;prec;r_j;p_{ij}=1;n=k|\sum w_jU_j$ is in $P$,\\
+             $J|M_j;prec;r_j;p_{ij}=1;n=k|\sum w_j(1-U_j)$ is in $P$,\\
              $J|M_j;prec;r_j;p_{ij}=1;n=k|\sum w_jT_j$ is in $P$,\\
              $Om|M_j;r_j;p_{ij}=1|C_{\max}$ is in $P$,\\
              $Om|M_j;r_j;p_{ij}=1|\sum C_j$ is in $P$,\\
              $Om|M_j;p_{ij}=1|\sum w_jC_j$ is in $P$,\\
-             $Om|M_j;p_{ij}=1|\sum w_jU_j$ is in $P$,\\
+             $Om|M_j;p_{ij}=1|\sum w_j(1-U_j)$ is in $P$,\\
              $Om|M_j;p_{ij}=1|\sum T_j$ is in $P$.}}
 
 @article{BrunoJones:80:Deterministic-scheduling,
@@ -492,25 +492,25 @@
 	Title = {Polynomial Algorithms for resource-constrained and multiprocessor task scheduling problems},
 	Volume = 90,
 	Year = 1996,
-	Annote = {$J|prec;p_{ij}=1;r_j;n=k|\sum w_jU_j$ is in $P$,\\
+	Annote = {$J|prec;p_{ij}=1;r_j;n=k|\sum w_j(1-U_j)$ is in $P$,\\
              $J|prec;p_{ij}=1;r_j;n=k|\sum w_jT_j$ is in $P$,\\
              $Pm|fix_j;r_j;p_j=1|C_{\max}$ is in $P$,\\
              $Pm|fix_j;r_j;p_j=1|\sum C_j$ is in $P$,\\
              $Pm|fix_j;p_j=1|\sum w_jC_j$ is in $P$,\\
-             $Pm|fix_j;p_j=1|\sum w_jU_j$ is in $P$,\\
+             $Pm|fix_j;p_j=1|\sum w_j(1-U_j)$ is in $P$,\\
              $Pm|fix_j;p_j=1|\sum T_j$ is in $P$,\\
              $Fm|fix_j;r_j;p_{ij}=1|C_{\max}$ is in $P$,\\
              $Fm|fix_j;r_j;p_{ij}=1|\sum C_j$ is in $P$,\\
              $Fm|fix_j;p_{ij}=1|\sum w_jC_j$ is in $P$,\\
-             $Fm|fix_j;p_{ij}=1|\sum w_jU_j$ is in $P$,\\
+             $Fm|fix_j;p_{ij}=1|\sum w_j(1-U_j)$ is in $P$,\\
              $Fm|fix_j;p_{ij}=1|\sum w_jT_j$ is in $P$,\\
              $J2|fix_j;n=k|C_{\max}$ is in $P$,\\
-             $J|fix_j;prec;r_j;p_{ij}=1;n=k|\sum w_jU_j$ is in $P$,\\
+             $J|fix_j;prec;r_j;p_{ij}=1;n=k|\sum w_j(1-U_j)$ is in $P$,\\
              $J|fix_j;prec;r_j;p_{ij}=1;n=k|\sum w_jT_j$ is in $P$,\\
              $Om|fix_j;r_j;p_{ij}=1|C_{\max}$ is in $P$,\\
              $Om|fix_j;r_j;p_{ij}=1|\sum C_j$ is in $P$,\\
              $Om|fix_j;p_{ij}=1|\sum w_jC_j$ is in $P$,\\
-             $Om|fix_j;p_{ij}=1|\sum w_jU_j$ is in $P$,\\
+             $Om|fix_j;p_{ij}=1|\sum w_j(1-U_j)$ is in $P$,\\
              $Om|fix_j;p_{ij}=1|\sum T_j$ is in $P$.}}
 
 @article{BruckerKnust:99:Complexity-results,
@@ -525,8 +525,8 @@
              $F2|p_{ij}=1;prec|\sum C_j$ is in $P$,\\
              $F|p_{ij}=1;intree;r_j|C_{\max}$ is strongly NP-hard,\\
              $F|p_{ij}=1;outtree|L_{\max}$ is strongly NP-hard,\\
-             $F2|p_{ij}=1;chains|\sum U_j$ is strongly NP-hard,\\
-             $F3|p_{ij}=1;chains|\sum U_j$ is strongly NP-hard,\\
+             $F2|p_{ij}=1;chains|\sum (1-U_j)$ is strongly NP-hard,\\
+             $F3|p_{ij}=1;chains|\sum (1-U_j)$ is strongly NP-hard,\\
              $F2|p_{ij}=1;chains|\sum T_j$ is strongly NP-hard,\\
              $F3|p_{ij}=1;chains|\sum T_j$ is strongly NP-hard,\\
              $1|outtree;l;p_j=1;r_j|\sum C_j$ is in $P$,\\
@@ -593,7 +593,7 @@
 	Volume = 53,
 	Year = 2000,
 	Annote = {$P2|r_j;p_j=1;size_j|\sum C_j$ is in $P$,\\
-             $Pm|p_j=p;size_j|\sum w_jU_j$ is in $P$,\\
+             $Pm|p_j=p;size_j|\sum w_j(1-U_j)$ is in $P$,\\
              $Pm|p_j=p;size_j|\sum T_j$ is in $P$,\\
              $P2|chains;r_j;p_j=1;size_j|C_{\max}$ is strongly NP-hard,\\
              $P2|chains;p_j=1;size_j|L_{\max}$ is strongly NP-hard,\\
@@ -608,7 +608,7 @@
 	Title = {On the complexity of two machine job-shop scheduling with regular objective functions},
 	Volume = 19,
 	Year = 1997,
-	Annote = {$J2|n=k|\sum w_jU_j$ is in $P$,\\
+	Annote = {$J2|n=k|\sum w_j(1-U_j)$ is in $P$,\\
              $J2|n=k|\sum w_jT_j$ is in $P$.}}
 
 @article{BruckerKravchenko:99:Preemptive-job-shop,
@@ -645,8 +645,8 @@
              $F3;S1|p_{ij}=1;r_j|L_{\max}$ is strongly NP-hard,\\
              $F2;S1|p_{ij}=1;r_j|\sum C_j$ is strongly NP-hard,\\
              $F3;S1|p_{ij}=1;r_j|\sum C_j$ is strongly NP-hard,\\
-             $F2;S1|p_{ij}=1|\sum w_jU_j$ is NP-hard,\\
-             $F3;S1|p_{ij}=1|\sum w_jU_j$ is NP-hard,\\
+             $F2;S1|p_{ij}=1|\sum w_j(1-U_j)$ is NP-hard,\\
+             $F3;S1|p_{ij}=1|\sum w_j(1-U_j)$ is NP-hard,\\
              $F2;S1|p_{ij}=1|\sum T_j$ is NP-hard,\\
              $F3;S1|p_{ij}=1|\sum T_j$ is NP-hard,\\
              $F2;S1|p_{ij}=1|\sum w_jT_j$ is strongly NP-hard,\\
@@ -685,8 +685,8 @@
 	Title = {Single machine batch scheduling to minimize the weighted number of late jobs},
 	Volume = 43,
 	Year = 1996,
-	Annote = {$1|s-batch|\sum U_j$ is in $P$,\\
-             $1|s-batch|\sum w_jU_j$ is in $P_{pseudo}$.}}
+	Annote = {$1|s-batch|\sum (1-U_j)$ is in $P$,\\
+             $1|s-batch|\sum w_j(1-U_j)$ is in $P_{pseudo}$.}}
 
 @techreport{BruckerKravchenko:99:Preemption-can-make,
 	Author = {Brucker, P. and Kravchenko, S.A.},
@@ -696,7 +696,7 @@
 	Title = {Preemption can make parallel machine scheduling problems hard},
 	Type = {OSM {Reihe} P,},
 	Year = 1999,
-	Annote = {$P|p_j=p;pmtn|\sum w_jU_j$ is NP-hard.}}
+	Annote = {$P|p_j=p;pmtn|\sum w_j(1-U_j)$ is NP-hard.}}
 
 @article{BazewiczLiu:96:Scheduling-multiprocessor,
 	Author = {B{\l}a{\.z}ewicz, J. and Liu, Z.},
@@ -901,7 +901,7 @@
 	Title = {Minimizing the number of late jobs on unrelated machines},
 	Volume = 10,
 	Year = 1991,
-	Annote = {$R|pmtn;r_j|\sum U_j$ is strongly NP-hard.}}
+	Annote = {$R|pmtn;r_j|\sum (1-U_j)$ is strongly NP-hard.}}
 
 @article{DuLeung:93:Minimizing-mean,
 	Author = {Du, J. and Leung, J.Y.-T.},
@@ -935,7 +935,7 @@
 	Title = {Minimizing the number of late jobs with release time constraint},
 	Volume = 11,
 	Year = 1992,
-	Annote = {$P2|pmtn;r_j|\sum U_j$ is NP-hard.}}
+	Annote = {$P2|pmtn;r_j|\sum (1-U_j)$ is NP-hard.}}
 
 @article{DuLeung:90:Minimizing-mean,
 	Author = {Du, J. and Leung, J.Y.-T. and Young, G.H.},
@@ -1163,7 +1163,7 @@
 	Title = {Scheduling with batching: minimizing the weighted number of tardy jobs},
 	Volume = 16,
 	Year = 1994,
-	Annote = {$1|p_j=p;s-batch|\sum w_jU_j$ is in $P$.}}
+	Annote = {$1|p_j=p;s-batch|\sum w_j(1-U_j)$ is in $P$.}}
 
 @article{HorvathLam:77:A-level-algorithm,
 	Author = {Horvath, E.C. and Lam, S. and Sethi, R.},
@@ -1188,14 +1188,14 @@
 	Year = 2000,
 	Annote = {$P2;S1|s_j=1|\sum C_j$ is in $P$,\\
              $P;S1|p_j=1|\sum w_jC_j$ is in $P$,\\
-             $P;S1|p_j=1|\sum U_j$ is in $P$,\\
+             $P;S1|p_j=1|\sum (1-U_j)$ is in $P$,\\
              $P2;S1|s_j=1|C_{\max}$ is in $P_{pseudo}$,\\
-             $P2;S1|p_j=1|\sum w_jU_j$ is in $P_{pseudo}$,\\
+             $P2;S1|p_j=1|\sum w_j(1-U_j)$ is in $P_{pseudo}$,\\
              $P2;S1|p_j=1|\sum T_j$ is in $P_{pseudo}$,\\
              $P2;S1|s_j=s|C_{\max}$ is strongly NP-hard,\\
              $P2;S1|s_j=1|L_{\max}$ is strongly NP-hard,\\
              $P2;S1|s_j=s|\sum C_j$ is strongly NP-hard,\\
-             $P2;S1|p_j=1|\sum w_jU_j$ is NP-hard,\\
+             $P2;S1|p_j=1|\sum w_j(1-U_j)$ is NP-hard,\\
              $P2;S1|p_j=1|\sum T_j$ is NP-hard,\\
              $P2;S1|p_j=1|\sum w_jT_j$ is strongly NP-hard.}}
 
@@ -1255,9 +1255,9 @@
 	Publisher = {Plenum},
 	Title = {Reducibility among combinatorial problems},
 	Year = 1972,
-	Annote = {$1||\sum w_jU_j$ is $P_{pseudo}$,\\
-             $1||\sum w_jU_j$ is NP-hard,\\
-             $1|s-batch|\sum w_jU_j$ is NP-hard.}}
+	Annote = {$1||\sum w_j(1-U_j)$ is $P_{pseudo}$,\\
+             $1||\sum w_j(1-U_j)$ is NP-hard,\\
+             $1|s-batch|\sum w_j(1-U_j)$ is NP-hard.}}
 
 @article{Kubale:87:The-complexity-of-scheduling,
 	Author = {Kubale, M.},
@@ -1320,10 +1320,10 @@
 	School = {Universit{\"a}t Osnabr{\"u}ck, Fachbereich Mathematik/Informatik},
 	Title = {Scheduling multiprocessortasks on dedicated processors},
 	Year = 1995,
-	Annote = {$Fm|fix_j;prec;r_j;n=k|\sum w_jU_j$ is in $P$,\\
+	Annote = {$Fm|fix_j;prec;r_j;n=k|\sum w_j(1-U_j)$ is in $P$,\\
             $Fm|fix_j;prec;r_j;n=k|\sum w_jT_j$ is in $P$,\\
-            $O|fix_j;prec;r_j;p_{ij}=1;n=2|\sum w_jU_j$ is in $P$,\\
-            $Om|fix_j;prec;r_j;n=k|\sum w_jU_j$ is in $P$,\\
+            $O|fix_j;prec;r_j;p_{ij}=1;n=2|\sum w_j(1-U_j)$ is in $P$,\\
+            $Om|fix_j;prec;r_j;n=k|\sum w_j(1-U_j)$ is in $P$,\\
             $O|fix_j;prec;r_j;p_{ij}=1;n=2|\sum w_jT_j$ is in $P$,\\
             $Om|fix_j;prec;r_j;n=k|\sum w_jT_j$ is in $P$,\\
             $F|fix_j;n=3|C_{\max}$ is NP-hard.}}
@@ -1336,7 +1336,7 @@
 	Year = 1999,
 	Annote = {$O2|p_{ij}=1;t_{kl}|C_{\max}$ is in $P$,\\
             $F2;R1|p_{ij}=p;t_k;r_j|\sum w_jC_j$ is in $P$,\\
-            $F2;R1|p_{ij}=p;t_k;r_j|\sum w_jU_j$ is in $P$,\\
+            $F2;R1|p_{ij}=p;t_k;r_j|\sum w_j(1-U_j)$ is in $P$,\\
             $F2;R1|p_{ij}=p;t_k;r_j|\sum T_j$ is in $P$,\\
             $F2;R1|p_{ij}=p;t_k|\sum w_jT_j$ is in $P$,\\
             $F3;R1|p_{ij}=p;t_{jk};r_j|C_{\max}$ is strongly NP-hard,\\
@@ -1345,8 +1345,8 @@
             $F3;R1|p_{ij}=p;t_{jk}|L_{\max}$ is strongly NP-hard,\\
             $F2;R1|p_{ij}=1;t_j;r_j|\sum C_j$ is strongly NP-hard,\\
             $F3;R1|p_{ij}=1;t_{jk};r_j|\sum C_j$ is strongly NP-hard,\\
-            $F2;R1|p_{ij}=1;t_j|\sum w_jU_j$ is NP-hard,\\
-            $F3;R1|p_{ij}=1;t_{jk}|\sum w_jU_j$ is NP-hard,\\
+            $F2;R1|p_{ij}=1;t_j|\sum w_j(1-U_j)$ is NP-hard,\\
+            $F3;R1|p_{ij}=1;t_{jk}|\sum w_j(1-U_j)$ is NP-hard,\\
             $F2;R1|p_{ij}=1;t_j|\sum T_j$ is NP-hard,\\
             $F3;R1|p_{ij}=1;t_{jk}|\sum T_j$ is NP-hard,\\
             $F2;R1|p_{ij}=1;t_j|\sum w_jT_j$ is strongly NP-hard,\\
@@ -1362,10 +1362,10 @@
 	Title = {Minimizing the number of late jobs for the two-machine unit-time job-shop scheduling problem},
 	Volume = 98,
 	Year = 1999,
-	Annote = {$J2|p_{ij}=1|\sum U_j$ is in $P$,\\
-             $J2|p_{ij}=1|\sum w_jU_j$ is in $P_{pseudo}$,\\
-             $J2|p_{ij}=1|\sum w_jU_j$ is NP-hard,\\
-             $J2|M_j;p_{ij}=1|\sum w_jU_j$ is NP-hard.}}
+	Annote = {$J2|p_{ij}=1|\sum (1-U_j)$ is in $P$,\\
+             $J2|p_{ij}=1|\sum w_j(1-U_j)$ is in $P_{pseudo}$,\\
+             $J2|p_{ij}=1|\sum w_j(1-U_j)$ is NP-hard,\\
+             $J2|M_j;p_{ij}=1|\sum w_j(1-U_j)$ is NP-hard.}}
 
 @article{KubiakSriskandarajah:91:A-note-on-the-complexity,
 	Author = {Kubiak, W. and Sriskandarajah, C. and Zaras, K.},
@@ -1376,7 +1376,7 @@
 	Title = {A note on the complexity of openshop scheduling problems},
 	Volume = 29,
 	Year = 1991,
-	Annote = {$O|p_{ij}=1;no-wait|\sum w_jU_j$ is in $P$,\\
+	Annote = {$O|p_{ij}=1;no-wait|\sum w_j(1-U_j)$ is in $P$,\\
              $O2|no-wait|\sum C_j$ is strongly NP-hard.}}
 
 @article{KubiakTimkovsky:96:A-polynomial-time-algorithm,
@@ -1421,9 +1421,9 @@
 	Title = {On the complexity of minimizing the number of late jobs in unit time open shops},
 	Volume = 100,
 	Year = 1999,
-	Annote = {$O|p_{ij}=1;r_j|\sum U_j$ is strongly NP-hard,\\
-             $O|fix_j;r_j;p_{ij}=1|\sum U_j$ is strongly NP-hard,\\
-             $O|M_j;r_j;p_{ij}=1|\sum U_j$ is strongly NP-hard.}}
+	Annote = {$O|p_{ij}=1;r_j|\sum (1-U_j)$ is strongly NP-hard,\\
+             $O|fix_j;r_j;p_{ij}=1|\sum (1-U_j)$ is strongly NP-hard,\\
+             $O|M_j;r_j;p_{ij}=1|\sum (1-U_j)$ is strongly NP-hard.}}
 
 @article{KravchenkoWerner:09:Preemptive-scheduling,
 	Author = {Kravchenko, S.A. and Werner, F.},
@@ -1511,8 +1511,8 @@
 	Title = {Preemptive scheduling of uniform parallel machines to minimize the weighted number of late jobs},
 	Type = {{Report BW}},
 	Year = 1979,
-	Annote = {$Qm|pmtn|\sum U_j$ is in $P$,\\
-             $Qm|pmtn|\sum w_jU_j$ is in $P_{pseudo}$.}}
+	Annote = {$Qm|pmtn|\sum (1-U_j)$ is in $P$,\\
+             $Qm|pmtn|\sum w_j(1-U_j)$ is in $P_{pseudo}$.}}
 
 @article{Lloyd:81:Concurrent-task,
 	Author = {Lloyd, E.L.},
@@ -1553,7 +1553,7 @@
 	Publisher = {Springer},
 	Title = {Recent results in the theory of machine scheduling},
 	Year = 1983,
-	Annote = {$P|pmtn|\sum U_j$ is NP-hard.}}
+	Annote = {$P|pmtn|\sum (1-U_j)$ is NP-hard.}}
 
 @article{Lawler:90:A-dynamic-programming,
 	Author = {Lawler, E.L.},
@@ -1564,8 +1564,8 @@
 	Title = {A dynamic programming algorithm for preemptive scheduling of a single machine to minimize the number of late jobs},
 	Volume = 26,
 	Year = 1990,
-	Annote = {$1|r_j;pmtn|\sum U_j$ is in $P$,\\
-             $1|r_j;pmtn|\sum w_jU_j$ is in $P_{pseudo}$.}}
+	Annote = {$1|r_j;pmtn|\sum (1-U_j)$ is in $P$,\\
+             $1|r_j;pmtn|\sum w_j(1-U_j)$ is in $P_{pseudo}$.}}
 
 @article{LiuBulfin:85:On-the-complexity-of-preemptive,
 	Author = {Liu, C.Y. and Bulfin, R.L.},
@@ -1587,7 +1587,7 @@
 	Title = {Scheduling open shops with unit execution times to minimize functions of due dates},
 	Volume = 36,
 	Year = 1988,
-	Annote = {$O|p_{ij}=1|\sum U_j$ is in $P$,\\
+	Annote = {$O|p_{ij}=1|\sum (1-U_j)$ is in $P$,\\
              $O|p_{ij}=1|\sum T_j$ is in $P$.}}
 
 @article{LeeCai:99:Scheduling-one-and-two-processor,
@@ -1640,7 +1640,7 @@
 	Year = 1981,
 	Annote = {$O2|r_j|C_{\max}$ is strongly NP-hard,\\
              $O2||L_{\max}$ is strongly NP-hard,\\
-             $O2|pmtn|\sum U_j$ is NP-hard,\\
+             $O2|pmtn|\sum (1-U_j)$ is NP-hard,\\
              $O2|fix_j;r_j|C_{\max}$ is strongly NP-hard,\\
              $O2|fix_j|L_{\max}$ is strongly NP-hard,\\
              $O2|M_j;r_j|C_{\max}$ is strongly NP-hard,\\
@@ -1657,7 +1657,7 @@
 	Year = 1982,
 	Annote = {$O2|r_j|C_{\max}$ is strongly NP-hard,\\
              $O2||L_{\max}$ is strongly NP-hard,\\
-             $O2|pmtn|\sum U_j$ is NP-hard,\\
+             $O2|pmtn|\sum (1-U_j)$ is NP-hard,\\
              $O2|fix_j;r_j|C_{\max}$ is strongly NP-hard,\\
              $O2|fix_j|L_{\max}$ is strongly NP-hard,\\
              $O2|M_j;r_j|C_{\max}$ is strongly NP-hard,\\
@@ -1674,7 +1674,7 @@
 	Year = 1989,
 	Annote = {$Qm|r_j|C_{\max}$ is in $P_{pseudo}$,\\
              $Qm||\sum w_jC_j$ is in $P_{pseudo}$,\\
-             $Qm||\sum w_jU_j$ is in $P_{pseudo}$,\\
+             $Qm||\sum w_j(1-U_j)$ is in $P_{pseudo}$,\\
              $Pm|pmtn|\sum w_jC_j$ is in $P_{pseudo}$.}}
 
 
@@ -1688,8 +1688,8 @@
 	Title = {Preemptive scheduling of two uniform machines to minimize the number of late jobs},
 	Volume = 37,
 	Year = 1989,
-	Annote = {$Qm|pmtn|\sum U_j$ is in $P$,\\
-             $Qm|pmtn|\sum w_jU_j$ is in $P_{pseudo}$.}}
+	Annote = {$Qm|pmtn|\sum (1-U_j)$ is in $P$,\\
+             $Qm|pmtn|\sum w_j(1-U_j)$ is in $P_{pseudo}$.}}
 
 @article{LenstraRinnooy-Kan:78:Complexity-of-scheduling,
 	Author = {Lenstra, J.K. and Rinnooy Kan, A.H.G.},
@@ -1734,12 +1734,12 @@
 	Volume = 4,
 	Year = 1980,
 	Annote = {$1|chains;p_j=1;r_j|\sum w_jC_j$ ins strongly NP-hard,\\
-             $1|chains;p_j=1|\sum U_j$ is strongly NP-hard,\\
+             $1|chains;p_j=1|\sum (1-U_j)$ is strongly NP-hard,\\
              $P2|p_j=1;intree|\sum w_jC_j$ is strongly NP-hard,\\
              $P2|p_j=1;outtree|\sum w_jC_j$ is strongly NP-hard,\\
              $P2|M_j;intree;p_j=1|\sum w_jC_j$ is strongly NP-hard,\\
              $P2|M_j;outtree;p_j=1|\sum w_jC_j$ is strongly NP-hard,\\
-             $1|chains;p_j=1;s-batch|\sum U_j$ is strongly NP-hard.}}
+             $1|chains;p_j=1;s-batch|\sum (1-U_j)$ is strongly NP-hard.}}
 
 @article{LenstraRinnooy-Kan:77:Complexity-of-machine,
 	Address = {Amsterdam},
@@ -1834,7 +1834,7 @@
 	Title = {An $n$ job, one machine sequencing algorithm for minimizing the number of late jobs},
 	Volume = 15,
 	Year = 1968,
-	Annote = {$1||\sum U_j$ is in $P$.}}
+	Annote = {$1||\sum (1-U_j)$ is in $P$.}}
 
 @article{Maxwell:70:On-sequencing-n-jobs,
 	Author = {Maxwell, W.L.},
@@ -1844,7 +1844,7 @@
 	Title = {On sequencing $n$ jobs on one machine to minimize the number of late jobs},
 	Volume = 16,
 	Year = 1970,
-	Annote = {$1||\sum U_j$ is in $P$.}}
+	Annote = {$1||\sum (1-U_j)$ is in $P$.}}
 
 @article{Monma:82:Linear-time-algorithms,
 	Author = {Monma, C.L.},
@@ -1898,9 +1898,9 @@
 	Title = {Transversal graphs for partially ordered sets: sequencing, merging and scheduling problems},
 	Volume = 3,
 	Year = 1999,
-	Annote = {$J|prec;r_j;n=k|\sum w_jU_j$ is in $P_{pseudo}$,\\
+	Annote = {$J|prec;r_j;n=k|\sum w_j(1-U_j)$ is in $P_{pseudo}$,\\
              $J|prec;r_j;n=k|\sum w_jT_j$ is in $P_{pseudo}$,\\
-             $J|prec;r_j;n=k;pmtn|\sum w_jU_j$ is in $P_{pseudo}$,\\
+             $J|prec;r_j;n=k;pmtn|\sum w_j(1-U_j)$ is in $P_{pseudo}$,\\
              $J|prec;r_j;n=k;pmtn|\sum w_jT_j$ is in $P_{pseudo}$.}}
 
 @inproceedings{OguzQi:06:Preemptive-scheduling,
@@ -1981,7 +1981,7 @@
 	Title = {Two {N}{P}-hardness results for preemptive minsum scheduling of unrelated parallel machines},
 	Year = 2001,
 	Annote = {$R|pmtn|\sum C_j$ is strongly NP-hard,\\
-             $R|pmtn|\sum U_j$ is strongly NP-hard.}}
+             $R|pmtn|\sum (1-U_j)$ is strongly NP-hard.}}
 
 @inproceedings{Sidney:73:An-extension-of-Moores,
 	Address = {Berlin},
@@ -1993,7 +1993,7 @@
 	Publisher = {Springer},
 	Title = {An extension of {M}oore's due date algorithm},
 	Year = 1973,
-	Annote = {$1||\sum U_j$ is in $P$.}}
+	Annote = {$1||\sum (1-U_j)$ is in $P$.}}
 
 @article{Sethi:76:Scheduling-graphs,
 	Author = {Sethi, R.},
@@ -2040,9 +2040,9 @@
 	Title = {The complexity of shop-scheduling problems with two or three jobs},
 	Volume = 53,
 	Year = 1991,
-	Annote = {$J|prec;r_j;n=2|\sum w_jU_j$ is in $P$,\\
+	Annote = {$J|prec;r_j;n=2|\sum w_j(1-U_j)$ is in $P$,\\
              $J|prec;r_j;n=2|\sum w_jT_j$ is in $P$,\\
-             $J|prec;r_j;n=2;pmtn|\sum w_jU_j$ is in $P$,\\
+             $J|prec;r_j;n=2;pmtn|\sum w_j(1-U_j)$ is in $P$,\\
              $J|prec;r_j;n=2;pmtn|\sum w_jT_j$ is in $P$.}}
 
 @article{SahniCho:79:Complexity-of-scheduling,
@@ -2141,7 +2141,7 @@
 	Title = {Is a unit-time job shop not easier than identical parallel machines?},
 	Volume = 85,
 	Year = 1998,
-	Annote = {$J2|p_{ij}=1;r_j|\sum U_j$ is NP-hard,\\
+	Annote = {$J2|p_{ij}=1;r_j|\sum (1-U_j)$ is NP-hard,\\
              $J2|p_{ij}=1;r_j|\sum C_j$ is NP-hard,\\
              $J2|chains;p_{ij}=1|\sum C_j$ is strongly NP-hard,\\
              $J2|p_{ij}=1|\sum w_jC_j$ is NP-hard,\\
@@ -2161,7 +2161,7 @@
              $J2|M_j;chains;p_{ij}=1|\sum C_j$ is strongly NP-hard,\\
              $J2|M_j;p_{ij}=1|\sum w_jC_j$ is NP-hard,\\
              $J2|M_j;r_j;p_{ij}=1|\sum w_jC_j$ is strongly NP-hard,\\
-             $J2|M_j;r_j;p_{ij}=1|\sum U_j$ is NP-hard,\\
+             $J2|M_j;r_j;p_{ij}=1|\sum (1-U_j)$ is NP-hard,\\
              $J2|M_j;p_{ij}=1|\sum w_jT_j$ is strongly NP-hard.}}
 
 @article{Timkovsky:03:Identical-parallel,
@@ -2182,8 +2182,8 @@
             $O|p_{ij}=1;outtree|L_{\max}$ is $*\NP$,\\
             $O2|p_{ij}=1;chains|\sum w_jC_j$ is strongly NP-hard,\\
             $O3|p_{ij}=1;chains|\sum w_jC_j$ is strongly NP-hard,\\
-            $O2|p_{ij}=1;chains|\sum U_j$ is strongly NP-hard,\\
-            $O3|p_{ij}=1;chains|\sum U_j$ is strongly NP-hard,\\
+            $O2|p_{ij}=1;chains|\sum (1-U_j)$ is strongly NP-hard,\\
+            $O3|p_{ij}=1;chains|\sum (1-U_j)$ is strongly NP-hard,\\
             $O2|p_{ij}=1;chains|\sum T_j$ is strongly NP-hard,\\
             $O3|p_{ij}=1;chains|\sum T_j$ is strongly NP-hard,\\
             $O|p_{ij}=1;r_j;no-wait|\sum C_j$ is in $P$,\\
@@ -2194,8 +2194,8 @@
             $Om|p_{ij}=1;r_j;no-wait|\sum T_j$ is in $P$,\\
             $O2|p_{ij}=1;chains;no-wait|\sum w_jC_j$ is strongly NP-hard,\\
             $O3|p_{ij}=1;chains;no-wait|\sum w_jC_j$ is strongly NP-hard,\\
-            $O2|p_{ij}=1;chains;no-wait|\sum U_j$ is strongly NP-hard,\\
-            $O3|p_{ij}=1;chains;no-wait|\sum U_j$ is strongly NP-hard,\\
+            $O2|p_{ij}=1;chains;no-wait|\sum (1-U_j)$ is strongly NP-hard,\\
+            $O3|p_{ij}=1;chains;no-wait|\sum (1-U_j)$ is strongly NP-hard,\\
             $O2|p_{ij}=1;chains;no-wait|\sum T_j$ is strongly NP-hard,\\
             $O3|p_{ij}=1;chains;no-wait|\sum T_j$ is strongly NP-hard,\\
             $F|fix_j;prec;p_{ij}=1|C_{\max}$ is strongly NP-hard,\\
@@ -2203,14 +2203,14 @@
             $O|fix_j;tree;r_j;p_{ij}=1|C_{\max}$ is strongly NP-hard,\\
             $O|fix_j;tree;p_{ij}=1|L_{\max}$ is strongly NP-hard,\\
             $O2|fix_j;chains;p_{ij}=1|\sum w_jC_j$ is strongly NP-hard,\\
-            $O2|fix_j;chains;p_{ij}=1|\sum U_j$ is strongly NP-hard,\\
+            $O2|fix_j;chains;p_{ij}=1|\sum (1-U_j)$ is strongly NP-hard,\\
             $O2|fix_j;chains;p_{ij}=1|\sum T_j$ is strongly NP-hard,\\
             $P2|M_j;chains;p_j=1|\sum w_jC_j$ is strongly NP-hard,\\
             $O|M_j;outtree;r_j;p_{ij}=1|C_{\max}$ is strongly NP-hard,\\
             $O|M_j;prec;p_{ij}=1|C_{\max}$ is strongly NP-hard,\\
             $O|M_j;outtree;p_{ij}=1|L_{\max}$ is strongly NP-hard,\\
             $O2|M_j;chains;p_{ij}=1|\sum w_jC_j$ is strongly NP-hard,\\
-            $O2|M_j;chains;p_{ij}=1|\sum U_j$ is strongly NP-hard,\\
+            $O2|M_j;chains;p_{ij}=1|\sum (1-U_j)$ is strongly NP-hard,\\
             $O2|M_j;chains;p_{ij}=1|\sum T_j$ is strongly NP-hard,\\
             $1|prec;l;p_j=1|C_{\max}$ is strongly NP-hard.}}
 
@@ -2342,16 +2342,16 @@
 	Title = {see: Assignment Problem},
 	Annote = {$1|p_j=1;r_j|\sum w_jT_j$ is in $P$,\\
             $1|p_j=p|\sum w_jT_j$ is in $P$,\\
-            $P|p_j=p|\sum w_jU_j$ is in $P$,\\
+            $P|p_j=p|\sum w_j(1-U_j)$ is in $P$,\\
             $P|p_j=p|\sum w_jT_j$ is in $P$,\\
-            $P;S1|s_j=s;p_j=p|\sum w_jU_j$ is in $P$,\\
+            $P;S1|s_j=s;p_j=p|\sum w_j(1-U_j)$ is in $P$,\\
             $P;S1|s_j=1;p_j=1;r_j|\sum w_jT_j$ is in $P$,\\
             $P;S1|s_j=s;p_j=p|\sum w_jT_j$ is in $P$,\\
             $Q|p_j=p;r_j|C_{\max}$ is in $P$,\\
-            $Q|p_j=p|\sum w_jU_j$ is in $P$,\\
+            $Q|p_j=p|\sum w_j(1-U_j)$ is in $P$,\\
             $Q|p_j=p|\sum w_jT_j$ is in $P$,\\
-            $F2;S1|p_{ij}=p;s_{ij}=s|\sum w_jU_j$ is in $P$,\\
-            $F;S1|p_{ij}=1;s_{ij}=s|\sum w_jU_j$ is in $P$,\\
+            $F2;S1|p_{ij}=p;s_{ij}=s|\sum w_j(1-U_j)$ is in $P$,\\
+            $F;S1|p_{ij}=1;s_{ij}=s|\sum w_j(1-U_j)$ is in $P$,\\
             $F2;S1|p_{ij}=p;s_{ij}=s|\sum w_jT_j$ is in $P$,\\
             $F;S1|p_{ij}=1;s_{ij}=s|\sum w_jT_j$ is in $P$.}}
 
@@ -2359,14 +2359,14 @@
 	Date-Modified = {2015-12-11 22:11:19 +0000},
 	Key = {see earliest-start},
 	Title = {see: Earliest Start Schedule},
-	Annote = {$1|prec;p_j=p;p-batch(\infty)|\sum w_jU_j$ is in $P$,\\
+	Annote = {$1|prec;p_j=p;p-batch(\infty)|\sum w_j(1-U_j)$ is in $P$,\\
             $1|prec;p_j=p;p-batch(\infty)|\sum w_jT_j$ is in $P$.}}
 
 @misc{::see:-Network,
 	Date-Modified = {2015-12-11 22:11:19 +0000},
 	Key = {see networkflow},
 	Title = {see: Network Flow Problem},
-	Annote = {$P|p_j=1;r_j|\sum w_jU_j$ is in $P$,\\
+	Annote = {$P|p_j=1;r_j|\sum w_j(1-U_j)$ is in $P$,\\
             $P|p_j=1;r_j|\sum w_jT_j$ is in $P$,\\
             $O|p_{ij}=1;r_j|L_{\max}$ is in $P$.}}
 
@@ -2395,31 +2395,31 @@
 	Title = {see: Single Machine Problem},
 	Annote = {$P2|r_j|\sum C_j$ is strongly NP-hard,\\
             $P2|p_j=1;chains;r_j|\sum w_jC_j$ is strongly NP-hard,\\
-            $P2|p_j=1;chains|\sum U_j$ is strongly NP-hard,\\
+            $P2|p_j=1;chains|\sum (1-U_j)$ is strongly NP-hard,\\
             $P2|p_j=1;chains|\sum T_j$ is strongly NP-hard,\\
-            $P2|pmtn|\sum w_jU_j$ is NP-hard,\\
-            $F|p_{ij}=1;r_j|\sum w_jU_j$ is in $P$,\\
+            $P2|pmtn|\sum w_j(1-U_j)$ is NP-hard,\\
+            $F|p_{ij}=1;r_j|\sum w_j(1-U_j)$ is in $P$,\\
             $F|p_{ij}=1;r_j|\sum w_jT_j$ is in $P$,\\
-            $F2|fix_j;chains;p_{ij}=1|\sum U_j$ is strongly NP-hard,\\
+            $F2|fix_j;chains;p_{ij}=1|\sum (1-U_j)$ is strongly NP-hard,\\
             $F2|fix_j;chains;p_{ij}=1|\sum T_j$ is strongly NP-hard,\\
             $P2|M_j;r_j|\sum C_j$ is strongly NP-hard,\\
             $P2|M_j;chains;p_j=1;r_j|\sum w_jC_j$ is strongly NP-hard,\\
-            $P2|M_j;chains;p_j=1|\sum U_j$ is strongly NP-hard,\\
+            $P2|M_j;chains;p_j=1|\sum (1-U_j)$ is strongly NP-hard,\\
             $P2|M_j;chains;p_j=1|\sum T_j$ is strongly NP-hard,\\
-            $F2|M_j;chains;p_{ij}=1|\sum U_j$ is strongly NP-hard,\\
+            $F2|M_j;chains;p_{ij}=1|\sum (1-U_j)$ is strongly NP-hard,\\
             $F2|M_j;chains;p_{ij}=1|\sum T_j$ is strongly NP-hard,\\
-            $F|p_{ij}=1;t_k;r_j|\sum w_jU_j$ is in $P$,\\
+            $F|p_{ij}=1;t_k;r_j|\sum w_j(1-U_j)$ is in $P$,\\
             $F|p_{ij}=1;t_k;r_j|\sum w_jT_j$ is in $P$,\\
-            $P2;S1|p_j=1|\sum w_jU_j$ is in $P_{pseudo}$,\\
+            $P2;S1|p_j=1|\sum w_j(1-U_j)$ is in $P_{pseudo}$,\\
             $P2;S1|p_j=1|\sum T_j$ is in $P_{pseudo}$,\\
             $P2;S1|p_j=1;r_j|L_{\max}$ is strongly NP-hard,\\
             $P2;S1|p_j=1;r_j|\sum C_j$ is strongly NP-hard,\\
-            $P2;S1|p_j=1|\sum w_jU_j$ is NP-hard,\\
+            $P2;S1|p_j=1|\sum w_j(1-U_j)$ is NP-hard,\\
             $P2;S1|p_j=1|\sum T_j$ is NP-hard,\\
             $P2;S1|p_j=1|\sum w_jT_j$ is strongly NP-hard,\\
             $1|p-batch;r_j|\sum C_j$ is strongly NP-hard,\\
-            $1|chains;p_j=1;p-batch|\sum U_j$ is strongly NP-hard,\\
+            $1|chains;p_j=1;p-batch|\sum (1-U_j)$ is strongly NP-hard,\\
             $1|chains;p_j=1;p-batch|\sum T_j$ is strongly NP-hard,\\
             $F2;S1|p_{ij}=p;s_{ij}=1;r_j|\sum w_jC_j$ is in $P$,\\
-            $F2;S1|p_{ij}=p;s_{ij}=1;r_j|\sum w_jU_j$ is in $P$,\\
+            $F2;S1|p_{ij}=p;s_{ij}=1;r_j|\sum w_j(1-U_j)$ is in $P$,\\
             $F2;S1|p_{ij}=p;s_{ij}=1;r_j|\sum T_j$ is in $P$.}}
