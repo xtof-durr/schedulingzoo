@@ -135,23 +135,27 @@ function update_pb() {
     pb_name = "";
     pb_list = [];
     pb_attr = {};
-
+    nb_sep = 0;
     var rows = document.getElementsByTagName("TR");
 
     for(var i = 0; i < rows.length; i++) {             // loop over all rows
         var tr = rows[i];
-        if (tr.hasAttribute('add_separator'))          // add separator
-            pb_name += "|";
+        if (tr.hasAttribute('add_separator')) {       // add separator
+            nb_sep += 1;
+            if (nb_sep < 3) {
+                pb_name += "|";
+            }
+        }
 		if (! eval_bool_expr(tr)) {
              hide(tr);                                 // do not process further this row
 		} else {
 			show(tr);                                  // row is active
             var has_options = false;
-            var td = tr.children[1].children;           // options are in 2nd column
+            var td = tr.children[1].children;          // options are in 2nd column
             for(var j=0; j<td.length; j++) {
                 if (td[j].type == "radio") {
                     var option = td[j];
-    				if (! eval_bool_expr(option)) {
+    				if (! eval_bool_expr(option)) {    // option is not active
     					hide_option(option);
     				}
     				else {
@@ -161,8 +165,13 @@ function update_pb() {
         					pb_attr[option.name] = option.value;
                             pb_list.push(option.value);
         					if (! tr.hasAttribute('hide') && option.value != "" ) {
-    							if (pb_name != "" && ! strEndsWith(pb_name, "|") && ! option.hasAttribute("separation"))
+    							if (pb_name != "" && ! strEndsWith(pb_name, "|") 
+                                    && ! option.hasAttribute("separation") && nb_sep != 3)
     								pb_name += ";";
+                                if (nb_sep == 3) {
+                                    nb_sep = 4;         // encountered first parameter
+                                    pb_name += " [";
+                                }
     							pb_name += option.value;
         					}
         				}
@@ -173,6 +182,8 @@ function update_pb() {
                 hide(tr);
 		}
 	}
+    if (nb_sep == 4)
+        pb_name += "]";
 
     document.getElementById('problem').value = pb_name;
 

@@ -198,6 +198,22 @@
                 <choice value="\sum w_jT_j" requires="advanced" explanation="Weighted maximum tardiness. Every job $j$ is given a due date $d_j$. The goal is to minimize $\sum_j w_j \max\{0, C_j-d_j\}$ where $C_j$ is the completion time of job $j$ and $w_j$ its priority weight." />
             </field>
         </section>
+
+        <section name="Parameters" add_separator="True" requires="advanced">
+            <field name="Bounded processing times" requires="advanced and not processing times">
+                <choice value=""             explanation=""  />
+                <choice value="p_{\max}"     explanation="Upper bounded processing times."  />
+            </field>
+            <field name="Different processing times" requires="advanced and not processing times">
+                <choice value=""             explanation=""  />
+                <choice value="\#p"     explanation="Number of different processing times."  />
+            </field>
+            <field name="Treewidth" requires="advanced and precedence relation">
+                <choice value=""             explanation=""  />
+                <choice value="tw"     explanation="Treewidth of the precedence constraint."  />
+            </field>
+        </section>
+
     </form>
     <reductions>
         <reduction from="C_{\max}" to="L_{\max}" />
@@ -313,5 +329,9 @@
 
         <reduction from="" to="s_j=1" />
         <reduction from="s_j=1" to="s_j=s" />
+
+        <reduction from="p_{\max}" to="" />
+        <reduction from="\#p" to="" />
+        <reduction from="tw" to="" />
     </reductions>
 </notation>

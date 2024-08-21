@@ -25,7 +25,7 @@ def pb2latex(s):
 def str2pb(s, field2val, val2field, file=None, key=None):
     """ s is a string of the form "P3|prec;p_j=1|C_{\\max}"
     returns the internal representation of a problem, which is a
-    dictionnary (keys are field names, and the same for all problems)
+    dictionary (keys are field names, and the same for all problems)
     mapping field names to field value. Example "number of machines": "2".
     """
     orig = s
@@ -39,7 +39,9 @@ def str2pb(s, field2val, val2field, file=None, key=None):
     # if '(' in s:                             # special rule for time lags
     #     i = s.index('(')
     #     s = s[:i] + ';' + s[i:]
-    s = s.replace("|", ";")                    # smash all fields
+    s = s.replace("|", ";")                    # smash all fields into a semicolon separated string
+    if s[-1] == "]":
+        s = s[:-1].replace(" [", ";")          # replace "A [B]" by "A;B"
     for val in s.split(";"):
         val = val.strip()
         # val = val.replace("\\", "\\\\")
@@ -55,10 +57,10 @@ def str2pb(s, field2val, val2field, file=None, key=None):
                 error("'%s' contains twice the value '%s'" % (orig, val))
                 return {}
             vec[field] = val
-    for field in field2val:
-        if vec[field] == '' and '' not in field2val[field]:
-                error("'%s' has missing objective function" % orig)
-                return {}
+    # for field in field2val:
+    #     if vec[field] == '' and '' not in field2val[field]:
+    #             error("'%s' has missing objective function" % orig)
+    #             return {}
     return vec
 
 

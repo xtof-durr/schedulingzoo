@@ -280,8 +280,7 @@ def print_form():
             first = True
             for option in field:
                 option_value = option.attrib['value']
-                print('    <input onchange="update_pb()" type="radio" name="%s" id="%s:%s"' %
-                      (name, name, option_value), end='')
+                print(f'    <input onchange="update_pb()" type="radio" name="{name}" id="{name}:{option_value}"', end='')
                 for a in option.attrib:
                     print(' %s="%s"' %(a, option.attrib[a]), end='')
                 if first:
@@ -413,8 +412,10 @@ def print_stat():
     for res in results:
         pb = res[0]
         for field in pb:
-            stat[field][pb[field]] += 1
-
+            try:
+                stat[field][pb[field]] += 1
+            except KeyError:
+                print(f"key error for {field=}")
     f = 0
     for field in fields:
         numbers = [(stat[field][val], val) for val in field2val[field] if val]

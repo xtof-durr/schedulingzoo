@@ -11,4 +11,4 @@ verify:
 	bash ./dot2png.sh
 
 install:
-	rsync -rv --delete . gate.lip6.fr:WWW/query/
+	rsync -rv --delete . ssh.lip6.fr:WWW/query/
