@@ -31,7 +31,6 @@
                 <choice value="3" explanation="m=3 machines."/>
                 <choice value="4" explanation="m=4 machines."/>
                 <choice value="5" explanation="m=5 machines."/>
-                <choice value="m" explanation="Fixed number of machines" />
                 <choice value="\infty" requires="advanced and P" explanation="Unlimited number of machines available." />
 			</field>
 
@@ -199,18 +198,22 @@
             </field>
         </section>
 
-        <section name="Parameters" add_separator="True" requires="advanced">
-            <field name="Bounded processing times" requires="advanced and not processing times">
+        <section name="Parameterized complexity" id="Parameters" add_separator="True" requires="advanced">
+            <field name="bounded processing times" requires="advanced and not processing times">
                 <choice value=""             explanation=""  />
                 <choice value="p_{\max}"     explanation="Upper bounded processing times."  />
             </field>
-            <field name="Different processing times" requires="advanced and not processing times">
+            <field name="different processing times" requires="advanced and not processing times">
                 <choice value=""             explanation=""  />
                 <choice value="\#p"     explanation="Number of different processing times."  />
             </field>
-            <field name="Treewidth" requires="advanced and precedence relation">
+            <field name="treewidth" requires="advanced and precedence relation">
                 <choice value=""             explanation=""  />
                 <choice value="tw"     explanation="Treewidth of the precedence constraint."  />
+            </field>
+            <field name="bounded number of machines" requires="advanced and not 1 and not number of machines">
+                <choice value=""             explanation=""  />
+                <choice value="m" explanation="Bounded number of machines" />
             </field>
         </section>
 
@@ -255,10 +258,11 @@
         <reduction from="" to="r_j" />
         <reduction from="p_j=1" to="p_j=p" />
         <reduction from="p_j=1" to="p_j\in\{1,2\}" />
-        <reduction from="p_j\in\{1,2\}" to="" />
+        <reduction from="p_{ij}=p;" to=";\#p" />
+        <reduction from="p_j=p;" to=";\#p" />
+        <reduction from="p_j\in\{1,2\};" to=";\#p" />
+        <reduction from="\#p" to="" />
         <reduction from="p_{ij}=1" to="p_{ij}=p" />
-        <reduction from="p_j=p" to="" />
-        <reduction from="p_{ij}=p" to="" />
         <reduction from="p_{kj}=p_j" to="" />
         <reduction from="p_{ij}\in\{p_j,\infty\}" to="" />
 
@@ -266,13 +270,13 @@
         <reduction from="Q" to="R" />
         <reduction from="F" to="J" />
 
-        <reduction from="1;not processing times;not preemption" to="2;not processing times;not preemption" />
-        <reduction from="2;not processing times;not preemption" to="3;not processing times;not preemption" />
-        <reduction from="3;not processing times;not preemption" to="4;not processing times;not preemption" />
-        <reduction from="4;not processing times;not preemption" to="5;not processing times;not preemption" />
-        <reduction from="5;not processing times;not preemption" to="m;not processing times;not preemption" />
-        <reduction from="m;not processing times;not preemption" to=";not processing times;not preemption" />
-        <reduction from=";not processing times;not preemption" to="\infty;not processing times;not preemption" />
+        <reduction from="1;not bounded number of machines;not processing times;not preemption" to="2;not bounded number of machines;not processing times;not preemption" />
+        <reduction from="2;not bounded number of machines;not processing times;not preemption" to="3;not bounded number of machines;not processing times;not preemption" />
+        <reduction from="3;not bounded number of machines;not processing times;not preemption" to="4;not bounded number of machines;not processing times;not preemption" />
+        <reduction from="4;not bounded number of machines;not processing times;not preemption" to="5;not bounded number of machines;not processing times;not preemption" />
+        <reduction from="5;not bounded number of machines;not processing times;not preemption" to=";m;not processing times;not preemption" />
+        <reduction from="not number of machines;m;not processing times;not preemption" to="not number of machines;;not processing times;not preemption" />
+        <reduction from=";not bounded number of machines;not processing times;not preemption" to="\infty;not bounded number of machines;not processing times;not preemption" />
 
 
         <reduction from="" to="M_j" />

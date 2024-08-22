@@ -187,6 +187,14 @@ function update_pb() {
 
     document.getElementById('problem').value = pb_name;
 
+    sec = document.getElementById('Parameters');
+    if (eval_bool_expr(sec)) {    // option is not active
+        show(sec);
+    }
+    else {
+        hide(sec);
+    }
+
     // MathJax.Hub.Queue(["Typeset",MathJax.Hub,"explanation_div"]);
 }
 

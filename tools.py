@@ -15,8 +15,9 @@ def pb2latex(s):
     s = re.sub('([^\\\\a-zA-Z_]|^)([a-zA-Z -]{3,99})', '\\1\\\\textrm{\\2}', s)
     if len(s)>=3 and s[:3] == "P;1":    # remove the implicit P for single machine
         s = s[2:]
-    elif len(s)>=3 and s[1] == ';' and ( s[2].isdigit() or s[2] == 'm' ):
+    elif len(s)>=3 and s[1] == ';' and ( s[2].isdigit() or s[2] == 'm' ):   # Aug2024: we could now remove the =='m' test
         s = s[0] + s[2:]                # write P2 instead of P;2, and Pm instead of P;m
+    s = s.replace('[', "\:[")
     return '$' + s + '$'                # write problem name in LaTeX Math
 
 

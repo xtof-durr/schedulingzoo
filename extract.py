@@ -264,7 +264,10 @@ def print_form():
     # ---------- read the aliases
     read_alias(tree[0])
     for section in tree[1]:
-        print("<h2>%s</h2>" % section.attrib['name'])
+        print("<h2", end='')
+        for a in section.attrib:
+            print(' %s="%s"' %(a, section.attrib[a]), end='')
+        print(">%s</h2>" % section.attrib['name'])
         print("<table>")
         add_separator = 'add_separator' in section.attrib
         for field in section:
