@@ -2,6 +2,7 @@ all:: verify install
 
 verify:
 	mkdir -p dot
+	rm dot/*
 	python3 ./extract.py form       > form.php
 	python3 ./extract.py reductions > reductions.py
 	python3 ./extract.py references > references.py
