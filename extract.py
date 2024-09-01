@@ -418,7 +418,7 @@ def print_stat():
             try:
                 stat[field][pb[field]] += 1
             except KeyError:
-                print(f"key error for {field=}")
+                print(f"key error for field={field}")
     f = 0
     for field in fields:
         numbers = [(stat[field][val], val) for val in field2val[field] if val]
