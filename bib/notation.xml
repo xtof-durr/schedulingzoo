@@ -195,8 +195,7 @@
                 <choice value="\sum w_j(1-U_j)"     requires="advanced" explanation="Weighted throughput. Every job is given a due date $d_j$.  The goal is to maximize the total weight of jobs that complete on time."/>
                 <choice value="\sum T_j"     requires="advanced" explanation="Maximum tardiness. Every job $j$ is given a due date $d_j$. The goal is to minimize $\sum_j \max\{0, C_j-d_j\}$ where $C_j$ is the completion time of job $j$."/>
                 <choice value="\sum w_jT_j" requires="advanced" explanation="Weighted maximum tardiness. Every job $j$ is given a due date $d_j$. The goal is to minimize $\sum_j w_j \max\{0, C_j-d_j\}$ where $C_j$ is the completion time of job $j$ and $w_j$ its priority weight." />
-                <choice value="\sum w_jU_j" requires="advanced" explanation="Weighted not throughput. Every job is given a due date $d_j$. The goal is to minimize the total weight of late jobs."/>
-                <choice value="\sum U_j" requires="advanced" explanation="Not throughput. Every job is given a due date $d_j$. The goal is to minimize the number of late jobs." />
+
             </field>
         </section>
 
@@ -216,6 +215,14 @@
             <field name="bounded number of machines" requires="advanced and not 1 and not number of machines">
                 <choice value=""             explanation=""  />
                 <choice value="m" explanation="Bounded number of machines" />
+            </field>
+            <field name="different release dates" requires="advanced">
+                <choice value=""             explanation=""  />
+                <choice value="\#r" explanation="Number of different release dates." />
+            </field>
+            <field name="different due dates" requires="advanced">
+                <choice value=""             explanation=""  />
+                <choice value="\#d" explanation="Number of different due dates." />
             </field>
         </section>
 
@@ -339,5 +346,7 @@
         <reduction from="p_{\max}" to="" />
         <reduction from="\#p" to="" />
         <reduction from="tw" to="" />
+        <reduction from="\#r" to="" />
+        <reduction from="\#d" to="" />
     </reductions>
 </notation>
