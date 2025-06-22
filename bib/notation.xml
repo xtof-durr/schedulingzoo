@@ -154,8 +154,10 @@
 
             <field name="batching" requires="advanced and 1">
                 <choice value=""         explanation="no batching"  />
-                <choice value="s-batch" explanation="Serial batching. The jobs have to be processed in batches. The processing time of a batch is the total processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
-                <choice value="p-batch" explanation="Parallel batching. The jobs have to be processed in batches. A batch consists of maximal b jobs. If jobs have sizes, then instead the total size of a batch is at most b. The processing time of a batch is the maximal processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
+                <choice value="s-batch" explanation="Serial batching. The jobs have to be processed in batches. The processing time of a batch is the total processing time over all jobs in the batch. If a new batch is started, a constant setup time $s$ occurs." />
+                <choice value="s-batch(\infty)" explanation="Serial batching. The jobs have to be processed in batches. There is no limit on the number of jobs in a batch. The processing time of a batch is the total processing time over all jobs in the batch. If a new batch is started, a constant setup time $s$ occurs." />
+                <choice value="s-batch(b)" explanation="Serial batching. The jobs have to be processed in batches.A batch consists of maximal b jobs. The processing time of a batch is the total processing time over all jobs in the batch. If a new batch is started, a constant setup time $s$ occurs." />
+                <choice value="p-batch" explanation="Parallel batching. The jobs have to be processed in batches. A batch consists of maximal b jobs. If jobs have sizes, then instead the total size of a batch is at most b. The processing time of a batch is the maximal processing time over all jobs in the batch. If a new batch is started, a constant setup time $s$ occurs." />
                 <choice value="p-batch(\infty)" explanation="Parallel batching. The jobs have to be processed in batches. There is no limit on the number of jobs in a batch. The processing time of a batch is the maximal processing time over all jobs in the batch.  If a new batch is started, a constant setup time $s$ occurs." />
             </field>
 
@@ -200,9 +202,9 @@
         </section>
 
         <section name="Parameterized complexity" id="Parameters" add_separator="True" requires="advanced">
-            <field name="bounded processing times" requires="advanced and not processing times">
+            <field name="maximal processing times" requires="advanced and not processing times">
                 <choice value=""             explanation=""  />
-                <choice value="p_{\max}"     explanation="Upper bounded processing times."  />
+                <choice value="p_{\max}"     explanation="Maximum processing times."  />
             </field>
             <field name="different processing times" requires="advanced and not processing times">
                 <choice value=""             explanation=""  />
@@ -224,6 +226,9 @@
                 <choice value=""             explanation=""  />
                 <choice value="\#d" explanation="Number of different due dates." />
             </field>
+            <field name="different weights" requires="advanced">
+                <choice value=""             explanation=""  />
+                <choice value="\#w" explanation="Number of different weights." />
         </section>
 
     </form>
@@ -331,6 +336,8 @@
         <reduction from="t_{kl}" to="t_{jkl}" />
 
         <reduction from="p-batch(\infty)" to="p-batch" />
+        <reduction from="s-batch(\infty)" to="s-batch" />
+        <reduction from="s-batch(\infty)" to="s-batch(b)" />
 
         <reduction from="d_j=d" to="" />
         <reduction from="d_j\leq r_j+2" to="d_j\leq r_j+3" />
@@ -348,5 +355,6 @@
         <reduction from="tw" to="" />
         <reduction from="\#r" to="" />
         <reduction from="\#d" to="" />
+        <reduction from="\#w" to="" />
     </reductions>
 </notation>
