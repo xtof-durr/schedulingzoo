@@ -214,9 +214,9 @@
                 <choice value=""             explanation=""  />
                 <choice value="tw"     explanation="Treewidth of the precedence constraint."  />
             </field>
-            <field name="bounded number of machines" requires="advanced and not 1 and not number of machines">
+            <field name="Number of machines" requires="advanced and not 1 and not number of machines">
                 <choice value=""             explanation=""  />
-                <choice value="m" explanation="Bounded number of machines" />
+                <choice value="m" explanation="Number of machines" />
             </field>
             <field name="different release dates" requires="advanced">
                 <choice value=""             explanation=""  />
