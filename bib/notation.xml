@@ -202,11 +202,8 @@
         <section name="Parameterized complexity" id="Parameters" add_separator="True" requires="advanced">
             <field name="bounded processing times" requires="advanced and not processing times">
                 <choice value=""             explanation=""  />
+                <choice value="\#p"     explanation="Bounded number of different processing times."  />
                 <choice value="p_{\max}"     explanation="Upper bounded processing times."  />
-            </field>
-            <field name="different processing times" requires="advanced and not processing times">
-                <choice value=""             explanation=""  />
-                <choice value="\#p"     explanation="Number of different processing times."  />
             </field>
             <field name="treewidth" requires="advanced and precedence relation">
                 <choice value=""             explanation=""  />
@@ -267,9 +264,10 @@
         <reduction from="" to="r_j" />
         <reduction from="p_j=1" to="p_j=p" />
         <reduction from="p_j=1" to="p_j\in\{1,2\}" />
-        <reduction from="p_{ij}=p;" to=";\#p" />
-        <reduction from="p_j=p;" to=";\#p" />
-        <reduction from="p_j\in\{1,2\};" to=";\#p" />
+        <reduction from="p_{ij}=p;" to=";p_{\max}" />
+        <reduction from="p_j=p;" to=";p_{\max}" />
+        <reduction from="p_j\in\{1,2\};" to=";p_{\max}" />
+        <reduction from="p_{\max}" to="\#p" />
         <reduction from="\#p" to="" />
         <reduction from="p_{ij}=1" to="p_{ij}=p" />
         <reduction from="p_{kj}=p_j" to="" />
@@ -343,7 +341,6 @@
         <reduction from="" to="s_j=1" />
         <reduction from="s_j=1" to="s_j=s" />
 
-        <reduction from="p_{\max}" to="" />
         <reduction from="\#p" to="" />
         <reduction from="tw" to="" />
         <reduction from="\#r" to="" />
