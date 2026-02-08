@@ -1,5 +1,5 @@
 <!doctype html>
-<?
+<?php
 echo `./search.py "$_REQUEST[problem]" 2>&1`;
 
 // This was interesting at the beginning, to see if the website is used

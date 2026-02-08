@@ -9,6 +9,6 @@
   </style>
 </head>
 
-<?
+<?php
 echo `./ref2bibtex.py "$_REQUEST[ID]" 2>&1`;
 ?>
