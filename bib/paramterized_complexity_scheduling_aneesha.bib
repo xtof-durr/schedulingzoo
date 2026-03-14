@@ -20,11 +20,11 @@
 	pages = {67-73},
 	year = {2019},
 	doi = {https://doi.org/10.1016/j.ejor.2018.07.038},
-	Annote = {$1|reject|\sum C_j [\|A|]$ is W[1]-hard\\
-			 $1|reject|\sum C_j [\#p]$ is fixed parameter tractable\\
-			 $1|reject|\sum C_j [\#e]$ is fixed parameter tractable\\
-			 $1|reject|\sum C_j [p_{\max}]$ is fixed parameter tractable\\
-			 $1|reject|\sum C_j [\e_{\max}]$ is fixed parameter tractable}
+	Annote = {$1|rej|\sum C_j [\#acc]$ is W[1]-hard\\
+			 $1|rej|\sum C_j [\#p]$ is fixed parameter tractable\\
+			 $1|rej|\sum C_j [\#e]$ is fixed parameter tractable\\
+			 $1|rej|\sum C_j [p_{\max}]$ is fixed parameter tractable\\
+			 $1|rej|\sum C_j [\e_{\max}]$ is fixed parameter tractable}
 }
 @article{HermelinMnichOmlor:24:Serial-batching-to-minimize-the-weighted-number-of-tardy-jobs,
 	author={Hermelin, Danny and Mnich, Matthias and Omlor, Simon},
@@ -37,8 +37,11 @@
 	doi ={https://doi.org/10.1007/s10951-024-00818-9},
 	publisher={Springer},
 	Annote ={$1|s-batch(\infty);r_j|\sum w_j(1-U_j) [\#p;#d]$ is W[1]-hard\\
-			 $1|s-batch(\infty);r_j|\sum w_j(1-U_j) [\#d;#p;#r]$ is fixed parameter tractable\\
-			 $1|s-batch(\infty);r_j|\sum w_j(1-U_j) [\#d;#w]$ is fixed parameter tractable}
+	         $1|s-batch(\infty);r_j|\sum w_j(1-U_j) [\#p;#r]$ is W[1]-hard
+			 $1|s-batch(\infty)|\sum w_j(1-U_j) [\#d;#p]$ is fixed parameter tractable\\
+			 $1|s-batch(\infty)|\sum w_j(1-U_j) [\#d;#w]$ is fixed parameter tractable\\
+			 $1|s-batch(b)|\sum w_j(1-U_j) [\#d;#w]$ is fixed parameter tractable\\
+			 $1|s-batch(b);r_j|\sum U_j [\#d;#p;#r]$ is fixed parameter tractable}
 }
 @article{YuOron:25:Single-machine-scheduling-with-fixed-energy-recharging-times-to-minimize-the-number-of-late-jobs-and-the-number-of-just-in-time-jobs-A-parameterized-complexity-analysis,
 	author = {Renjie Yu and Daniel Oron},
@@ -51,8 +54,8 @@
 	doi = {https://doi.org/10.1016/j.ejor.2025.01.007},
 	Annote ={$1|ren\text{-}e|\sum 1-U_j is NP-hard when $\#d=\#p=1$\\
 			 $1|ren\text{-}e;p_j=1|\sum w_j [\#d]$ is W[1]-hard\\
-			 $1|ren\text{-}e|\sum 1-U_j [\#e;\#d]$ is fixed parameter tractable\\
-			 $1|ren\text{-}e|\sum w_j [\#e;\#d]$ is fixed parameter tractable}		  
+			 $1|ren\text{-}e|\sum 1-U_j [\#enr;\#d]$ is fixed parameter tractable\\
+			 $1|ren\text{-}e|\sum w_j [\#enr;\#d]$ is fixed parameter tractable}		  
 }
 @article{MallemHanenKordon:24:A-New-Structural-Parameter-on-Single-Machine-Scheduling-with-Release-Dates-and-Deadlines,
 	AUTHOR = {Mallem, Maher and Hanen, Claire C. and Munier-Kordon, Alix},
@@ -67,4 +70,62 @@
 	DOI = {https://doi.org/10.1007/978-3-031-60924-4_16},
 	ANNOTE = {$1|prec;r_j;d_j|C_{\max} [\#q]$ is fixed parameter tractable\\
 			 $1|prec;r_j|L_{\max} [\#q]$ is fixed parameter tractable}
+}
+@article{JansenLassotaMaackPikies:21:Total-completion-time-minimization-for-scheduling-with-incompatibility-cliques,
+	title={Total completion time minimization for scheduling with incompatibility cliques},
+	author={Jansen, Klaus and Lassota, Alexandra and Maack, Marten and Pikies, Tytus},
+	volume={31},
+	pages={192--200},
+	year={2021},
+	doi ={https://doi.org/10.1609/icaps.v31i1.15962},
+	Annote ={$P|cliques;M_j|\sum C_j [\#b]$ is fixed parameter tractable\\
+			 $R|cliques|\sum w_j C_j [\#m;\#p_{\max};\n]$ is fixed parameter tractable\\
+			 $R|cliques|\sum w_j C_j [\#b;\#p_{\max};\#n]$ is fixed parameter tractable}
+}
+@article{KaulMnichMolter:24:Single-Machine-Scheduling-to-Minimize-the-Number-of-Tardy-Jobs-with-Release-Dates,
+	title={Single-Machine Scheduling to Minimize the Number of Tardy Jobs with Release Dates}, 
+	author={Matthias Kaul and Matthias Mnich and Hendrik Molter},
+	year={2024},
+	doi={https://doi.org/10.48550/arXiv.2408.12967},
+	Annote ={$1|r_j|\sum w_j(1-U_j) [\#d;\#r]$ is W[1]-hard even if $\#w=1$\\
+			 $1|r_j|\sum w_j(1-U_j) [\#p;\#d;\#r]$ is fixed parameter tractable\\
+			 $1|r_j|\sum w_j(1-U_j) [\#p;\#w;\#d]$ is fixed parameter tractable\\
+			 $1|r_j|\sum w_j(1-U_j) [\#p;\#w;\#r]$ is fixed parameter tractable}
+}
+@article{WeerdtBaartHe:21:Single-machine-scheduling-with-release-times-deadlines-setup-times-and-rejection,
+	title = {Single-machine scheduling with release times, deadlines, setup times, and rejection},
+	author = {Mathijs {de Weerdt} and Robert Baart and Lei He},
+	journal = {European Journal of Operational Research},
+	volume = {291},
+	number = {2},
+	pages = {629-639},
+	year = {2021},
+	doi = {https://doi.org/10.1016/j.ejor.2020.09.042},
+	Annote = {$1|r_j;s_j;d_j;rej|\sum w_j T_j [\#tw;\lambda]$ is fixed parameter tractable}
+}
+@article{ChenMarxZhang:17:Parameterized-and-approximation-results-for-scheduling-with-a-low-rank-processing-time-matrix,
+	title={Parameterized and approximation results for scheduling with a low rank processing time matrix},
+	author={Chen, Lin and Marx, D{\'a}niel and Ye, Deshi and Zhang, Guochuan},
+	pages={22--1},
+	year={2017},
+	doi={https://doi.org/10.4230/LIPIcs.STACS.2017.22},
+	Annote = {$R||C_{\max} [p_{\max}];\#rk]$ is fixed parameter tractable}
+}
+
+@article{BentertBredereckNiedermeier:23:A-multivariate-complexity-analysis-of-the-material-consumption-scheduling-problem,
+	title={A multivariate complexity analysis of the material consumption scheduling problem},
+	author={Bentert, Matthias and Bredereck, Robert and Gy{\"o}rgyi, P{\'e}ter and Kaczmarczyk, Andrzej and Niedermeier, Rolf},
+	journal={Journal of Scheduling},
+	volume={26},
+	number={4},
+	pages={369--382},
+	year={2023},
+	publisher={Springer},
+	doi={https://doi.org/10.1007/s10951-022-00771-5},
+	Annote = {$1|nr=1;p_j=1|C_{\max} [b_{\max,nr}]$ is para-NP-hard\\
+			 $1|nr=1;p_j=a_j|C_{\max} [\#q_{nr}]$ is W[1]-hard\\
+			 $1|nr=2;p_j=1|C_{\max} [\#q_{nr}]$ is W[1]-hard\\
+			 $1|nr=1|C_{\max} [\#q_{nr};\a_{\max}]$ is fixed parameter tractable under non-idling(NI)\\
+			 $1|nr=r|C_{\max} [\#q_{nr};a_{\max};\#r]$ is fixed parameter tractable\\			 
+			 $1|nr;p_j=1|C_{\max} [u_{\max}]$ is NP-hard and W[1]-hard}
 }
