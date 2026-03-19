@@ -8,8 +8,9 @@
 	year={2024},
 	doi ={https://doi.org/10.1007/s10951-023-00788-4},
 	publisher={Springer},
-	Annote = {$P|M_j;prec;r_j,d_j|C_{\max} [\#tw;#ρ]$ is fixed parameter tractable\\
-			 $P|M_j;prec;r_j;s_l{\max} |L_{\max} [\#tw;#ρ]$ is fixed parameter tractable}
+	Annote = {$P|\mathcal{M}_j(\text{type});prec;r_j,d_j|C_{\max} [\tw;\rho]$ is fixed parameter tractable\\
+			 $P|\mathcal{M}_j(\text{type});prec;r_j;s_l{\max} |C_{\max} [\tw;\rho]$ is fixed parameter tractable
+			 $P|\mathcal{M}_j(\text{type});prec;r_j;s_l{\max} |L_{\max} [\tw;\rho]$ is fixed parameter tractable}
 }
 @article{HermelinPinedo:19:On-the-parameterized-tractability-of-single-machine-scheduling-with-rejection,
 	author = {Danny Hermelin and Michael Pinedo and Dvir Shabtay and Nimrod Talmon},
@@ -20,11 +21,11 @@
 	pages = {67-73},
 	year = {2019},
 	doi = {https://doi.org/10.1016/j.ejor.2018.07.038},
-	Annote = {$1|rej|\sum C_j [\#acc]$ is W[1]-hard\\
-			 $1|rej|\sum C_j [\#p]$ is fixed parameter tractable\\
-			 $1|rej|\sum C_j [\#e]$ is fixed parameter tractable\\
-			 $1|rej|\sum C_j [p_{\max}]$ is fixed parameter tractable\\
-			 $1|rej|\sum C_j [\e_{\max}]$ is fixed parameter tractable}
+	Annote = {$1|e_j \leq R|\sum C_j [\#acc]$ is W[1]-hard\\
+			 $1|e_j \leq R|\sum C_j [\#p]$ is fixed parameter tractable\\
+			 $1|e_j \leq R|\sum C_j [\#e]$ is fixed parameter tractable\\
+			 $1|e_j \leq R|\sum C_j [p_{\max}]$ is fixed parameter tractable\\
+			 $1|e_j \leq R|\sum C_j [\e_{\max}]$ is fixed parameter tractable}
 }
 @article{HermelinMnichOmlor:24:Serial-batching-to-minimize-the-weighted-number-of-tardy-jobs,
 	author={Hermelin, Danny and Mnich, Matthias and Omlor, Simon},
@@ -41,7 +42,7 @@
 			 $1|s-batch(\infty)|\sum w_j(1-U_j) [\#d;#p]$ is fixed parameter tractable\\
 			 $1|s-batch(\infty)|\sum w_j(1-U_j) [\#d;#w]$ is fixed parameter tractable\\
 			 $1|s-batch(b)|\sum w_j(1-U_j) [\#d;#w]$ is fixed parameter tractable\\
-			 $1|s-batch(b);r_j|\sum U_j [\#d;#p;#r]$ is fixed parameter tractable}
+			 $1|s-batch(b);r_j|\sum w_j(1-U_j) [\#d;#p;#r]$ is fixed parameter tractable}
 }
 @article{YuOron:25:Single-machine-scheduling-with-fixed-energy-recharging-times-to-minimize-the-number-of-late-jobs-and-the-number-of-just-in-time-jobs-A-parameterized-complexity-analysis,
 	author = {Renjie Yu and Daniel Oron},
@@ -79,8 +80,8 @@
 	year={2021},
 	doi ={https://doi.org/10.1609/icaps.v31i1.15962},
 	Annote ={$P|cliques;M_j|\sum C_j [\#b]$ is fixed parameter tractable\\
-			 $R|cliques|\sum w_j C_j [\#m;\#p_{\max};\n]$ is fixed parameter tractable\\
-			 $R|cliques|\sum w_j C_j [\#b;\#p_{\max};\#n]$ is fixed parameter tractable}
+			 $R|cliques|\sum w_j C_j [\m;\p_{\max};\vartheta]$ is fixed parameter tractable\\
+			 $R|cliques|\sum w_j C_j [\#b;\p_{\max};\vartheta]$ is fixed parameter tractable}
 }
 @article{KaulMnichMolter:24:Single-Machine-Scheduling-to-Minimize-the-Number-of-Tardy-Jobs-with-Release-Dates,
 	title={Single-Machine Scheduling to Minimize the Number of Tardy Jobs with Release Dates}, 
@@ -101,7 +102,7 @@
 	pages = {629-639},
 	year = {2021},
 	doi = {https://doi.org/10.1016/j.ejor.2020.09.042},
-	Annote = {$1|r_j;s_j;d_j;rej|\sum w_j T_j [\#tw;\lambda]$ is fixed parameter tractable}
+	Annote = {$1|r_j;s_j;d_j;rej|\sum w_j T_j [\tw;\lambda]$ is fixed parameter tractable}
 }
 @article{ChenMarxZhang:17:Parameterized-and-approximation-results-for-scheduling-with-a-low-rank-processing-time-matrix,
 	title={Parameterized and approximation results for scheduling with a low rank processing time matrix},
@@ -111,7 +112,6 @@
 	doi={https://doi.org/10.4230/LIPIcs.STACS.2017.22},
 	Annote = {$R||C_{\max} [p_{\max}];\#rk]$ is fixed parameter tractable}
 }
-
 @article{BentertBredereckNiedermeier:23:A-multivariate-complexity-analysis-of-the-material-consumption-scheduling-problem,
 	title={A multivariate complexity analysis of the material consumption scheduling problem},
 	author={Bentert, Matthias and Bredereck, Robert and Gy{\"o}rgyi, P{\'e}ter and Kaczmarczyk, Andrzej and Niedermeier, Rolf},
