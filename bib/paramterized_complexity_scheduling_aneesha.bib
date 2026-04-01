@@ -8,9 +8,9 @@
 	year={2024},
 	doi ={https://doi.org/10.1007/s10951-023-00788-4},
 	publisher={Springer},
-	Annote = {$P|\mathcal{M}_j(\text{type});prec;r_j,d_j=d|C_{\max} [\tw;\rho]$ is fixed parameter tractable\\
-			 $P|\mathcal{M}_j(\text{type});prec;r_j;s_l{\max} |C_{\max} [\tw;\rho]$ is fixed parameter tractable
-			 $P|\mathcal{M}_j(\text{type});prec;r_j;s_l{\max} |L_{\max} [\tw;\rho]$ is fixed parameter tractable}
+	Annote = {$P|\mathcal{M}_j(\text{type});prec;r_j,d_j=d|C_{\max} [\pw(I);\rho]$ is fixed parameter tractable\\
+			 $P|\mathcal{M}_j(\text{type});prec;r_j;\lambda_{\max} |C_{\max} [\pw(I);\rho]$ is fixed parameter tractable
+			 $P|\mathcal{M}_j(\text{type});prec;r_j;\lambda{\max} |L_{\max} [\pw(I);\rho]$ is fixed parameter tractable}
 }
 @article{HermelinPinedo:19:On-the-parameterized-tractability-of-single-machine-scheduling-with-rejection,
 	author = {Danny Hermelin and Michael Pinedo and Dvir Shabtay and Nimrod Talmon},
@@ -79,9 +79,9 @@
 	pages={192--200},
 	year={2021},
 	doi ={https://doi.org/10.1609/icaps.v31i1.15962},
-	Annote ={$P|cliques;M_j|\sum C_j [\#b]$ is fixed parameter tractable\\
-			 $R|cliques|\sum w_j C_j [\m;\p_{\max};\vartheta]$ is fixed parameter tractable\\
-			 $R|cliques|\sum w_j C_j [\#b;\p_{\max};\vartheta]$ is fixed parameter tractable}
+	Annote ={$P|cliques;M(k)|\sum C_j [\#b]$ is fixed parameter tractable\\
+			 $R|cliques|\sum w_j C_j [\m;\p_{\max};\#vartheta]$ is fixed parameter tractable\\
+			 $R|cliques|\sum w_j C_j [\#b;\p_{\max};\#vartheta]$ is fixed parameter tractable}
 }
 @article{KaulMnichMolter:24:Single-Machine-Scheduling-to-Minimize-the-Number-of-Tardy-Jobs-with-Release-Dates,
 	title={Single-Machine Scheduling to Minimize the Number of Tardy Jobs with Release Dates}, 
@@ -102,7 +102,7 @@
 	pages = {629-639},
 	year = {2021},
 	doi = {https://doi.org/10.1016/j.ejor.2020.09.042},
-	Annote = {$1|r_j;s_j;d_j=d;rej|\sum w_j T_j [\tw;\lambda]$ is fixed parameter tractable}
+	Annote = {$1|r_j;s_j;d_j=d;\text{reject}|\sum_{j \notin R}w_j T_j-\sum_{j \notin R}v_j [\pw(I);\lambda_{max}]$ is fixed parameter tractable}
 }
 @article{ChenMarxZhang:17:Parameterized-and-approximation-results-for-scheduling-with-a-low-rank-processing-time-matrix,
 	title={Parameterized and approximation results for scheduling with a low rank processing time matrix},
@@ -128,4 +128,21 @@
 			 $1|nr=1|C_{\max} [\#q_{nr};\a_{\max}]$ is fixed parameter tractable under non-idling(NI)\\
 			 $1|nr=r|C_{\max} [\#q_{nr};a_{\max};\#r]$ is fixed parameter tractable\\			 
 			 $1|nr;p_j=1|C_{\max} [u_{\max}]$ is NP-hard and W[1]-hard}
+}
+@article{KnopKoutecký:17:Scheduling-meets-n-fold-integer-programming,
+   title={Scheduling meets n-fold integer programming},
+   volume={21},
+   ISSN={1099-1425},
+   DOI={https://doi.org/10.48550/arXiv.1603.02611},
+   number={5},
+   journal={Journal of Scheduling},
+   publisher={Springer Science and Business Media LLC},
+   author={Knop, Dušan and Koutecký, Martin},
+   year={2017},
+   Annote = {$Q||C_{\max} [p_{\max}]$ is fixed parameter tractable\\
+			 R||C_{\max} [p_{\max};\#K]$ is fixed parameter tractable\\
+			 $R||\sum w_j C_j [\m;\#vartheta]$ is fixed parameter tractable\\
+			 $R||\sum w_j C_j [p_{\max};\w_{\max};\#K]$ is fixed parameter tractable\\
+			 P||Cmax [\m]$ is W[1]-hard\\
+			 P||\sum w_j C_j [\m]$ is W[1]-hard}
 }
