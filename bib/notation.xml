@@ -226,6 +226,7 @@
             <field name="different weights" requires="advanced">
                 <choice value=""             explanation=""  />
                 <choice value="\#w" explanation="Number of different weights." />
+            </field>
         </section>
 
     </form>
