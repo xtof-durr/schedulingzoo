@@ -24,13 +24,13 @@ def pb2latex(s):
 
 # ---- extract problem vector from string
 def str2pb(s, field2val, val2field, file=None, key=None):
-    """ s is a string of the form "P3|prec;p_j=1|C_{\\max}"
+    """ s is a string of the form "P3|prec;p_j=1|C_{\\max}[tw]"
     returns the internal representation of a problem, which is a
     dictionary (keys are field names, and the same for all problems)
     mapping field names to field value. Example "number of machines": "2".
     """
     orig = s
-    s = correctxml(s)
+    s = correctxml(s).strip()
     vec = {field:'' for field in field2val}
     # this could be made more elegant by making it dependent on the "number of machines" field
     if len(s)>=2 and (s[1] in "123456789m" or s[1:7] == "\\infty"):     # special rule for number of machines
@@ -42,14 +42,16 @@ def str2pb(s, field2val, val2field, file=None, key=None):
     #     s = s[:i] + ';' + s[i:]
     s = s.replace("|", ";")                    # smash all fields into a semicolon separated string
     if s[-1] == "]":
-        s = s[:-1].replace(" [", ";")          # replace "A [B]" by "A;B"
+        s = s[:-1].replace("[", ";")          # replace "A [B]" by "A;B"
+    if s.count("[") + s.count("]"):
+        error(f"BibTeX entry '{key}' in file {file} contains a problem `{orig} -> {s}` with invalid brackets")
     for val in s.split(";"):
         val = val.strip()
         # val = val.replace("\\", "\\\\")
         if val != '':
             if val not in val2field:
                 if file:
-                    error(f"BibTeX entry '{key}' in file {file} contains a problem {orig} with unknown value '{val}'")
+                    error(f"BibTeX entry '{key}' in file {file} contains a problem `{orig}` with unknown value '{val}'")
                 else:           
                     error(f"Problem {orig} with unknown value '{val}'")
                 return {}

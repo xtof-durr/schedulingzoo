@@ -211,9 +211,9 @@
                 <choice value=""             explanation=""  />
                 <choice value="tw"     explanation="Treewidth of the precedence constraint."  />
             </field>
-            <field name="Number of machines" requires="advanced and not 1 and not number of machines">
+            <field name="bounded number of machines" requires="advanced and not 1 and not number of machines">
                 <choice value=""             explanation=""  />
-                <choice value="m" explanation="Number of machines" />
+                <choice value="m" explanation="Constant Number of machines" />
             </field>
             <field name="different release dates" requires="advanced">
                 <choice value=""             explanation=""  />
@@ -288,7 +288,7 @@
         <reduction from="3;not bounded number of machines;not processing times;not preemption" to="4;not bounded number of machines;not processing times;not preemption" />
         <reduction from="4;not bounded number of machines;not processing times;not preemption" to="5;not bounded number of machines;not processing times;not preemption" />
         <reduction from="5;not bounded number of machines;not processing times;not preemption" to=";m;not processing times;not preemption" />
-        <reduction from="not number of machines;m;not processing times;not preemption" to="not number of machines;;not processing times;not preemption" />
+        <reduction from="not bounded number of machines;m;not processing times;not preemption" to="not bounded number of machines;;not processing times;not preemption" />
         <reduction from=";not bounded number of machines;not processing times;not preemption" to="\infty;not bounded number of machines;not processing times;not preemption" />
 
 
