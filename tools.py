@@ -165,6 +165,10 @@ def getattr(bib, attr):
     else:
         return "unknown " + attr
 
+
+def clean_bib(s):
+    return s.replace("{", "").replace("}", "")
+
 def bib2str(bib):
     """Write entry to html"""
 
@@ -180,11 +184,12 @@ def bib2str(bib):
       s += ', '
 
 
+    title = clean_bib(getattr(bib, 'title'))
 
     # --- title ---
     if not(chapter):
         s += '<span class="title">'
-        s += '<a href="https://scholar.google.fr/scholar?q=%s">%s</a>' % (urllib.parse.quote(getattr(bib, 'title')), getattr(bib, 'title'))
+        s += '<a href="https://scholar.google.fr/scholar?q=%s">%s</a>' % (urllib.parse.quote(title), title)
         s += '</span>'
         s += ', '
 
@@ -199,7 +204,7 @@ def bib2str(bib):
     if chapter:
       s += 'in: '
       s += '<i>'
-      s += getattr(bib, 'title')
+      s += title
       s += '</i>'
       s += ', '
       s += getattr(bib, 'publisher')
@@ -210,11 +215,11 @@ def bib2str(bib):
     if 'JOURNAL' in bib:
         journal = True
         s += '<i>'
-        s += bib['JOURNAL']
+        s += clean_bib(bib['JOURNAL'])
         s += '</i>'
     elif 'BOOKTITLE' in bib:
         journal = True
-        s += bib['BOOKTITLE']
+        s += clean_bib(bib['BOOKTITLE'])
     elif bib['ENTRYTYPE'] == 'phdthesis':
         journal = True
         s += 'PhD thesis, '
@@ -282,5 +287,6 @@ def bib2str(bib):
 
 
 if __name__=="__main__":
+    # just a small test
     d = {'ANNOTE': '$1|prec;p_j=p;s-batch|\\sum C_j$ is in $P$,\\\\\n$1|p_j=p;s-batch|\\sum w_jC_j$ is in $P$,\\\\\n$1|chains;s-batch|\\sum C_j$ is NP-hard,\\\\\n$1|chains;p_j=1;s-batch|\\sum w_jC_j$ is strongly NP-hard,\\\\\n$1|s-batch|\\sum w_jC_j$ is strongly NP-hard.', 'TITLE': 'The complexity of one-machine batching problems', 'ID': 'AlbersBrucker:93:The-complexity-of-one-machine', 'FJOURNAL': 'Discrete Applied Mathematics. Combinatorial Algorithms, Optimization and Computer Science', 'NUMBER': '2', 'DATE-MODIFIED': '2015-12-11 22:11:19 +0000', 'PAGES': '87-107', 'JOURNAL': 'Discrete Appl. Math.', 'ENTRYTYPE': 'article', 'VOLUME': '47', 'YEAR': '1993', 'AUTHOR': 'Albers, S. and Brucker, P.'}
     print(bib2str(d))

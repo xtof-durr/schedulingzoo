@@ -200,7 +200,7 @@ function update_pb() {
 
 </script>
 
-<h1>The Scheduling Zoo</h1>
+<h1>The Scheduling Zoo 2</h1>
 
 <form action="search.php" id="form" method="POST" >
 
