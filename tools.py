@@ -17,7 +17,7 @@ def pb2latex(s):
         s = s[2:]
     elif len(s)>=3 and s[1] == ';' and ( s[2].isdigit() or s[2] == 'm' ):   # Aug2024: we could now remove the =='m' test
         s = s[0] + s[2:]                # write P2 instead of P;2, and Pm instead of P;m
-    s = s.replace('[', "\:[")
+    s = s.replace('[', "\\:[")          # add a space before the FPT parameters
     return '$' + s + '$'                # write problem name in LaTeX Math
 
 

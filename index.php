@@ -204,7 +204,7 @@ function update_pb() {
 
 <form action="search.php" id="form" method="POST" >
 
-<? include("form.php"); ?>
+<?php include("form.php"); ?>
 
 <p><input value="search" type="submit">
 <input type="hidden" id="problem" name="problem" />
