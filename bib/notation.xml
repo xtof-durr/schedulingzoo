@@ -170,7 +170,7 @@
 			<field name="machine sets" requires="advanced and not 1">
 				<choice value="" explanation=""  />
                 <choice value="fix_j" explanation="Multiprocessor tasks. Every job $j$ is given with a set of machines $fix_j\subseteq\{1,\ldots,m\}$, and needs simultaneously all these machines for execution. Sometimes also denoted by 'MPT'."/>
-                <choice value="M_j" explanation="Multipurpose machines. Every job $j$ needs to be scheduled on one machine out of a given set $M_j\subseteq\{1,\ldots,m\}$.  Sometimes also denoted by 'M_j'."/>
+                <choice value="M_j" explanation="Multipurpose machines. Every job $j$ needs to be scheduled on one machine out of a given set $M_j\subseteq\{1,\ldots,m\}$.  Sometimes also denoted by $\cal{M}_j(\textrm{type})$."/>
             </field>
 
             <field name="setup times" requires="advanced and S1">
@@ -211,11 +211,19 @@
                 <choice value=""             explanation=""  />
                 <choice value="tw"     explanation="Treewidth of the precedence constraint."  />
             </field>
+            <field name="pathwidth" requires="advanced and release time">
+                <choice value=""             explanation=""  />
+                <choice value="pw(I)"        explanation="Pathwidth of the interval graph associated to the time intervals $(r_j,d_j)$. Note that the intervals are open on both ends."  />
+            </field>
+            <field name="slack" requires="release time and P">
+                <choice value=""             explanation=""  />
+                <choice value="slack_{\max}" explanation="Maximum slack of the jobs, where slack of job $j$ is defined as $d_j-r_j-p_j$."  />
+            </field>
             <field name="bounded number of machines" requires="advanced and not 1 and not number of machines">
                 <choice value=""             explanation=""  />
                 <choice value="m" explanation="Constant Number of machines" />
             </field>
-            <field name="different release dates" requires="advanced">
+            <field name="different release dates" requires="advanced and release time">
                 <choice value=""             explanation=""  />
                 <choice value="\#r" explanation="Number of different release dates." />
             </field>
