@@ -12,4 +12,4 @@ verify:
 	bash ./dot2png.sh
 
 install:
-	rsync -rv --delete . ssh.lip6.fr:WWW/query/
+	rclone sync --sftp-host=schedulingzoo.proj.lip6.fr --sftp-user=schedulingzoo . :sftp:web/site/
