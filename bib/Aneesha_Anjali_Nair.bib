@@ -12,32 +12,44 @@
 			 $P|M_j;prec;r_j|L_{\max} [pw(I)]$ does not admit a fixed parameter algorithm unless FPT=para-NP\\
 			 $P|M_j;prec;r_j|L_{\max} [p_{\max}]$ does not admit a fixed parameter algorithm unless FPT=para-NP\\
 			 $P|M_j;prec;r_j|L_{\max} [slack_{\max}]$ does not admit a fixed parameter algorithm unless FPT=para-NP\\
-			 $P|M_j;prec;r_j;l|C_{\max} [\pw(I);p_{\max}]$ is fixed parameter tractable\\
-			 $P|M_j;prec;r_j;l|L_{\max} [\pw(I);p_{\max}]$ is fixed parameter tractable\\
-			 $P|M_j;prec;r_j;l|C_{\max} [\pw(I);slack_{\max}]$ is fixed parameter tractable\\
-			 $P|M_j;prec;r_j;l|L_{\max} [\pw(I);slack_{\max}]$ is fixed parameter tractable\\
+			 $P|M_j;prec;r_j;l|C_{\max} [pw(I);p_{\max}]$ is fixed parameter tractable\\
+			 $P|M_j;prec;r_j;l|L_{\max} [pw(I);p_{\max}]$ is fixed parameter tractable\\
+			 $P|M_j;prec;r_j;l|C_{\max} [pw(I);slack_{\max}]$ is fixed parameter tractable\\
+			 $P|M_j;prec;r_j;l|L_{\max} [pw(I);slack_{\max}]$ is fixed parameter tractable\\
+			 $P|M_j;prec;r_j;\bar d_j=\bar d|C_{\max} [pw(I);p_{\max}]$ is fixed parameter tractable\\
+			 $P|M_j;prec;r_j;\bar d_j=\bar d|C_{\max} [pw(I);slack_{\max}]$ is fixed parameter tractable\\
+			}
 }
 
-			%  $P|M_j;prec;r_j,d_j=d|C_{\max} [pw(I),p_{\max}]$ is fixed parameter tractable\\
-			%  $P|M_j;prec;r_j,d_j=d|C_{\max} [pw(I),slack_{\max}]$ is fixed parameter tractable\\
+
+% [\#acc] number of accepted jobs   need reject
+%   reject  jobs can be rejected
+%   e_j     rejection cost per job 
+% \sum_{j \in accept} C_j			need reject
+
+# renewable-energy	
+
+% V(I)
 
 
+@article{HermelinPinedo:19:On-the-parameterized-tractability-of-single-machine-scheduling-with-rejection,
+	author = {Danny Hermelin and Michael Pinedo and Dvir Shabtay and Nimrod Talmon},
+	title = {On the parameterized tractability of single machine scheduling with rejection},
+	journal = {European Journal of Operational Research},
+	volume = {273},
+	number = {1},
+	pages = {67-73},
+	year = {2019},
+	doi = {https://doi.org/10.1016/j.ejor.2018.07.038},
+	Annote = {$1|\bar d_j;\sum_{j \in reject} e_j \leq B|\sum C_j [\#accept]$ is W[1]-hard\\
+			 $1|\bar d_j;\sum_{j \in reject} e_j \leq B|\sum C_j [\#p]$ is fixed parameter tractable\\
+			 $1|\bar d_j;\sum_{j \in reject} e_j \leq B|\sum C_j [\#e]$ is fixed parameter tractable\\
+			 $1|\bar d_j;\sum_{j \in reject} e_j \leq B|\sum C_j [p_{\max}]$ is fixed parameter tractable\\
+			 $1|\bar d_j;\sum_{j \in reject} e_j \leq B|\sum C_j [e_{\max}]$ is fixed parameter tractable}
+}
 
-% @article{HermelinPinedo:19:On-the-parameterized-tractability-of-single-machine-scheduling-with-rejection,
-% 	author = {Danny Hermelin and Michael Pinedo and Dvir Shabtay and Nimrod Talmon},
-% 	title = {On the parameterized tractability of single machine scheduling with rejection},
-% 	journal = {European Journal of Operational Research},
-% 	volume = {273},
-% 	number = {1},
-% 	pages = {67-73},
-% 	year = {2019},
-% 	doi = {https://doi.org/10.1016/j.ejor.2018.07.038},
-% 	Annote = {$1|e_j \leq R|\sum C_j [\#acc]$ is W[1]-hard\\
-% 			 $1|e_j \leq R|\sum C_j [\#p]$ is fixed parameter tractable\\
-% 			 $1|e_j \leq R|\sum C_j [\#e]$ is fixed parameter tractable\\
-% 			 $1|e_j \leq R|\sum C_j [p_{\max}]$ is fixed parameter tractable\\
-% 			 $1|e_j \leq R|\sum C_j [\e_{\max}]$ is fixed parameter tractable}
-% }
+% Christoph April 16 2026: is already in FPT.bib. And we don't need to add the variant without release times
+% as they are particular case of the one with release times
 % @article{HermelinMnichOmlor:24:Serial-batching-to-minimize-the-weighted-number-of-tardy-jobs,
 % 	author={Hermelin, Danny and Mnich, Matthias and Omlor, Simon},
 % 	title={Serial batching to minimize the weighted number of tardy jobs},
@@ -55,6 +67,7 @@
 % 			 $1|s-batch(b)|\sum w_j(1-U_j) [\#d;#w]$ is fixed parameter tractable\\
 % 			 $1|s-batch(b);r_j|\sum w_j(1-U_j) [\#d;#p;#r]$ is fixed parameter tractable}
 % }
+
 % @article{YuOron:25:Single-machine-scheduling-with-fixed-energy-recharging-times-to-minimize-the-number-of-late-jobs-and-the-number-of-just-in-time-jobs-A-parameterized-complexity-analysis,
 % 	author = {Renjie Yu and Daniel Oron},
 % 	title = {Single-machine scheduling with fixed energy recharging times to minimize the number of late jobs and the number of just-in-time jobs: A parameterized complexity analysis},
@@ -81,8 +94,13 @@
 % 	MONTH = May,
 % 	DOI = {https://doi.org/10.1007/978-3-031-60924-4_16},
 % 	ANNOTE = {$1|prec;r_j;d_j=d|C_{\max} [\#q]$ is fixed parameter tractable\\
-% 			 $1|prec;r_j|L_{\max} [\#q]$ is fixed parameter tractable}
+% 			 $1|prec;r_j|L_{\max} [\#\{(r_j,d_j):j\}]$ is fixed parameter tractable}
 % }
+
+% #b = number of cliques
+% edge in clique: jobs cannot overlap (on different machines)
+% #vartheta = #{(r_j,w_j):j}
+
 % @article{JansenLassotaMaackPikies:21:Total-completion-time-minimization-for-scheduling-with-incompatibility-cliques,
 % 	title={Total completion time minimization for scheduling with incompatibility cliques},
 % 	author={Jansen, Klaus and Lassota, Alexandra and Maack, Marten and Pikies, Tytus},
@@ -94,16 +112,18 @@
 % 			 $R|cliques|\sum w_j C_j [\m;\p_{\max};\#vartheta]$ is fixed parameter tractable\\
 % 			 $R|cliques|\sum w_j C_j [\#b;\p_{\max};\#vartheta]$ is fixed parameter tractable}
 % }
-% @article{KaulMnichMolter:24:Single-Machine-Scheduling-to-Minimize-the-Number-of-Tardy-Jobs-with-Release-Dates,
-% 	title={Single-Machine Scheduling to Minimize the Number of Tardy Jobs with Release Dates}, 
-% 	author={Matthias Kaul and Matthias Mnich and Hendrik Molter},
-% 	year={2024},
-% 	doi={https://doi.org/10.48550/arXiv.2408.12967},
-% 	Annote ={$1|r_j|\sum w_j(1-U_j) [\#d;\#r]$ is W[1]-hard even if $\#w=1$\\
-% 			 $1|r_j|\sum w_j(1-U_j) [\#p;\#d;\#r]$ is fixed parameter tractable\\
-% 			 $1|r_j|\sum w_j(1-U_j) [\#p;\#w;\#d]$ is fixed parameter tractable\\
-% 			 $1|r_j|\sum w_j(1-U_j) [\#p;\#w;\#r]$ is fixed parameter tractable}
-% }
+@article{KaulMnichMolter:24:Single-Machine-Scheduling-to-Minimize-the-Number-of-Tardy-Jobs-with-Release-Dates,
+	title={Single-Machine Scheduling to Minimize the Number of Tardy Jobs with Release Dates}, 
+	author={Matthias Kaul and Matthias Mnich and Hendrik Molter},
+	year={2024},
+	doi={https://doi.org/10.48550/arXiv.2408.12967},
+	Annote ={$1|r_j|\sum w_j(1-U_j) [\#d;\#r]$ is W[1]-hard even if $\#w=1$\\
+			 $1|r_j|\sum w_j(1-U_j) [\#p;\#d;\#r]$ is fixed parameter tractable\\
+			 $1|r_j|\sum w_j(1-U_j) [\#p;\#w;\#d]$ is fixed parameter tractable\\
+			 $1|r_j|\sum w_j(1-U_j) [\#p;\#w;\#r]$ is fixed parameter tractable}
+}
+
+% needs some fixing of the notation yet
 % @article{WeerdtBaartHe:21:Single-machine-scheduling-with-release-times-deadlines-setup-times-and-rejection,
 % 	title = {Single-machine scheduling with release times, deadlines, setup times, and rejection},
 % 	author = {Mathijs {de Weerdt} and Robert Baart and Lei He},
@@ -113,16 +133,19 @@
 % 	pages = {629-639},
 % 	year = {2021},
 % 	doi = {https://doi.org/10.1016/j.ejor.2020.09.042},
-% 	Annote = {$1|r_j;s_j;d_j=d;\text{reject}|\sum_{j \notin R}w_j T_j-\sum_{j \notin R}v_j [\pw(I);\lambda_{max}]$ is fixed parameter tractable}
+% 	Annote = {$1|r_j;s_j;\bar d_j=\bar d;e_j|\sum_{j \in accept}w_j T_j-\sum_{j \notin R}v_j [\pw(I);slack_{max}]$ is fixed parameter tractable}
+% 	Annote = {$1|r_j;s_j;\bar d_j=\bar d;e_j|\sum_{j \reject R}e_j T_j-\sum_{j \in accept}w_j [\pw(I);slack_{max}]$ is fixed parameter tractable}
 % }
+
 % @article{ChenMarxZhang:17:Parameterized-and-approximation-results-for-scheduling-with-a-low-rank-processing-time-matrix,
 % 	title={Parameterized and approximation results for scheduling with a low rank processing time matrix},
 % 	author={Chen, Lin and Marx, D{\'a}niel and Ye, Deshi and Zhang, Guochuan},
 % 	pages={22--1},
 % 	year={2017},
 % 	doi={https://doi.org/10.4230/LIPIcs.STACS.2017.22},
-% 	Annote = {$R||C_{\max} [p_{\max}];\rk]$ is fixed parameter tractable}
+% 	Annote = {$R||C_{\max} [p_{\max}];rank((p_{ij}))]$ is fixed parameter tractable}
 % }
+
 % @article{BentertBredereckNiedermeier:23:A-multivariate-complexity-analysis-of-the-material-consumption-scheduling-problem,
 % 	title={A multivariate complexity analysis of the material consumption scheduling problem},
 % 	author={Bentert, Matthias and Bredereck, Robert and Gy{\"o}rgyi, P{\'e}ter and Kaczmarczyk, Andrzej and Niedermeier, Rolf},
@@ -157,3 +180,13 @@
 % 			 P||Cmax [\m]$ is W[1]-hard\\
 % 			 P||\sum w_j C_j [\m]$ is W[1]-hard}
 % }
+
+@inproceedings{KnopKoutecky:17:Scheduling-Meets,
+	Author = {Dusan Knop and Martin Koutecky},
+	Booktitle = {Proceedings of the 13th Workshop on Models and Algorithms for Planning and Scheduling Problems (MAPSP)},
+	Date-Modified = {2017-06-19 08:46:13 +0000},
+	Title = {Scheduling Meets n-fold Integer Programming},
+	Year = {2017},
+	Annote = {$Q||C_{\max}$ can be solved in time $\Theta^{O(\Theta^2)}n^{O(1)}$ for $\Theta=p_{\max}$\\
+    $R||C_{\max}$ can be solved in time $\Theta^{O(\Theta^2)}n^{O(1)}$ for $\Theta=p_{\max}^K$, where $K$ is the number of different kinds of machines\\
+    $R||\sum w_jC_j$ can be solved in time $\Theta^{O(\Theta^2)}n^{O(1)}$ for $\Theta=(\max\{p_{\max},w_\max\})^K$, where $K$ is the number of different kinds of machines}}

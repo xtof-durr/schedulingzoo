@@ -6,6 +6,8 @@ from tools import *
 from references import *
 from reductions import *
 
+limit = 10 
+
 html_head = """
 <html>
 <head>
@@ -70,7 +72,18 @@ def reduces(src, dst):
 
 # --------------- main
 
-if len(sys.argv) == 2:
+if len(sys.argv) >= 2 and sys.argv[1] == "--all":
+    L = []
+    for entry in results:
+        (pb_vec, css_class, pb_name, bound, ref) = entry
+        rest   = (ref,) + entry[1:]
+        L.append(rest)
+    
+    print(html_head)
+    L.sort()
+    print_list(L)
+
+elif len(sys.argv) == 2:
     problem_name = sys.argv[1]
     problem_vec = str2pb(problem_name, field2val, val2field)
 
@@ -133,9 +146,9 @@ if len(sys.argv) == 2:
         print_list(list_lower)
 
     print('<span title="problems with closest Hamming distance">'
-          '<h2>Ten related results</h2></span>')
+          f'<h2>{limit} related results</h2></span>')
     list_other.sort()
-    print_list(list_other[:10])
+    print_list(list_other[:limit])
 
 elif len(sys.argv) == 3:
     part_name = sys.argv[1]

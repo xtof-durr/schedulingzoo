@@ -126,6 +126,13 @@
                 <choice value="d_j\leq r_j+4" requires="advanced and release time" explanation="The span between deadline and release time of every job is at most 4.  These are called 4-bounded instances." />
             </field>
 
+
+            <field name="deadline">
+                <choice value=""         explanation="no deadline"  />
+                <choice value="\bar d_j=\bar d"      explanation="Common deadline to every job. Sometimes is equivalent by inverting the time to having distinct deadlines and same release times 0." />
+                <choice value="\bar d_j"         explanation="Arbitrary deadline."  />
+            </field>
+
             <field name="recirculation" requires="advanced and J">
                 <choice value=""         explanation="no recirculation"  />
                 <choice value="rcrc" explanation="Recirculation, also called Flexible job shop. The promise on $\mu$ is lifted and for some pairs $k\neq k'$  we might have $\mu_{kj}= \mu_{k'j}$." />
@@ -180,6 +187,14 @@
                 <choice value="s_j=s"    requires="advanced and P and S1" explanation="equal setup times. SETUP" />
                 <choice value="s_{ij}=s" requires="advanced and F and S1" explanation="equal setup times. SETUP" />
             </field>
+
+            <field name="rejection cost" requires="advanced and deadline">
+                <choice value=""    explanation="Jobs cannot be rejected." />
+                <choice value="e_j" explanation="Given rejection cost for every job. Objective value concerns only the accepted jobs." />
+                <choice value="\sum_{j \in reject} e_j \leq B" explanation="Total rejection cost must not exceed a given budget $B$.  Objective value concerns only the accepted jobs." />
+            </field>
+
+
         </section>
 
         <section name="Objective function $\gamma$" add_separator="True" >
@@ -235,6 +250,19 @@
                 <choice value=""             explanation=""  />
                 <choice value="\#w" explanation="Number of different weights." />
             </field>
+            <field name="accepted jobs" requires="rejection cost">
+                <choice value=""             explanation=""  />
+                <choice value="\#accept" explanation="Number of accepted jobs." />
+            </field>
+            <field name="maximal rejection cost" requires="rejection cost">
+                <choice value=""             explanation=""  />
+                <choice value="\#e" explanation="Number of different rejection cost among all jobs." />
+                <choice value="e_{\max}" explanation="Maximum rejection cost over all jobs." />
+            </field>
+            <field name="rank of processing time matrix" requires="R">
+                <choice value=""             explanation=""  />
+                <choice value="rank((p_{ij}))" explanation="Rank of the processing time matrix with $p_{ij}$ in row (machine) $i$ and column (job) $j$." />
+            </field>
         </section>
 
     </form>
@@ -286,6 +314,9 @@
         <reduction from="p_{ij}=1" to="p_{ij}=p" />
         <reduction from="p_{kj}=p_j" to="" />
         <reduction from="p_{ij}\in\{p_j,\infty\}" to="" />
+
+        <reduction from="" to="\bar d_j=\bar d"  />
+        <reduction from="\bar d_j=\bar d" to="\bar d_j" />
 
         <reduction from="P" to="Q" />
         <reduction from="Q" to="R" />
@@ -356,11 +387,17 @@
 
         <reduction from="" to="s_j=1" />
         <reduction from="s_j=1" to="s_j=s" />
-
+        
+        <reduction from="m" to="" />
+        <reduction from="pw(I)" to="" />
+        <reduction from="slack_{\max}" to="" />
         <reduction from="\#p" to="" />
         <reduction from="tw" to="" />
         <reduction from="\#r" to="" />
         <reduction from="\#d" to="" />
         <reduction from="\#w" to="" />
+        <reduction from="\#e" to="e_{\max}" />
+        <reduction from="e_{\max}" to="" />
+        <reduction from="\#accept" to="" />
     </reductions>
 </notation>

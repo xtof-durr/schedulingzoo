@@ -9,6 +9,7 @@ from tools import *
 import xml.etree.ElementTree as ET
 from typing import *
 
+bibtexparser.ignore_nonstandard_types = False
 pp = PrettyPrinter()
 
 BIBDIR = "bib"
