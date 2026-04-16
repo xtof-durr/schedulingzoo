@@ -222,6 +222,10 @@
                 <choice value="\#p"     explanation="Bounded number of different processing times."  />
                 <choice value="p_{\max}"     explanation="Upper bounded processing times."  />
             </field>
+            <field name="number of kinds of machines" requires="advanced and R">
+                <choice value=""             explanation=""  />
+                <choice value="\#kind"     explanation="Bounded number of different machine kinds. Two machines $i,i'$ are of the same kind if $p_{ij}=p_{i'j}$ for all jobs $j$."  />
+            </field>
             <field name="treewidth" requires="advanced and precedence relation">
                 <choice value=""             explanation=""  />
                 <choice value="tw"     explanation="Treewidth of the precedence constraint."  />
@@ -230,7 +234,7 @@
                 <choice value=""             explanation=""  />
                 <choice value="pw(I)"        explanation="Pathwidth of the interval graph associated to the time intervals $(r_j,d_j)$. Note that the intervals are open on both ends."  />
             </field>
-            <field name="slack" requires="release time and P">
+            <field name="slack" requires="advanced and release time and P">
                 <choice value=""             explanation=""  />
                 <choice value="slack_{\max}" explanation="Maximum slack of the jobs, where slack of job $j$ is defined as $d_j-r_j-p_j$."  />
             </field>
@@ -249,17 +253,18 @@
             <field name="different weights" requires="advanced">
                 <choice value=""             explanation=""  />
                 <choice value="\#w" explanation="Number of different weights." />
+                <choice value="w_{\max}" explanation="Maximum job weight. Weights must be integers." />
             </field>
-            <field name="accepted jobs" requires="rejection cost">
+            <field name="accepted jobs" requires="advanced and rejection cost">
                 <choice value=""             explanation=""  />
                 <choice value="\#accept" explanation="Number of accepted jobs." />
             </field>
-            <field name="maximal rejection cost" requires="rejection cost">
+            <field name="maximal rejection cost" requires="advanced and rejection cost">
                 <choice value=""             explanation=""  />
                 <choice value="\#e" explanation="Number of different rejection cost among all jobs." />
                 <choice value="e_{\max}" explanation="Maximum rejection cost over all jobs." />
             </field>
-            <field name="rank of processing time matrix" requires="R">
+            <field name="rank of processing time matrix" requires="advanced and R">
                 <choice value=""             explanation=""  />
                 <choice value="rank((p_{ij}))" explanation="Rank of the processing time matrix with $p_{ij}$ in row (machine) $i$ and column (job) $j$." />
             </field>
@@ -395,9 +400,11 @@
         <reduction from="tw" to="" />
         <reduction from="\#r" to="" />
         <reduction from="\#d" to="" />
-        <reduction from="\#w" to="" />
+        <reduction from="\#w" to="w_{\max}" />
         <reduction from="\#e" to="e_{\max}" />
         <reduction from="e_{\max}" to="" />
+        <reduction from="w_{\max}" to="" />
         <reduction from="\#accept" to="" />
+        <reduction from="\#kind" to="" />
     </reductions>
 </notation>
