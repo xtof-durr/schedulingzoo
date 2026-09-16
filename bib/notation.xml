@@ -181,7 +181,7 @@
             </field>
 
             <field name="setup times" requires="advanced and S1">
-                <choice value=""         explanation="no setup"  />
+                <choice value=""         explanation="arbitrary setup times"  />
                 <choice value="s_j=1"    requires="advanced and P and S1" explanation="unit setup times.SETUP"  />
                 <choice value="s_{ij}=1" requires="advanced and F and S1" explanation="unit setup times.SETUP"  />
                 <choice value="s_j=s"    requires="advanced and P and S1" explanation="equal setup times. SETUP" />
@@ -390,11 +390,13 @@
         <reduction from="d_j\leq r_j+3" to="d_j\leq r_j+4" />
         <reduction from="d_j\leq r_j+4" to="" />
 
-        <reduction from="" to="s_{ij}=1" />
         <reduction from="s_{ij}=1" to="s_{ij}=s" />
+        <reduction from="S1;s_{ij}=1" to="S1;not setup times" explanation="The setup times field only exists under S1, where an empty value means arbitrary setup times, the most general case." />
+        <reduction from="S1;s_{ij}=s" to="S1;not setup times" />
 
-        <reduction from="" to="s_j=1" />
         <reduction from="s_j=1" to="s_j=s" />
+        <reduction from="S1;s_j=1" to="S1;not setup times" />
+        <reduction from="S1;s_j=s" to="S1;not setup times" />
         
         <reduction from="m" to="" />
         <reduction from="pw(I)" to="" />
