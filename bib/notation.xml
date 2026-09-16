@@ -338,7 +338,10 @@
 
         <reduction from="" to="M_j" />
         <reduction from="M_j;R" to=";R" explanation="processing times $p_{ij}=\infty$ can be used to encode $M_j$ for every machine $i\not\in M_j$." />
-        <reduction from="" to="fix_j" />
+        <reduction from="O;not machine sets" to="O;fix_j" explanation="In a shop every operation is given with its machine, which is fix_j with sets of size one. This does not hold for P, Q, R, where the scheduler chooses the machine." />
+        <reduction from="F;not machine sets" to="F;fix_j" />
+        <reduction from="J;not machine sets" to="J;fix_j" />
+        <reduction from="F;not machine sets" to="J;fix_j" />
 
         <reduction from="n=2" to="n=3" />
         <reduction from="n=3" to="n=k" />
