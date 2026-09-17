@@ -52,7 +52,7 @@
                 <choice value="n=2" explanation="The input consists of only 2 jobs."/>
                 <choice value="n=3" explanation="The input consists of only 3 jobs."/>
                 <choice value="n=k" explanation="The input consists of only k jobs."/>
-                <choice value="n\geq m-1" requires="no number of machines" explanation="The number of jobs is at least the number of machines minus one."/>
+                <choice value="n\geq m-1" requires="not number of machines" explanation="The number of jobs is at least the number of machines minus one."/>
             </field>
 
             <field name="precedence relation" >
@@ -151,10 +151,10 @@
             <field name="processing times">
                 <choice value=""         explanation="arbitrary processing times"  />
                 <choice value="p_j=1" requires="P or Q or 1" explanation="Unit processing times." />
-                <choice value="p_j\in\{1,2\}" requires="advanced and (P or Q or 1)" explanation="Every job has processing time either 1 or 2." />
+                <choice value="p_j\in\{1,2\}" requires="advanced and ( P or Q or 1 )" explanation="Every job has processing time either 1 or 2." />
                 <choice value="p_j=p" requires="P or Q or 1" explanation="Equal processing times. All processing times are equal to some given $p$." />
-                <choice value="p_{ij}=p" requires="R or J or O" explanation="Equal processing times. All processing times are equal to some given $p$." />
-                <choice value="p_{ij}=1" requires="R or J or O" explanation="Unit processing times." />
+                <choice value="p_{ij}=p" requires="R or J or O or F" explanation="Equal processing times. All processing times are equal to some given $p$." />
+                <choice value="p_{ij}=1" requires="R or J or O or F" explanation="Unit processing times." />
                 <choice value="p_{ij}\in\{p_j,\infty\}" requires="R" explanation="Restricted machine model. Every job j comes with a set of machines on which it is allowed to be scheduled.  Sometimes also denoted as machine environment B." />
                 <choice value="p_{kj}=p_j" requires="F" explanation="All operations of a same job $j$ have the same processing time." />
             </field>
@@ -181,7 +181,7 @@
             </field>
 
             <field name="setup times" requires="advanced and S1">
-                <choice value=""         explanation="no setup"  />
+                <choice value=""         explanation="arbitrary setup times"  />
                 <choice value="s_j=1"    requires="advanced and P and S1" explanation="unit setup times.SETUP"  />
                 <choice value="s_{ij}=1" requires="advanced and F and S1" explanation="unit setup times.SETUP"  />
                 <choice value="s_j=s"    requires="advanced and P and S1" explanation="equal setup times. SETUP" />
@@ -338,7 +338,10 @@
 
         <reduction from="" to="M_j" />
         <reduction from="M_j;R" to=";R" explanation="processing times $p_{ij}=\infty$ can be used to encode $M_j$ for every machine $i\not\in M_j$." />
-        <reduction from="" to="fix_j" />
+        <reduction from="O;not machine sets" to="O;fix_j" explanation="In a shop every operation is given with its machine, which is fix_j with sets of size one. This does not hold for P, Q, R, where the scheduler chooses the machine." />
+        <reduction from="F;not machine sets" to="F;fix_j" />
+        <reduction from="J;not machine sets" to="J;fix_j" />
+        <reduction from="F;not machine sets" to="J;fix_j" />
 
         <reduction from="n=2" to="n=3" />
         <reduction from="n=3" to="n=k" />
@@ -387,11 +390,13 @@
         <reduction from="d_j\leq r_j+3" to="d_j\leq r_j+4" />
         <reduction from="d_j\leq r_j+4" to="" />
 
-        <reduction from="" to="s_{ij}=1" />
         <reduction from="s_{ij}=1" to="s_{ij}=s" />
+        <reduction from="S1;s_{ij}=1" to="S1;not setup times" explanation="The setup times field only exists under S1, where an empty value means arbitrary setup times, the most general case." />
+        <reduction from="S1;s_{ij}=s" to="S1;not setup times" />
 
-        <reduction from="" to="s_j=1" />
         <reduction from="s_j=1" to="s_j=s" />
+        <reduction from="S1;s_j=1" to="S1;not setup times" />
+        <reduction from="S1;s_j=s" to="S1;not setup times" />
         
         <reduction from="m" to="" />
         <reduction from="pw(I)" to="" />
