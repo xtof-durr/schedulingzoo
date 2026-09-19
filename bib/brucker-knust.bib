@@ -650,7 +650,16 @@
              $F2;S1|p_{ij}=1|\sum T_j$ is NP-hard,\\
              $F3;S1|p_{ij}=1|\sum T_j$ is NP-hard,\\
              $F2;S1|p_{ij}=1|\sum w_jT_j$ is strongly NP-hard,\\
-             $F3;S1|p_{ij}=1|\sum w_jT_j$ is strongly NP-hard.}}
+             $F3;S1|p_{ij}=1|\sum w_jT_j$ is strongly NP-hard,\\
+             $F3;S1|s_{ij}=1|C_{\max}$ is strongly NP-hard,\\
+             $F2;S1|s_{ij}=1|\sum C_j$ is strongly NP-hard,\\
+             $F2;S1|p_{ij}=p;s_{ij}=s|\sum w_j(1-U_j)$ is in $P$,\\
+             $F;S1|p_{ij}=1;s_{ij}=s|\sum w_j(1-U_j)$ is in $P$,\\
+             $F2;S1|p_{ij}=p;s_{ij}=s|\sum w_jT_j$ is in $P$,\\
+             $F;S1|p_{ij}=1;s_{ij}=s|\sum w_jT_j$ is in $P$,\\
+             $F2;S1|p_{ij}=p;s_{ij}=1;r_j|\sum w_jC_j$ is in $P$,\\
+             $F2;S1|p_{ij}=p;s_{ij}=1;r_j|\sum w_j(1-U_j)$ is in $P$,\\
+             $F2;S1|p_{ij}=p;s_{ij}=1;r_j|\sum T_j$ is in $P$.}}
 
 @article{BraselKluge:94:A-polynomial-algorithm,
 	Author = {Br{\"a}sel, H. and Kluge, D. and Werner, F.},
@@ -2350,11 +2359,7 @@
             $P;S1|s_j=s;p_j=p|\sum w_jT_j$ is in $P$,\\
             $Q|p_j=p;r_j|C_{\max}$ is in $P$,\\
             $Q|p_j=p|\sum w_j(1-U_j)$ is in $P$,\\
-            $Q|p_j=p|\sum w_jT_j$ is in $P$,\\
-            $F2;S1|p_{ij}=p;s_{ij}=s|\sum w_j(1-U_j)$ is in $P$,\\
-            $F;S1|p_{ij}=1;s_{ij}=s|\sum w_j(1-U_j)$ is in $P$,\\
-            $F2;S1|p_{ij}=p;s_{ij}=s|\sum w_jT_j$ is in $P$,\\
-            $F;S1|p_{ij}=1;s_{ij}=s|\sum w_jT_j$ is in $P$.}}
+            $Q|p_j=p|\sum w_jT_j$ is in $P$.}}
 
 @misc{::see:-Earliest,
 	Date-Modified = {2015-12-11 22:11:19 +0000},
@@ -2420,7 +2425,4 @@
             $P2;S1|p_j=1|\sum w_jT_j$ is strongly NP-hard,\\
             $1|p-batch;r_j|\sum C_j$ is strongly NP-hard,\\
             $1|chains;p_j=1;p-batch|\sum (1-U_j)$ is strongly NP-hard,\\
-            $1|chains;p_j=1;p-batch|\sum T_j$ is strongly NP-hard,\\
-            $F2;S1|p_{ij}=p;s_{ij}=1;r_j|\sum w_jC_j$ is in $P$,\\
-            $F2;S1|p_{ij}=p;s_{ij}=1;r_j|\sum w_j(1-U_j)$ is in $P$,\\
-            $F2;S1|p_{ij}=p;s_{ij}=1;r_j|\sum T_j$ is in $P$.}}
+            $1|chains;p_j=1;p-batch|\sum T_j$ is strongly NP-hard.}}
