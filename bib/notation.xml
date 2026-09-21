@@ -351,6 +351,10 @@
         <reduction from="" to="M_j" />
         <reduction from="M_j;R" to=";R" explanation="processing times $p_{ij}=\infty$ can be used to encode $M_j$ for every machine $i\not\in M_j$." />
         <reduction from="F;2" to="FF(1,m);not number of machines" explanation="The two-machine flow shop is the two-stage flexible flow shop with a single second-stage machine." />
+        <reduction from="P;1;\sum Z_j" to="F;2;\sum Z_j" explanation="Give every job a first operation of length zero: the single machine becomes the second stage of the two-machine flow shop. A zero-length first operation cannot change whether a job completes just in time." />
+        <reduction from="P;1;\sum w_jZ_j" to="F;2;\sum w_jZ_j" explanation="Give every job a first operation of length zero: the single machine becomes the second stage of the two-machine flow shop. A zero-length first operation cannot change whether a job completes just in time." />
+        <reduction from="P;not number of machines;\sum Z_j" to="FF(1,m);not number of machines;\sum Z_j" explanation="Give every job a first operation of length zero: the parallel machines become the second stage of the two-stage flexible flow shop. A zero-length first operation cannot change whether a job completes just in time." />
+        <reduction from="P;not number of machines;\sum w_jZ_j" to="FF(1,m);not number of machines;\sum w_jZ_j" explanation="Give every job a first operation of length zero: the parallel machines become the second stage of the two-stage flexible flow shop. A zero-length first operation cannot change whether a job completes just in time." />
         <reduction from="O;not machine sets" to="O;fix_j" explanation="In a shop every operation is given with its machine, which is fix_j with sets of size one. This does not hold for P, Q, R, where the scheduler chooses the machine." />
         <reduction from="F;not machine sets" to="F;fix_j" />
         <reduction from="J;not machine sets" to="J;fix_j" />
