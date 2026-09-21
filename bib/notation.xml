@@ -212,6 +212,8 @@
                 <choice value="\sum w_j(1-U_j)"     requires="advanced" explanation="Weighted throughput. Every job is given a due date $d_j$.  The goal is to maximize the total weight of jobs that complete on time."/>
                 <choice value="\sum T_j"     requires="advanced" explanation="Maximum tardiness. Every job $j$ is given a due date $d_j$. The goal is to minimize $\sum_j \max\{0, C_j-d_j\}$ where $C_j$ is the completion time of job $j$."/>
                 <choice value="\sum w_jT_j" requires="advanced" explanation="Weighted maximum tardiness. Every job $j$ is given a due date $d_j$. The goal is to minimize $\sum_j w_j \max\{0, C_j-d_j\}$ where $C_j$ is the completion time of job $j$ and $w_j$ its priority weight." />
+                <choice value="\sum Z_j" requires="advanced" explanation="Just-in-time jobs. Every job is given a due date $d_j$. A job is just-in-time if it completes exactly at its due date, i.e. $Z_j=1$ if $C_j=d_j$ and $Z_j=0$ otherwise. The goal is to maximize the number of just-in-time jobs."/>
+                <choice value="\sum w_jZ_j" requires="advanced" explanation="Weighted just-in-time jobs. Every job $j$ is given a due date $d_j$ and a weight $w_j$. A job is just-in-time if it completes exactly at its due date, i.e. $Z_j=1$ if $C_j=d_j$ and $Z_j=0$ otherwise. The goal is to maximize the total weight of the just-in-time jobs."/>
 
             </field>
         </section>
@@ -280,6 +282,7 @@
         <reduction from="\sum w_jC_j" to="\sum w_jT_j" />
         <reduction from="\sum T_j" to="\sum w_jT_j" />
         <reduction from="\sum (1-U_j)" to="\sum w_j(1-U_j)" />
+        <reduction from="\sum Z_j" to="\sum w_jZ_j" />
         <reduction from="\sum F_j" to="\sum w_jF_j" />
         <reduction from="\sum C_j" to="\sum F_j" />
         <reduction from="\sum w_jC_j" to="\sum w_jF_j" />
