@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import sys
+import pkg_resources
+pkg_resources.require("bibtexparser==1.4.1")
 import bibtexparser
 import os
 from pprint import PrettyPrinter
