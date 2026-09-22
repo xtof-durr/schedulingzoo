@@ -8,6 +8,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
-      - run: pip3 install bibtexparser
+      - run: pip3 install bibtexparser~=1.4
       - run: sudo apt-get install graphviz
       - run: make verify
