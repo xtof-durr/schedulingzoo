@@ -12,6 +12,8 @@ from typing import *
 bibtexparser.ignore_nonstandard_types = False
 pp = PrettyPrinter()
 
+print(bibtexparser.__version__, file=sys.stderr)
+
 BIBDIR = "bib"
 NOTATION_FILE = "bib/notation.xml"
 NEGATIVE_TAGS = ['NP', 'hard', ">=", "\\geq", " no ", "cannot", "ETH"]
