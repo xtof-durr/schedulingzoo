@@ -22,10 +22,11 @@
                 <choice value="R" explanation="We are given $m$ unrelated machines. Processing time of job $j$ on machine $i$ is some given length $p_{ij}$."/>
                 <choice value="O" explanation="Open shop. Every job $j$ consists of $m$ operations $O_{ij}$ for $i=1,\ldots,m$.  The operations can be scheduled in any order. Operation $O_{ij}$ must be processed for $p_{ij}$ units on machine $i$."/>
                 <choice value="F" explanation="Flow shop. Every job $j$ consists of $n_j$ operations $O_{ij}$ for $k=1,\ldots,m$, to be scheduled in that order.  Operation $O_{ij}$ must be processed for $p_{ij}$ units on machine $i$."/>
+                <choice value="FF(1,m)" explanation="Two-stage flexible flow shop. Every job $j$ consists of two operations, to be scheduled in that order: a first operation of length $p_j$ on a single machine, and a second operation of length $q_j$ on one of $m$ identical parallel machines. The two-machine flow shop F2 is the case $m=1$."/>
                 <choice value="J" explanation="Job shop. Every job $j$ consists of $n_j$ operations $O_{kj}$ for $k=1,\ldots,n_j$, to be scheduled in that order.  Operation $O_{kj}$ must be processed for $p_{kj}$ units on a dedicated machine $\mu_{kj}$ with $\mu_{kj}\neq \mu_{k'j}$ for $k\neq k'$."/>
             </field>
 
-            <field name="number of machines" requires="not 1"  separation="False">
+            <field name="number of machines" requires="not 1 and not FF(1,m)"  separation="False">
                 <choice value="" explanation="Arbitrary number of machines $m$." />
                 <choice value="2" explanation="m=2 machines."/>
                 <choice value="3" explanation="m=3 machines."/>
@@ -152,7 +153,7 @@
                 <choice value=""         explanation="arbitrary processing times"  />
                 <choice value="p_j=1" requires="P or Q or 1" explanation="Unit processing times." />
                 <choice value="p_j\in\{1,2\}" requires="advanced and ( P or Q or 1 )" explanation="Every job has processing time either 1 or 2." />
-                <choice value="p_j=p" requires="P or Q or 1" explanation="Equal processing times. All processing times are equal to some given $p$." />
+                <choice value="p_j=p" requires="P or Q or 1 or FF(1,m)" explanation="Equal processing times. All processing times are equal to some given $p$. In a two-stage flexible flow shop FF(1,m) it is the processing times of the first-stage operations that are equal." />
                 <choice value="p_{ij}=p" requires="R or J or O or F" explanation="Equal processing times. All processing times are equal to some given $p$." />
                 <choice value="p_{ij}=1" requires="R or J or O or F" explanation="Unit processing times." />
                 <choice value="p_{ij}\in\{p_j,\infty\}" requires="R" explanation="Restricted machine model. Every job j comes with a set of machines on which it is allowed to be scheduled.  Sometimes also denoted as machine environment B." />
@@ -212,6 +213,8 @@
                 <choice value="\sum w_j(1-U_j)"     requires="advanced" explanation="Weighted throughput. Every job is given a due date $d_j$.  The goal is to maximize the total weight of jobs that complete on time."/>
                 <choice value="\sum T_j"     requires="advanced" explanation="Maximum tardiness. Every job $j$ is given a due date $d_j$. The goal is to minimize $\sum_j \max\{0, C_j-d_j\}$ where $C_j$ is the completion time of job $j$."/>
                 <choice value="\sum w_jT_j" requires="advanced" explanation="Weighted maximum tardiness. Every job $j$ is given a due date $d_j$. The goal is to minimize $\sum_j w_j \max\{0, C_j-d_j\}$ where $C_j$ is the completion time of job $j$ and $w_j$ its priority weight." />
+                <choice value="\sum Z_j" requires="advanced" explanation="Just-in-time jobs. Every job is given a due date $d_j$. A job is just-in-time if it completes exactly at its due date, i.e. $Z_j=1$ if $C_j=d_j$ and $Z_j=0$ otherwise. The goal is to maximize the number of just-in-time jobs."/>
+                <choice value="\sum w_jZ_j" requires="advanced" explanation="Weighted just-in-time jobs. Every job $j$ is given a due date $d_j$ and a weight $w_j$. A job is just-in-time if it completes exactly at its due date, i.e. $Z_j=1$ if $C_j=d_j$ and $Z_j=0$ otherwise. The goal is to maximize the total weight of the just-in-time jobs."/>
 
             </field>
         </section>
@@ -264,6 +267,14 @@
                 <choice value="\#e" explanation="Number of different rejection cost among all jobs." />
                 <choice value="e_{\max}" explanation="Maximum rejection cost over all jobs." />
             </field>
+            <field name="chromatic number" requires="advanced and ( \sum Z_j or \sum w_jZ_j )">
+                <choice value=""             explanation=""  />
+                <choice value="\chi" explanation="Chromatic number of the conflict graph of the jobs. Two jobs conflict if their intervals $[d_j-p_j,d_j]$ overlap, so this is the largest number of jobs that overlap at any time. In a two-stage flexible flow shop the intervals are those of the second-stage operations." />
+            </field>
+            <field name="maximal second-stage processing time" requires="advanced and FF(1,m)">
+                <choice value=""             explanation=""  />
+                <choice value="q_{\max}" explanation="Maximum processing time of a second-stage operation." />
+            </field>
             <field name="rank of processing time matrix" requires="advanced and R">
                 <choice value=""             explanation=""  />
                 <choice value="rank((p_{ij}))" explanation="Rank of the processing time matrix with $p_{ij}$ in row (machine) $i$ and column (job) $j$." />
@@ -280,6 +291,7 @@
         <reduction from="\sum w_jC_j" to="\sum w_jT_j" />
         <reduction from="\sum T_j" to="\sum w_jT_j" />
         <reduction from="\sum (1-U_j)" to="\sum w_j(1-U_j)" />
+        <reduction from="\sum Z_j" to="\sum w_jZ_j" />
         <reduction from="\sum F_j" to="\sum w_jF_j" />
         <reduction from="\sum C_j" to="\sum F_j" />
         <reduction from="\sum w_jC_j" to="\sum w_jF_j" />
@@ -338,6 +350,11 @@
 
         <reduction from="" to="M_j" />
         <reduction from="M_j;R" to=";R" explanation="processing times $p_{ij}=\infty$ can be used to encode $M_j$ for every machine $i\not\in M_j$." />
+        <reduction from="F;2" to="FF(1,m);not number of machines" explanation="The two-machine flow shop is the two-stage flexible flow shop with a single second-stage machine." />
+        <reduction from="P;1;\sum Z_j" to="F;2;\sum Z_j" explanation="Give every job a first operation of length zero: the single machine becomes the second stage of the two-machine flow shop. A zero-length first operation cannot change whether a job completes just in time." />
+        <reduction from="P;1;\sum w_jZ_j" to="F;2;\sum w_jZ_j" explanation="Give every job a first operation of length zero: the single machine becomes the second stage of the two-machine flow shop. A zero-length first operation cannot change whether a job completes just in time." />
+        <reduction from="P;not number of machines;\sum Z_j" to="FF(1,m);not number of machines;\sum Z_j" explanation="Give every job a first operation of length zero: the parallel machines become the second stage of the two-stage flexible flow shop. A zero-length first operation cannot change whether a job completes just in time." />
+        <reduction from="P;not number of machines;\sum w_jZ_j" to="FF(1,m);not number of machines;\sum w_jZ_j" explanation="Give every job a first operation of length zero: the parallel machines become the second stage of the two-stage flexible flow shop. A zero-length first operation cannot change whether a job completes just in time." />
         <reduction from="O;not machine sets" to="O;fix_j" explanation="In a shop every operation is given with its machine, which is fix_j with sets of size one. This does not hold for P, Q, R, where the scheduler chooses the machine." />
         <reduction from="F;not machine sets" to="F;fix_j" />
         <reduction from="J;not machine sets" to="J;fix_j" />
