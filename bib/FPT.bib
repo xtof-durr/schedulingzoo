@@ -3,7 +3,10 @@
 	Title = {Minimizing the Number of Tardy Jobs with Uniform Processing Times on Parallel Machines},
 	Year = {2024},
 	url = {https://arxiv.org/abs/2404.14208},
-    Annote = {$P|r_j;p_j=p|\sum (1-U_j) [m]$ is W[2]-hard\\
+    Annote = {$P|r_j;p_j=p|\sum (1-U_j)$ is NP-hard\\
+             $P|r_j;p_j=p|\sum (1-U_j) [m]$ is W[2]-hard\\
+             $P|r_j;p_j=p|\sum w_j(1-U_j) [p_{\max}]$ is in P\\
+             $P|r_j;p_j=p|\sum w_j(1-U_j) [m;p_{\max}]$ is fixed parameter tractable\\
              $P|r_j;p_j=p|\sum w_j(1-U_j) [\#r]$ is fixed parameter tractable\\
              $P|r_j;p_j=p|\sum w_j(1-U_j) [\#d]$ is fixed parameter tractable}
 }
@@ -32,7 +35,11 @@
     year = {2021},
     publisher = {Springer},
     url = {https://link.springer.com/article/10.1007/s10479-018-2852-9},
-    Annote = {$1||\sum w_j(1-U_j) [\#d;\#p]$ is fixed parameter tractable}
+    Annote = {$1||\sum w_j(1-U_j) [\#d;\#p]$ is fixed parameter tractable\\
+             $1||\sum w_j(1-U_j) [\#d;\#w]$ is fixed parameter tractable\\
+             $1||\sum w_j(1-U_j) [\#p;\#w]$ is fixed parameter tractable\\
+             $1||\sum w_j(1-U_j) [\#p]$ is in P\\
+             $1||\sum w_j(1-U_j) [\#w]$ is in P}
 }
 
 @article{HeegerHermelin:24:Minimizing-the-Weighted-Number-of-Tardy-Jobs-is-W1-hard,
@@ -49,11 +56,20 @@
     year = {2024},
     journal = {Journal of Scheduling},
     volume = {27},
+    number = {6},
     pages = {545--556},
     publisher = {Springer},
+    doi = {10.1007/s10951-024-00818-9},
     url = {https://link.springer.com/article/10.1007/s10951-024-00818-9},
-    Annote = {$1|s-batch(\infty);r_j|\sum w_j(1-U_j)[\#d;\#p]$ is W[1]-hard\\
+    Annote = {$1|s-batch(\infty);r_j|\sum w_j(1-U_j)$ is NP-hard\\
+              $1|s-batch(\infty)|\sum w_j(1-U_j)[\#p]$ is in P\\
+              $1|s-batch(\infty)|\sum w_j(1-U_j)[\#w]$ is in P\\
+              $1|s-batch(\infty)|\sum w_j(1-U_j)[\#d;\#p]$ is fixed parameter tractable\\
+              $1|s-batch(\infty)|\sum w_j(1-U_j)[\#d;\#w]$ is fixed parameter tractable\\
+              $1|s-batch(\infty);r_j|\sum w_j(1-U_j)[\#d;\#p]$ is W[1]-hard\\
               $1|s-batch(\infty);r_j|\sum w_j(1-U_j)[\#p;\#r]$ is W[1]-hard\\
+              $1|s-batch(\infty);r_j|\sum w_j(1-U_j)[\#d;\#p;\#w]$ is in P\\
+              $1|s-batch(\infty);r_j|\sum w_j(1-U_j)[\#p;\#r;\#w]$ is in P\\
               $1|s-batch(b)|\sum w_j(1-U_j)[\#d;\#w]$ is fixed parameter tractable\\
               $1|s-batch(b);r_j|\sum w_j(1-U_j)[\#d;\#p;\#r]$ is fixed parameter tractable}
 }
